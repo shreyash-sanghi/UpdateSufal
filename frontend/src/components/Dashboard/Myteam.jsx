@@ -19,7 +19,7 @@ const [initila,final] = useState([
 ])
 const getdata = async()=>{
   try{
-  const result = await axios.get("http://localhost:7000/get_team_data");
+  const result = await axios.get("https://sufalbackend-shreyash-sanghis-projects.vercel.app/get_team_data");
     const data = result.data.result;
     data.map((response)=>{
       final((info)=>[
@@ -104,7 +104,7 @@ getdata();
                                             const res = confirm("You have confirm to delete...");
                                             if (res) {
                                                 try {
-                                                    const response = await axios.delete(`http://localhost:7000/delete_team_member/${data.tid}`,{public_id:data.public_id});
+                                                    const response = await axios.delete(`https://sufalbackend-shreyash-sanghis-projects.vercel.app/delete_team_member/${data.tid}`,{public_id:data.public_id});
                                                     final((info) =>
                                                         info.filter((about) => about.tid != data.tid)
                                                     );
