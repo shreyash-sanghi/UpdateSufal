@@ -31,7 +31,7 @@ const MyTeam =()=>{
             const ProfilImage = res.data.url;
             const {Name,Position,Gender,DOB,About,FBId,InstaId,Vision,Mission} = initial;
             console.log(Name,Position,Gender,DOB,About,FBId,InstaId,Vision,Mission)
-           const result = await axios.post("https://sufalbackend-shreyash-sanghis-projects.vercel.app/save_team_data",
+           const result = await axios.post("https://backendsufal-shreyash-sanghis-projects.vercel.app/save_team_data",
             {Name,Position,Gender,DOB,About,FBId,InstaId,Vision,Mission,ProfilImage,public_id}
            );
            console.log(result);

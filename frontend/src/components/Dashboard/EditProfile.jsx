@@ -38,14 +38,14 @@ if(profile !== undefined){
             const ProfilImage = res.data.url;
             const {Name,Position,Gender,DOB,About,FBId,InstaId,Vision,Mission} = initial;
             console.log(Name,Position,Gender,DOB,About,FBId,InstaId,Vision,Mission)
-           const result = await axios.post(`https://sufalbackend-shreyash-sanghis-projects.vercel.app/update_team_data/${id}`,
+           const result = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/update_team_data/${id}`,
             {Name,Position,Gender,DOB,About,FBId,InstaId,Vision,Mission,ProfilImage,public_id}
            );
            console.log(result);
             }
             else{
             const {Name,Position,Gender,DOB,About,FBId,InstaId,Vision,Mission} = initial;
-           const result = await axios.post(`https://sufalbackend-shreyash-sanghis-projects.vercel.app/update_team_data/${id}`,
+           const result = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/update_team_data/${id}`,
             {Name,Position,Gender,DOB,About,FBId,InstaId,Vision,Mission}
            );
            console.log(result);
@@ -68,7 +68,7 @@ if(profile !== undefined){
 
     const getdata = async()=>{
         try{
-        const result = await axios.get(`https://sufalbackend-shreyash-sanghis-projects.vercel.app/get_team_data_byid/${id}`);
+        const result = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/get_team_data_byid/${id}`);
           const response = result.data.result;
                  final({
                   Name : response.Name,
