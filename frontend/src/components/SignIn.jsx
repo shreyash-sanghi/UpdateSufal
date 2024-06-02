@@ -1,7 +1,10 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+
 import Cookies from 'js-cookie';
+import Header from './Header';
+import Footer from './Footer';
 const SignIn = ()=>{
     const navigate = useNavigate();
     const [login_data,setlogin_data] = useState({
@@ -22,7 +25,7 @@ const SignIn = ()=>{
         e.preventDefault();
     try {
         const {Email,Password} = login_data;
-        const result = await axios.post("http://localhost:7000/sign_in",{
+        const result = await axios.post("https://backendsufal-shreyash-sanghis-projects.vercel.app/sign_in",{
             Email,Password
         });
         const token = result.data.token;
@@ -37,6 +40,7 @@ const SignIn = ()=>{
 
     return(
         <>
+       
               <section class="bg-gray-50 dark:bg-gray-900">
   <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
       <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">

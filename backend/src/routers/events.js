@@ -20,13 +20,22 @@ router.get("/get_current_event_data",async(req,res)=>{
        res.status(404).json({error});
     }
    })
+router.get("/get_past_event_data",async(req,res)=>{
+    try {
+       const result = await Current.find({PastConform:true});
+       res.status(202).json({result});
+    } catch (error) {
+       console.log(error);
+       res.status(404).json({error});
+    }
+   })
 
 
   router.post("/uplodeEventData",async(req,res)=>{
     try {
-       const {Title,Organization,Duration,Fee,EventName,public_id, Discreption, Place, EDate,Time,EventBanner,CurrentConform,PastConform} = req.body;
+       const {Organization,Duration,Fee,EventName,Discreption, Place, EDate,Time,EventBanner,CurrentConform,PastConform} = req.body;
        const result = await Current.create({
-         Title,Organization,Duration,Fee, EventName,Discreption,public_id, Place, EDate,Time,EventBanner,CurrentConform,PastConform
+         Organization,Duration,Fee, EventName,Discreption, Place, EDate,Time,EventBanner,CurrentConform,PastConform
        })
        res.sendStatus(202);
     } catch (error) {
