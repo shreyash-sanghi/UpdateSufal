@@ -74,10 +74,10 @@ const AddEvent = () => {
 
     try {
       const { EventName, Discreption, Place, Time ,Organization,Duration,Fee} = initialAddEvent;
-      if (initialAddEventfile === null || initialAddEventfile === undefined) {
-        alert("Please Uplode image...")
-        return;
-      }
+      // if (initialAddEventfile === null || initialAddEventfile === undefined) {
+      //   alert("Please Uplode image...")
+      //   return;
+      // }
       // try{
       //   const res = await axios.post(`https://api.cloudinary.com/v1_1/${cloudname}/image/upload`, data);
       // }catch(error){
