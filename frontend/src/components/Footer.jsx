@@ -43,7 +43,7 @@ const Footer = () => {
 
 	return (
 		<footer className="w-full bg-[#fefaf6] py-4 selection:bg-[#0a755862] bg-gradient-to-r from-[#fbe7d0] via-[#ffeedbf5] to-emerald-100">
-			<div className="mx-auto flex flex-col md:flex-row max-w-6xl  items-start ">
+			<div className="mx-auto flex flex-col md:flex-row max-w-7xl  items-start ">
 				<div className="w-full px-4 md:w-1/2 lg:px-0">
 					<h1 className="max-w-sm text-3xl font-bold">
 						Don’t miss out on our upcoming events.
@@ -184,7 +184,7 @@ const Footer = () => {
 				</div>
 			</div>
 			<hr className="my-4" />
-			<div className="mx-auto max-w-6xl items-center justify-between px-4 md:flex lg:px-0">
+			<div className="mx-auto max-w-7xl items-center justify-between px-4 md:flex lg:px-0">
 				<div className="inline-flex items-center">
 					<div className="text-xl font-semibold tracking-wide select-none">
 						<HashLink to="/">
