@@ -397,7 +397,7 @@ const Home = () => {
 				</div>
 			</div>
 
-			<main className="flex py-6 lg:py-14 pt-4 bg-white  flex-1 w-full flex-col items-center justify-center text-center md:text-start px-4 sm:mt-12 mt-20">
+			<main className="flex py-6 lg:py-14 pt-10 md:pt-6 bg-white  flex-1 w-full flex-col items-center justify-center text-center md:text-start px-4 sm:mt-12 mt-20">
         <h1 className="mx-auto max-w-4xl font-display text-5xl font-bold tracking-normal sm:text-5xl">
           Our
           <span className="relative whitespace-nowrap text-pink-700">
@@ -457,7 +457,7 @@ const Home = () => {
             </a>
           </span>
         </div>
-        <p class="">We are here because of our mothers, and what better day to celebrate this than Mother's Day ?
+        <p class="leading-tight">We are here because of our mothers, and what better day to celebrate this than Mother's Day ?
 Mamta : 
 the essence of motherhood!
 It was great to be at the art gallery On the occasion of Mother's Day!🤗</p>
