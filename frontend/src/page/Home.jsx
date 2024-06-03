@@ -309,7 +309,7 @@ const Home = () => {
 			</div>
 			
 		</div>
-		<p className='text-center px-4 bg-pink-50 py-1 rounded'>Dr. Priya Bhave stands as an illustrious beacon of hope, a revered fertility specialist, and a trailblazing gynaecological endoscopic surgeon at the esteemed Bansal Hospital in the heart of Bhopal. With unparalleled expertise and unwavering dedication, she orchestrates miracles, ushering in new beginnings and fulfilling dreams.</p>
+		<p className='text-center px-4 bg-yellow-100 py-1 rounded-xl'>Dr. Priya Bhave stands as an illustrious beacon of hope, a revered fertility specialist, and a trailblazing gynaecological endoscopic surgeon at the esteemed Bansal Hospital in the heart of Bhopal. With unparalleled expertise and unwavering dedication, she orchestrates miracles, ushering in new beginnings and fulfilling dreams.</p>
 	</div>
 </section>
 
@@ -694,7 +694,7 @@ It was great to be at the art gallery On the occasion of Mother's Day!🤗</p>
 				id="team"
 				className="w-full max-w-7xl mx-auto px-3 pt-14 pb-16 selection:bg-[#0a755862]"
 			>
-				<div className="w-full flex items-center justify-start sm:justify-center gap-5 px-3 pb-5">
+				<div className="w-full flex items-center justify-center gap-5 px-3 pb-5">
 					<span className="text-3xl md:text-5xl font-semibold text-[#16191E]">
 						Our Team
 					</span>
