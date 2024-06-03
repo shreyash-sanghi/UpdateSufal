@@ -1,6 +1,7 @@
 const express = require("express");
 const router = new express.Router();
 const AddTeam = require("../models/MyTeam");
+const Volunteer = require("../models/Volunteer");
 const cloudinary = require("cloudinary");
 
 router.post("/save_team_data",async(req,res)=>{
@@ -15,11 +16,32 @@ router.post("/save_team_data",async(req,res)=>{
        res.status(404).json({error});
     }
    })
+router.post("/save_volunteer_data",async(req,res)=>{
+    try {
+       const {FName,LName,Email,Number,DOB,WhyYouWantToJoin} = req.body;
+       const result = await Volunteer.create({
+         FName,LName,Email,Number,DOB,WhyYouWantToJoin
+       })
+       res.sendStatus(202);
+    } catch (error) {
+       console.log(error);
+       res.status(404).json({error});
+    }
+   })
 
 
 router.get("/get_team_data",async(req,res)=>{
     try {
        const result = await AddTeam.find();
+       res.status(202).json({result});
+    } catch (error) {
+       console.log(error);
+       res.status(404).json({error});
+    }
+   })
+router.get("/get_volunteer_data",async(req,res)=>{
+    try {
+       const result = await Volunteer.find();
        res.status(202).json({result});
     } catch (error) {
        console.log(error);
@@ -82,6 +104,17 @@ router.get("/get_team_data_byid/:id",async(req,res)=>{
       //    console.log(err,result);
       //  });
           await  AddTeam.findByIdAndDelete(id);
+          res.sendStatus(202);
+      }catch(error){
+         console.log(error);
+        res.sendStatus(404);
+      }
+   })
+
+   router.delete("/delete_volunteer_member/:id",async(req,res)=>{
+      try{
+         const id = req.params.id;
+          await  Volunteer.findByIdAndDelete(id);
           res.sendStatus(202);
       }catch(error){
          console.log(error);

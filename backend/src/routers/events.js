@@ -29,6 +29,16 @@ router.get("/get_past_event_data",async(req,res)=>{
        res.status(404).json({error});
     }
    })
+router.get("/get_past_event_data_byId/:id",async(req,res)=>{
+    try {
+      const id = req.params.id;
+       const result = await Current.findById(id);
+       res.status(202).json({result});
+    } catch (error) {
+       console.log(error);
+       res.status(404).json({error});
+    }
+   })
 
 
   router.post("/uplodeEventData",async(req,res)=>{
@@ -37,6 +47,21 @@ router.get("/get_past_event_data",async(req,res)=>{
        const result = await Current.create({
          Organization,Duration,Fee, EventName,Discreption, Place, EDate,Time,EventBanner,CurrentConform,PastConform
        })
+       res.sendStatus(202);
+    } catch (error) {
+       console.log(error);
+       res.status(404).json({error});
+    }
+   })
+
+  router.post("/uplode_event_image/:id",async(req,res)=>{
+    try {
+      const id = req.params.id;
+      const arr = req.body.arr;
+      console.log(arr)
+    const result = await Current.findByIdAndUpdate(id,{
+      EventImage:arr
+    })
        res.sendStatus(202);
     } catch (error) {
        console.log(error);
@@ -78,12 +103,11 @@ router.get("/get_past_event_data",async(req,res)=>{
       try{
          const id = req.params.id;
          const data = await Current.findById(id);
-         const public_id = data.public_id;
-         console.log(public_id)
-       cloudinary.v2.uploader.destroy(public_id,async(err,result)=>{
-         console.log(err,result);
-      });
-     
+      //    const public_id = data.public_id;
+      //    console.log(public_id)
+      //  cloudinary.v2.uploader.destroy(public_id,async(err,result)=>{
+      //    console.log(err,result);
+      // });
           const result = await Current.findByIdAndDelete(id);
           res.sendStatus(202);
       }catch(error){

@@ -1,7 +1,18 @@
 import {React,useState} from "react";
 import imageuplode from "./imageuplode.js";
 import DashboardNav from "./DashboardNav.jsx";
+import { ref, uploadBytes ,getStorage} from "firebase/storage"; 
+import {v4} from 'uuid';
+import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { DotSpinner } from '@uiball/loaders';
+
+import { useNavigate, useParams } from "react-router-dom";
 const UplodeMultipleImage  = ()=>{
+  const navigate = useNavigate();
+  const {eid} = useParams();
+  const [loading, setLoading] = useState(false);
 
     const [images, setImages] = useState([]);
     const [message, setMessage] = useState('');
@@ -13,18 +24,28 @@ const UplodeMultipleImage  = ()=>{
    images.map(async(info)=>{
     try{
       for(let i=0;i<info.length;i++){
-        const data = await imageuplode(info[i]);
-        arr.push(data);
+        const storage = getStorage();
+        const image = `${info[i].name + v4()}`;
+        console.log(info[i].name)
+        const imgref = ref(storage,`files/${image}`);
+        uploadBytes(imgref,info[i].name)
+        arr.push(image);
       }
+      const result = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/uplode_event_image/${eid}`,
+       { arr}
+      )
+      toast("Success...");
+      setLoading(false);
     }catch(error){
-    console.log(error)
+      setLoading(false);
+    toast(error)
     }
    })
-   setlink(arr);
-alert("success")
+   setTimeout(() => {
+     navigate("/event/past_event");
+   }, 1000);
     };
 
-  console.log(link)
 
     const handleDelete = (index) => {
         const updatedImages = [...images];
@@ -73,22 +94,27 @@ alert("success")
             </div>
         </div>
     </div>
-    <div class="extraOutline p-4 w-max bg-whtie m-auto rounded-lg">
-        <div class="file_upload p-5 w-[90vw] sm:w-[50vw] lg:w-[25vw] md:relative border-4 border-dotted border-green-300 rounded-lg" >
-            {/* <svg class="text-green-500 w-28 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg> */}
-            <svg class="text-green-500 w-28 mx-auto mb-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"/>
-</svg>
+    {loading ? (
+                     <DotSpinner size={40} speed={0.9} color="white" className="flex justify-center m-auto" />
+                  ) : (
+                    <div class="extraOutline p-4 w-max bg-whtie m-auto rounded-lg">
+                    <div class="file_upload p-5 w-[90vw] sm:w-[50vw] lg:w-[25vw] md:relative border-4 border-dotted border-green-300 rounded-lg" >
+                        {/* <svg class="text-green-500 w-28 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg> */}
+                        <svg class="text-green-500 w-28 mx-auto mb-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"/>
+            </svg>
+            
+                        <div class="input_field flex flex-col w-max mx-auto text-center">
+                            <label>
+                                <button onClick={handleUpload} class="text bg-green-600 text-xl text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-green-500">Save Image</button>
+                            </label>
+            
+                            {/* <div class="title text-indigo-500 uppercase">drop files here</div> */}
+                        </div>
+                    </div>
+                </div>
+                  )}
 
-            <div class="input_field flex flex-col w-max mx-auto text-center">
-                <label>
-                    <button onClick={handleUpload} class="text bg-green-600 text-xl text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-green-500">Save Image</button>
-                </label>
-
-                {/* <div class="title text-indigo-500 uppercase">drop files here</div> */}
-            </div>
-        </div>
-    </div>
     {/* <div className="flex border-2 h-fit px-16 mr-10  sm:text-lg lg:text-xl font-bold bg-green-200  py-3">Save Image</div> */}
 </div>
 
@@ -119,6 +145,7 @@ alert("success")
       </div>
       </div>
       </div>
+      <ToastContainer/>
         </>
     )
 }

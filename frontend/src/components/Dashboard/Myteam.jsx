@@ -3,6 +3,8 @@ import DashboardNav from "./DashboardNav";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import {ref,getStorage ,getDownloadURL,deleteObject} from "firebase/storage";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Myteam =()=>{
   const navigate = useNavigate();
 const [initila,final] = useState([
@@ -41,9 +43,9 @@ const getdata = async()=>{
       ])
     })
     })
+
   }catch(error){
-    console.log(error);
-    alert(error);
+    toast(error.response.data.error);
   }
 }
 useEffect(()=>{
@@ -60,10 +62,11 @@ getdata();
               <div class="flex-grow flex overflow-x-hidden">
                 <div class="flex-grow   overflow-y-auto">
                   <div class="py-4">
+                    {initila.length>1?
                   <table class="w-full whitespace-nowrap text-left overflow-scroll">
                             <thead>
                               <tr class="text-white border-b">
-                                <th class="font-bold text-lg px-3 pt-0 pb-3 border-b border-gray-200 "></th>
+                                <th class="font-bold text-lg px-3 pt-0 pb-3 border-b border-gray-200 ">User Profile</th>
                                 <th class="font-bold text-lg px-3 pt-0 pb-3 border-b border-gray-200 ">Name</th>
                                 <th class="font-bold text-lg px-3 pt-0 pb-3 border-b border-gray-200 ">Position</th>
                                 <th class="font-bold text-lg px-3 pt-0 pb-3 border-b border-gray-200 ">Mission</th>
@@ -75,12 +78,11 @@ getdata();
                               </tr>
                             </thead>
                             {initila.map((data, index) => {
-                              console.log(data);
                               if (!data.tid) return null;
                               return (<>
                                 <tbody class="text-gray-600 dark:text-gray-100">
                                   <tr>
-                                    <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 text-gray-100"><img src={data.ProfilImage} width="70px"  height="70px" className='rounded-full object-cover' />
+                                    <td class="sm:p-3 w-[70px] h-[70px] py-2 px-1 border-b border-gray-200 dark:border-gray-800 text-gray-100"><img src={data.ProfilImage} className='rounded-full w-full h-full object-cover' />
                                     </td>
                                     <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 text-gray-100">{data.Name}</td>
                                     <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 text-gray-100">{data.Position}</td>
@@ -116,11 +118,9 @@ getdata();
                                                     final((info) =>
                                                         info.filter((about) => about.tid != data.tid)
                                                     );
-                                                    console.log(response);
                                                     alert("Success...");
                                                 } catch (error) {
                                                     alert(error);
-                                                    console.log(error);
                                                 }
                                             }
                                         }}
@@ -137,7 +137,7 @@ getdata();
                             })}
                           </table>
           
-    
+                          :<div className='flex justify-center text-white mx-auto'>Data is Loding...</div>}
                 </div>
               </div>
             </div>
@@ -145,6 +145,7 @@ getdata();
         </div>
       </div>
       </div>
+      <ToastContainer />
         </>
     )
 }

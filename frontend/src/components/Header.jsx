@@ -27,10 +27,7 @@ const Header = () => {
 			title: 'Events',
 			path: '/events',
 		},
-		{
-			title: 'Blogs',
-			path: '/blogs',
-		},
+
 		{
 			title: 'Volunteer',
 			path: '/volunteer',

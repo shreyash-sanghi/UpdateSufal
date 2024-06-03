@@ -3,10 +3,15 @@ import DashboardNav from './DashboardNav';
 import axios from 'axios';
 import User_profile from "../../assets/user_profile.jpg";
 import { imageDb } from "../Config.js";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { DotSpinner } from '@uiball/loaders';
 import { ref, uploadBytes ,getStorage} from "firebase/storage"; 
 import {v4} from 'uuid';
+import { useNavigate } from 'react-router-dom';
 const MyTeam =()=>{
-
+    const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
     const [initial,final] = useState({
         Name:"",
         Position:"",
@@ -24,6 +29,7 @@ const MyTeam =()=>{
     
     const savedata = async(e)=>{
         e.preventDefault();
+        setLoading(true)
         // const data = new FormData();
         // const cloudname = "djyu9nhjf";
         // data.append("file", profile);
@@ -44,13 +50,20 @@ const MyTeam =()=>{
            try {
             uploadBytes(imgref,profile)
           } catch (error) {
-            alert("Your Banner is not uplode")
+            toast("Your Profile have not uplode")
+            setLoading(false)
+
           }
-           console.log(result);
-           alert("Success");
+         
+           toast("Success");
+           setLoading(false)
+
+           setTimeout(() => {
+               navigate("/my_team")            
+           }, 1000);
         } catch (error) {
-            alert(error);
-            console.log(error);
+            toast(error);
+        
         }
     }
     const setdata =(e)=>{
@@ -245,13 +258,20 @@ const MyTeam =()=>{
                     </div>
 
                     <div class="w-fit px-10 rounded-lg bg-blue-500 mt-4 text-white text-lg font-semibold">
-                        <button type="submit" class="w-full p-2">Submit</button>
+                        <button type="submit" class="w-full p-2">
+                        {loading ? (
+                     <DotSpinner size={40} speed={0.9} color="white" className="flex justify-center m-auto" />
+                  ) : (
+                     "Submit"
+                  )}
+                            </button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </section>
+<ToastContainer/>
         </>
     )
 }

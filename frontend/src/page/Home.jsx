@@ -11,8 +11,9 @@ import {ref,uploadBytes,getStorage ,getDownloadURL,deleteObject} from "firebase/
 // <<<<<<< HEAD
 // =======
 import Glimpses from '../components/Glimpses';
-import mothers from '../assets/mothers.mp4';
-// >>>>>>> cc54d206aafb6a81e57fa7804bd5b44922aa0ea7
+import mothers from '../assets/mothersday rander2.mp4';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
 	IoLogoInstagram,
 	IoLogoLinkedin,
@@ -91,23 +92,7 @@ const Home = () => {
 			setCurrent(api.selectedScrollSnap() + 1);
 		});
 	}, [api]);
-  //Show Event data
-  const [initial, final] = useState([{
-    eid: "",
-    EventName: "",
-    Place: "",
-    Time: "",
-    EDate: "",
-    EventBanner: "",
-    PastConform: "",
-    CurrentConform: "",
-    Discreption: "",
-    image_key: "",
-    Duration: "",
-    Fee: "",
-    Organization: "",
-    Title: "",
-  }])
+
 
  const [ini_team,final_team] = useState([{
 	tid:"",
@@ -118,117 +103,20 @@ const Home = () => {
 	FBId:"",
 	About:" "
  }])
-  const monthToNumber = (month) => {
-    const monthDict = {
-      "January": 1, "February": 2, "March": 3, "April": 4, "May": 5, "June": 6,
-      "July": 7, "August": 8, "September": 9, "October": 10, "November": 11, "December": 12
-    };
-    return monthDict[month];
-  }
-  const compareDates = (date1, date2) => {
-    const [day1, month1, year1] = date1.split('/');
-    const [day2, month2, year2] = date2.split('/');
-    if (year1 !== year2) {
-      if (parseInt(year1) > parseInt(year2)) {
-        return true;
-      }
-    } else if (monthToNumber(month1) !== monthToNumber(month2)) {
-      if (monthToNumber(month1) > monthToNumber(month2)) {
-        return true;
-      }
-    } else if (parseInt(day1) !== parseInt(day2)) {
-      if (parseInt(day1) > parseInt(day2)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  const getdata = async () => {
 
-    let todaydate = new Date();
-    const months = ["January", "February", "March", "April", "May",
-      "June", "July", "August", "September", "October", "November", "December"];
-    let month = months[todaydate.getMonth()];
-    let curdate = todaydate.getDate();
-    let curyear = todaydate.getFullYear();
-    if (curdate < 10) {
-      curdate = `0${curdate}`;
-    }
-    todaydate = `${curdate}/${month}/${curyear}`;
-    try {
-      const data = await axios.get("https://backendsufal-shreyash-sanghis-projects.vercel.app/get_current_event_data");
-      const result = data.data.result;
-      // console.log(result);
-      result.map(async (info) => {
-        let EventDate = info.EDate;
-        const isDate1AfterDate = compareDates(todaydate, EventDate);
-		const storage = getStorage();
-        const imgref = ref(storage,`files/${info.EventBanner}`);
-        getDownloadURL(imgref).then(async(url) => {
-        if (isDate1AfterDate && info.PastConform == false) {
-        //   await axios.post(`https://sufalbackend-shreyash-sanghis-projects.vercel.app/send_to_past_event/${info._id}`);
-          await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/send_to_past_event/${info._id}`);
-          final((about) => [
-            ...about, {
-              eid: info._id,
-              EventName: info.EventName,
-              Place: info.Place,
-              Time: info.Time,
-              EDate: info.EDate,
-              EventBanner: url,
-              PastConform: true,
-              CurrentConform: false,
-              Discreption: info.Discreption,
-              image_key: info.public_id,
-              Duration: info.Duration,
-              Fee: info.Fee,
-              Organization: info.Organization,
-              Title: info.Title,
-            }
-          ])
-        } else {
-          final((about) => [
-            ...about, {
-              eid: info._id,
-              EventName: info.EventName,
-              Place: info.Place,
-              Time: info.Time,
-              EDate: info.EDate,
-              EventBanner: url,
-              PastConform: info.PastConform,
-              CurrentConform: info.CurrentConform,
-              Discreption: info.Discreption,
-              image_key: info.public_id,
-			  Duration: info.Duration,
-              Fee: info.Fee,
-              Organization: info.Organization,
-              Title: info.Title,
-            }
-          ])
-        }
-      })
-	})
-
-final_length(initial.length);
-
-
-    } catch (error) {
-      console.log(error);
-      alert(error);
-    }
-  }
  
   const getTeamData  = async()=>{
 	try{
        const response = await axios.get("https://backendsufal-shreyash-sanghis-projects.vercel.app/get_team_data");
 	   const result  = response.data.result;
-	   console.log(result)
 	   result.map((info)=>{
-		console.log(info)
+	   const storage = getStorage();
+	   const imgref = ref(storage,`files/${info.ProfilImage}`);
+	   getDownloadURL(imgref).then(async(url) => {
 		final_team((team_data)=>[
 		...team_data,{	
 			tid:info._id,
-			ProfilImage:info.ProfilImage,
+			ProfilImage:url,
 			Name:info.Name,
 			Position:info.Position,
 			InataId:info.InataId,
@@ -237,14 +125,14 @@ final_length(initial.length);
 		}
 		])
 	   })
+	})
 	}catch(error){
-		alert(error);
-		console.log(error);
+		toast(error);
 	}
   }
+
   //Use Effect
   useEffect(() => {
-    getdata();
 	getTeamData();
   }, [])
 
@@ -255,7 +143,14 @@ final_length(initial.length);
    try{
 	  axios.defaults.headers.common["Authorization"] = token;
 	  const result = await axios.get("https://backendsufal-shreyash-sanghis-projects.vercel.app/user_auth");
-	  navigate("/dashboard")
+	  const OwnerEmail = result.data.OwnerEmail;
+	  const Email = result.data.Email;
+	  if(Email===OwnerEmail){
+		navigate("/add_event");
+	}
+	else{
+		navigate("/");
+	}
    }catch(error){
 	  alert(error);
 	  console.log(error);
@@ -267,7 +162,6 @@ final_length(initial.length);
 			  verifytoken();
 		  }
 	  },[])
-	  console.log(ini_team)
 	return (
 	       <>
 		   <Header/>
@@ -599,7 +493,7 @@ It was great to be at the art gallery On the occasion of Mother's Day!🤗</p>
 			{/*  */}
 {/* <<<<<<< HEAD */}
 <Glimpses></Glimpses>
-			{(initial_length>=1)?(<>
+			
 			<section class="text-gray-600">
   <div class="container mx-auto flex px-5 lg:px-24 py-10 md:py-20 md:flex-row flex-col items-center">
   <div class="lg:max-w-sm lg:w-full md:w-1/2 w-5/6">
@@ -625,8 +519,8 @@ It was great to be at the art gallery On the occasion of Mother's Day!🤗</p>
     
   </div>
 </section>
-
-
+{console.log(initial_length)}
+{/* {(initial_length>=1)?(<>
 			<div
 				id="upcoming-events"
 				className="w-full max-w-7xl mx-auto px-3 pt-14 pb-16"
@@ -649,7 +543,7 @@ It was great to be at the art gallery On the occasion of Mother's Day!🤗</p>
 					<CarouselContent className="w-full  mx-auto py-5">
 				
 						{initial.map((info)=>{
-							// console.log(info)
+							console.log(info)
 							if(!info.eid) return null;
 							if(!info.CurrentConform) return null
 							return(<>
@@ -679,7 +573,7 @@ It was great to be at the art gallery On the occasion of Mother's Day!🤗</p>
 					<CarouselNext className="mr-6 sm:mr-0 md:mr-1 md:-bottom-8" />
 				</Carousel>
 			</div>
-			</>):(<></>)}
+			</>):(<></>)} */}
 			{/*  */}
 			{/* <div
 				id="campaign"
@@ -767,7 +661,7 @@ It was great to be at the art gallery On the occasion of Mother's Day!🤗</p>
 				id="news"
 				className="w-full max-w-7xl mx-auto px-5 pt-14 flex flex-col items-start justify-start selection:bg-[#0a755862]	"
 			>
-				<div className="w-full flex  flex-col md:flex-row items-center justify-start md:justify-between">
+				{/* <div className="w-full flex  flex-col md:flex-row items-center justify-start md:justify-between">
 					<div className="w-full flex items-center justify-start">
 						<span className="text-3xl  md:text-5xl font-semibold text-[#16191E]">
 							News and Updates
@@ -786,8 +680,8 @@ It was great to be at the art gallery On the occasion of Mother's Day!🤗</p>
 							href={'/news'}
 						/>
 					</div>
-				</div>
-				<div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 items-start justify-start gap-8 mt-8">
+				</div> */}
+				{/* <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 items-start justify-start gap-8 mt-8">
 					<NewsCard
 						title={
 							'Facts About COVID Kraken, The Latest Omicron Variant'
@@ -840,7 +734,7 @@ It was great to be at the art gallery On the occasion of Mother's Day!🤗</p>
 						date={randomDate}
 						href={'/news/1'}	
 					/>
-				</div>
+				</div> */}
 			</div>
 			<div
 				id="team"
@@ -1013,6 +907,7 @@ It was great to be at the art gallery On the occasion of Mother's Day!🤗</p>
 			</div>
 		</div>
 		<Footer/>
+		<ToastContainer/>
 		</>
 	);
 };

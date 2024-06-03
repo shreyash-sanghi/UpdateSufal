@@ -1,8 +1,55 @@
-import React from "react";
+import {React,useEffect,useState} from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import team1 from "../assets/team1.png";
+import {ref,uploadBytes,getStorage ,getDownloadURL,deleteObject} from "firebase/storage";
+
+import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const OurTeam = () => {
+
+  const [ini_team,final_team] = useState([{
+    tid:"",
+    ProfilImage:"",
+    Name:"",
+    Position:"",
+    InataId:"",
+    FBId:"",
+    About:" "
+   }])
+
+
+   const getTeamData  = async()=>{
+    try{
+         const response = await axios.get("https://backendsufal-shreyash-sanghis-projects.vercel.app/get_team_data");
+       const result  = response.data.result;
+       console.log(result)
+       result.map((info)=>{
+       const storage = getStorage();
+       const imgref = ref(storage,`files/${info.ProfilImage}`);
+       getDownloadURL(imgref).then(async(url) => {
+      final_team((team_data)=>[
+      ...team_data,{	
+        tid:info._id,
+        ProfilImage:url,
+        Name:info.Name,
+        Position:info.Position,
+        InataId:info.InataId,
+        FBId:info.FBId,
+        About:info.About,
+      }
+      ])
+       })
+    })
+    }catch(error){
+      toast(error);
+     
+    }
+    }
+   useEffect(()=>{
+    getTeamData();
+     },[])
   return (
     <>
       <Header></Header>
@@ -26,49 +73,44 @@ const OurTeam = () => {
 
 
       <div className="p-6 lg:px-24  dark:text-gray-100">
-        <div className="flex flex-col pt-8 space-y-4 md:space-y-0 md:space-x-6 md:flex-row">
-          <img
-            src={team1}
-            alt=""
-            className="self-center flex-shrink-0 size-32 lg:size-48 border rounded-xl md:justify-self-start dark:bg-gray-500 dark:border-gray-700"
-          />
-          <div className="flex flex-col">
-            <h4 className=" text-lg lg:text-xl font-semibold text-center md:text-left">
-              Dr. Shailja Trivedi
-            </h4>
-            <h4 className="text-lg text-gray-600 mb-2  font-semibold text-center md:text-left">
-              Executive Head at Sufal
-            </h4>
-
-            <p className="dark:text-gray-400 text-sm line-clamp-6 lg:line-clamp-5">
-              <span className="font-bold">About :</span> Lorem ipsum dolor, sit
-              amet consectetur adipisicing elit. Et ullam deleniti, nulla
-              recusandae modi necessitatibus tempora quidem corporis
-              reprehenderit distinctio doloremque, reiciendis id a provident,
-              aperiam quam. Ut quod hic maxime nulla maiores possimus corporis
-              expedita praesentium iure? Repellat accusamus ea voluptatum dolore
-              temporibus facilis! Modi nihil nesciunt deleniti veritatis magni,
-              ipsa delectus ab culpa, nulla repellendus labore. Harum corrupti
-              explicabo itaque, eum quis tempora placeat? Ipsum repellat
-              voluptate eius iste laudantium neque architecto modi quas aperiam
-              unde odit vero, veritatis eos ipsam aut placeat in error voluptas
-              amet natus atque perspiciatis nostrum. Velit illum blanditiis
-              exercitationem ad asperiores maiores!
-            </p>
-            <div className="flex justify-start pt-2 space-x-4 align-center">
-              <button
-                rel="noopener noreferrer"
-                className="py-1 rounded-md bg-pink-600 text-white px-6 text-xs hover:dark:text-violet-400"
-              >
-                Read ...
-              </button>
+        {ini_team.map((info)=>{
+          if(!info.tid) return null;
+          return(
+            <div className="flex flex-col pt-8 space-y-4 md:space-y-0 md:space-x-6 md:flex-row">
+            <img
+              src={info.ProfilImage}
+              alt=""
+              className="self-center flex-shrink-0 size-32 lg:size-48 border rounded-xl md:justify-self-start dark:bg-gray-500 dark:border-gray-700"
+            />
+            <div className="flex flex-col">
+              <h4 className=" text-lg lg:text-xl font-semibold text-center md:text-left">
+                {info.Name}
+              </h4>
+              <h4 className="text-lg text-gray-600 mb-2  font-semibold text-center md:text-left">
+                Ex{info.Position}
+              </h4>
+  
+              <p className="dark:text-gray-400 text-sm line-clamp-6 lg:line-clamp-5">
+                <span className="font-bold">About :</span> {info.About}
+              </p>
+              <div className="flex justify-start pt-2 space-x-4 align-center">
+                <button
+                  rel="noopener noreferrer"
+                  className="py-1 rounded-md bg-pink-600 text-white px-6 text-xs hover:dark:text-violet-400"
+                >
+                  Read ...
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+          )
+        })}
+    
         
       </div>
       <div className="h-20"></div>
       <Footer></Footer>
+      <ToastContainer/>
     </>
   );
 };

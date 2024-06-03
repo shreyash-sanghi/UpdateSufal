@@ -24,6 +24,9 @@ import { useTranslation } from 'react-i18next';
 import Volunteer from './page/Volunteer.jsx';
 import LanguageSelector from './components/LanguageSelector.jsx';
 import OurTeam from './page/OurTeam.jsx';
+import ViewPastEvent from './components/Dashboard/ViewPastEvent.jsx';
+import VolunteerData from './components/Dashboard/VolunteerData.jsx';
+import EventDetails from './components/EventDetails.jsx';
 const App = () => {
 	const {t} = useTranslation();
 	return ( 
@@ -81,8 +84,12 @@ export const AppRouter = () => {
 				element={<OurTeam />}
 			/>
 			<Route
-				path="/uplode_event_image"
+				path="/uplode_event_image/:eid"
 				element={<UplodeMultipleImage />}
+			/>
+			<Route
+				path="/past_event/:eid"
+				element={<EventDetails/>}
 			/>
 
 
@@ -96,6 +103,7 @@ export const AppRouter = () => {
 		<Route exact path="/my_team" Component={MyTeam}></Route>
 		<Route exact path="/edit_profile/:id" Component={EditProfile}></Route>
 		<Route exact path="/view_register/:Eid" Component={ViewRegister}></Route>
+		<Route exact path="/volunteer_with_us" Component={VolunteerData}></Route>
 		</Routes>
 	);
 };

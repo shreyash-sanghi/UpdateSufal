@@ -11,7 +11,8 @@ const Events = new mongoose.Schema({
     Time:{type:String,required:true},
     EventBanner:{type:String,required:true},
     CurrentConform:{type:Boolean,required:true},
-    PastConform:{type:Boolean,required:true},    
+    PastConform:{type:Boolean,required:true},   
+    EventImage:[] 
 })
 
 

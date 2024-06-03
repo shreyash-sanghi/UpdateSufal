@@ -3,7 +3,10 @@ import DashboardNav from './DashboardNav';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import {ref,uploadBytes,getStorage ,getDownloadURL,deleteObject} from "firebase/storage";
+import { ToastContainer, toast } from 'react-toastify';
+import { DotSpinner } from '@uiball/loaders';
 
+import 'react-toastify/dist/ReactToastify.css';
 const MyTeam =()=>{
      const {id} = useParams();
     const [initial,final] = useState({
@@ -22,12 +25,12 @@ const MyTeam =()=>{
         Number:"",
         Linkdin:""
     })
+    const [loading, setLoading] = useState(false);
 
     const [profile,setProfile] = useState();
-
+      
     const savedata = async(e)=>{
         e.preventDefault();
-        console.log(profile)
         // const data = new FormData();
         // const cloudname = "djyu9nhjf";
         // data.append("file", profile);
@@ -36,12 +39,9 @@ const MyTeam =()=>{
         try {
             if(profile === undefined){
                 const {Name,Position,Gender,DOB,About,FBId,InstaId,Vision,Mission,Number, Linkdin} = initial;
-                console.log(Gender)
                const result = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/update_team_data/${id}`,
                 {Name,Position,Gender,DOB,About,FBId,InstaId,Vision,Mission,Number, Linkdin}
-               );
-               console.log(result);
-              
+               )            
             }
             else{
                 // const deleteImage = await axios.delete(`htpp://localhost:7000/delete_previous_image/${initial.public_id}`);
@@ -61,14 +61,18 @@ const MyTeam =()=>{
               try {
                 uploadBytes(imgref,profile)
               } catch (error) {
-                alert("Your Banner is not uplode")
+                toast("Your Banner is not uplode")
+                setLoading(false);
               }
-              console.log(result);
              }
-           alert("Success");
+          toast("Success");
+          setLoading(false);
+
+          setTimeout(() => {
+              navigate("/my_team")
+          }, 1000);
         } catch (error) {
-            alert(error);
-            console.log(error);
+            toast(error);
         }
     }
     const setdata =(e)=>{
@@ -106,8 +110,7 @@ const MyTeam =()=>{
           })
         })
         }catch(error){
-          console.log(error);
-          alert(error);
+          toast(error);
         }
       }
 useEffect(()=>{
@@ -309,13 +312,18 @@ useEffect(()=>{
                     </div>
 
                     <div class="w-fit px-10 rounded-lg bg-blue-500 mt-4 text-white text-lg font-semibold">
-                        <button type="submit" class="w-full p-2">Submit</button>
+                        <button type="submit" class="w-full p-2">     {loading ? (
+                     <DotSpinner size={40} speed={0.9} color="white" className="flex justify-center m-auto" />
+                  ) : (
+                     "Submit"
+                  )}</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </section>
+<ToastContainer/>
         </>
     )
 }

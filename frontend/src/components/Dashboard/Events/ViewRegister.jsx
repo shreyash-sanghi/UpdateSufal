@@ -2,7 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import DashboardNav from "../DashboardNav";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ViewRegister = () => {
     const navigate = useNavigate();
@@ -19,10 +20,9 @@ const ViewRegister = () => {
     const getdata =async()=>{
         try{
       const result = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/get_view_register/${Eid}`);
-      console.log(result)
+   
       const data = result.data.result;
       data.map((info)=>{
-        console.log(info)
         final((about)=>[
             ...about,{
                 eid:info._id,
@@ -35,8 +35,8 @@ const ViewRegister = () => {
         ])
         })
         }catch(error){
-            alert(error);
-            console.log(error);
+            toast(error);
+  
         }
     }
 useEffect(()=>{
@@ -102,6 +102,7 @@ useEffect(()=>{
 
             </div>
 </div></div></div></div></div></div>
+<ToastContainer />
         </>
     )
 }

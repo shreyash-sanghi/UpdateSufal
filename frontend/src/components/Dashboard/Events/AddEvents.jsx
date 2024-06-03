@@ -4,10 +4,14 @@ import axios from "axios";
 import DashboardNav from "../DashboardNav";
 import { imageDb } from "../../Config.js";
 import { ref, uploadBytes ,getStorage} from "firebase/storage"; 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { DotSpinner } from '@uiball/loaders';
 import {v4} from 'uuid';
 const AddEvent = () => {
   const navigate = useNavigate();
   const form = useRef();
+  const [loading, setLoading] = useState(false);
   const [initialAddEvent, finalAddEvent] = useState({
     EventName: "",
     Discreption: "",
@@ -34,14 +38,15 @@ const AddEvent = () => {
 
     // Count words in description
     const wordCount = value.trim().split(/\s+/).length;
-    if (value.length > 100) {
-      setlimitError("Description should be within 100 characters.");
+    if (value.length > 200) {
+      setlimitError("Description should be within 200 characters.");
     } else {
       setlimitError("");
     }
   }
   const EventSave = async (event) => {
     event.preventDefault();
+    setLoading(true);
     // const data = new FormData();
     // const cloudname = "djyu9nhjf";
     // data.append("file", initialAddEventfile);
@@ -74,10 +79,11 @@ const AddEvent = () => {
 
     try {
       const { EventName, Discreption, Place, Time ,Organization,Duration,Fee} = initialAddEvent;
-      // if (initialAddEventfile === null || initialAddEventfile === undefined) {
-      //   alert("Please Uplode image...")
-      //   return;
-      // }
+      if (initialAddEventfile === null || initialAddEventfile === undefined) {
+        toast("Please Uplode image...")
+        setLoading(false);
+        return;
+      }
       // try{
       //   const res = await axios.post(`https://api.cloudinary.com/v1_1/${cloudname}/image/upload`, data);
       // }catch(error){
@@ -95,7 +101,8 @@ const AddEvent = () => {
         try {
           uploadBytes(imgref,initialAddEventfile)
         } catch (error) {
-          alert("Your Banner is not uplode")
+          toast("Your Banner is not uplode");
+          setLoading(false);
         }
       finalAddEvent({
         EventName: "",
@@ -105,10 +112,14 @@ const AddEvent = () => {
         Time: "",
       })
       finalAddEventfile();
-      alert("success")
+      toast("success...")
+      setLoading(false);
+      setTimeout(()=>{
+        navigate("/event/current_event")
+      },2000)
     } catch (error) {
-      alert(error);
-      console.log(error)
+      toast(error);
+      setLoading(false);
     }
   }
   // ---------------------------------------------------
@@ -209,11 +220,12 @@ const AddEvent = () => {
               <div className="md:grid md:grid-cols-2 mb-8 md:gap-6">
                 <div className="md:relative z-0 w-full mb-6 group">
                 <label
-                  for="floating_date"
-                  className="peer-focus:font-medium block md:hidden     "
-                >
-              Event Date
-                </label>
+        htmlFor="floating_date"
+        className="peer-focus:font-medium block md:hidden"
+    >
+        <i className="fas fa-calendar white-icon"></i> {/* Add white-icon class here */}
+        Event Date
+    </label>
                   <input
                     type="date"
                     name="EDate"
@@ -221,7 +233,7 @@ const AddEvent = () => {
                     onChange={EventData}
                     autoComplete="off"
                     id="floating_first_name"
-                    className="event-input block py-1.5 px-0 w-full   bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    className="event-input block text-white py-1.5 px-0 w-full   bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" "
                   />
                   <label
@@ -250,7 +262,7 @@ const AddEvent = () => {
                   />
                   <label
                     for="floating_last_name"
-                    className="peer-focus:font-medium hidden md:absolute  duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                    className="peer-focus:font-medium hidden md:block absolute  duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                   >
                     Time
                   </label>
@@ -265,7 +277,7 @@ const AddEvent = () => {
                 >
                Duration
                 </label>
-                  <input
+                  {/* <input
                     type="time"
                     name="Duration"
                     value={initialAddEvent.Duration}
@@ -274,7 +286,39 @@ const AddEvent = () => {
                     id="floating_last_name"
                     className="event-input block py-1.5 px-0 w-full   bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" "
-                  />
+                  /> */}
+                             <select
+                             name="Duration"
+                             value={initialAddEvent.Duration}
+                             onChange={EventData}
+                             className="event-input block py-1.5 px-0 w-full   bg-transparent bg-gray-800 border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                             >
+                                    <option disabled value="">Select Duration</option>
+                                    <option className="text-black" value="1 hour">1 hour</option>
+                                    <option className="text-black" value="2 hours">2 hours</option>
+                                    <option className="text-black" value="3 hours">3 hours</option>
+                                    <option className="text-black" value="4 hours">4 hours</option>
+                                    <option className="text-black" value="5 hours">5 hours</option>
+                                    <option className="text-black" value="6 hours">6 hours</option>
+                                    <option className="text-black" value="7 hours">7 hours</option>
+                                    <option className="text-black" value="8 hours">8 hours</option>
+                                    <option className="text-black" value="9 hours">9 hours</option>
+                                    <option className="text-black" value="10 hours">10 hours</option>
+                                    <option className="text-black" value="11 hours">11 hours</option>
+                                    <option className="text-black" value="12 hours">12 hours</option>
+                                    <option className="text-black" value="13 hours">13 hours</option>
+                                    <option className="text-black" value="14 hours">14 hours</option>
+                                    <option className="text-black" value="15 hours">15 hours</option>
+                                    <option className="text-black" value="16 hours">16 hours</option>
+                                    <option className="text-black" value="17 hours">17 hours</option>
+                                    <option className="text-black" value="18 hours">18 hours</option>
+                                    <option className="text-black" value="19 hours">19 hours</option>
+                                    <option className="text-black" value="20 hours">20 hours</option>
+                                    <option className="text-black" value="21 hours">21 hours</option>
+                                    <option className="text-black" value="22 hours">22 hours</option>
+                                    <option className="text-black" value="23 hours">23 hours</option>
+                                    <option className="text-black" value="24 hours">24 hours</option>
+                                </select>
                   <label
                     for="floating_last_name"
                     className="peer-focus:font-medium hidden md:block absolute  duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
@@ -324,7 +368,7 @@ const AddEvent = () => {
                     onChange={EventData}
                     autoComplete="off"
                     id="floating_password"
-                    maxLength={101}
+                    maxLength={201}
                     className=" event-input block min-h-24  py-1.5 px-0 w-full   bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" "
                   />
@@ -334,7 +378,7 @@ const AddEvent = () => {
                       for="floating_password"
                       className="peer-focus:font-medium   hidden md:block absolute  duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                     >
-                      Event Description (max 100 characters)
+                      Event Description (max 200 characters)
                     </label>
                     {/* {console.log(URL.createObjectURL(initialAddEventfile))} */}
                     {limiterror && (
@@ -360,8 +404,12 @@ const AddEvent = () => {
 
               </div>
               <div className='flex justify-between'>
-                <input type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              {loading ? (
+                     <DotSpinner size={40} speed={0.9} color="white" className="flex justify-center m-auto" />
+                  ) : (
+                    <input type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">     
                 </input>
+                  )}
               </div>
             </form>
 
@@ -392,7 +440,7 @@ const AddEvent = () => {
 
         </div>
       </div>
-
+      <ToastContainer />
     </>
   )
 }

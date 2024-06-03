@@ -3,7 +3,8 @@ import DashboardNav from "../DashboardNav";
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import {ref,uploadBytes,getStorage ,getDownloadURL,deleteObject} from "firebase/storage";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CurrentEvent = () => {
   const { kind_of_event, rid } = useParams();
@@ -21,8 +22,7 @@ const CurrentEvent = () => {
     CurrentConform: "",
     Discreption: "",
     ImageName: "",
-    RegisterData: [],
-    RegisterForm: []
+    EventImage: [],
   }])
 
 
@@ -68,7 +68,7 @@ const CurrentEvent = () => {
       const result = data.data.result;
       // console.log(result);
       result.map(async (info) => {
-        console.log(info)
+  
         let EventDate = info.EDate;
         const isDate1AfterDate = compareDates(todaydate, EventDate);
         const storage = getStorage();
@@ -90,8 +90,8 @@ const CurrentEvent = () => {
               CurrentConform: false,
               Discreption: info.Discreption,
               ImageName: info.EventBanner,
-              RegisterData: info.RegisterData,
-              RegisterForm: info.Formfields
+              EventImage: info.EventImage,
+      
             }
           ])
         } else {
@@ -107,16 +107,14 @@ const CurrentEvent = () => {
               CurrentConform: info.CurrentConform,
               Discreption: info.Discreption,
                ImageName: info.EventBanner,
-              RegisterData: info.RegisterData,
-              RegisterForm: info.Formfields
+               EventImage: info.EventImage,
             }
           ])
         }
       })
     })
     } catch (error) {
-      console.log(error);
-      alert(error);
+      toast(error);
     }
   }
 
@@ -150,7 +148,7 @@ const CurrentEvent = () => {
                           </tr>
                         </thead>
                         {initial.map((data) => {
-                          console.log(data);
+               
                           if (!data.eid) return null;
                           if (!data.CurrentConform) return null;
                           return (<>
@@ -180,10 +178,10 @@ const CurrentEvent = () => {
                                               info.filter((about) => about.eid != data.eid)
                                             );
 
-                                            alert("Success...");
+                                            toast("Success...");
                                           } catch (error) {
-                                            alert(error);
-                                            console.log(error);
+                                            toast(error);
+                                           
                                           }
                                         }
                                       }}
@@ -240,11 +238,10 @@ const CurrentEvent = () => {
                                                     final((info) =>
                                                         info.filter((about) => about.eid != data.eid)
                                                     );
-                                                    console.log(response);
-                                                    alert("Success...");
+                                                 
+                                                    toast("Success...");
                                                 } catch (error) {
-                                                    alert(error);
-                                                    console.log(error);
+                                                    toast(error);
                                                 }
                                             }
                                         }}
@@ -269,7 +266,7 @@ const CurrentEvent = () => {
                                     </tr>
                                   </thead>
                                   {initial.map((data) => {
-                                    console.log(data);
+                             
                                     if (!data.eid) return null;
                                     if (!data.PastConform) return null;
                                     return (<>
@@ -280,24 +277,24 @@ const CurrentEvent = () => {
                                           <td class="sm:p-3 py-2 px-3 border-b border-gray-200 dark:border-gray-800 text-gray-100">{data.Place}</td>
                                           <td class="sm:p-3 py-2 px-3 border-b border-gray-200 dark:border-gray-800 text-gray-100">{data.EDate}</td>
                                           {/* <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 text-gray-100">{data.Time}</td> */}
-                                          <td class="sm:p-3  overflow-x-hidden py-2 px-3 border-b border-gray-200 dark:border-gray-800 text-gray-100"><button onClick={()=>navigate(`/uplode_event_image`)} className='border-2 px-4 py-2 font-semibold hover:bg-sky-400 rounded-lg'>Add Photos</button></td>
+                                          <td class="sm:p-3  overflow-x-hidden py-2 px-3 border-b border-gray-200 dark:border-gray-800 text-gray-100"><button onClick={()=>navigate(`/uplode_event_image/${data.eid}`)} className='border-2 px-4 py-2 font-semibold hover:bg-sky-400 rounded-lg'>Add Photos</button></td>
                                           <td class="sm:p-3 py-2 px-3 border-b border-gray-200 dark:border-gray-800">
                                             <div class="flex items-center">
 
                                               <button class="w-28 h-8 inline-flex items-center justify-center text-lg text-green-400 ml-auto"
                                                 onClick={async () => {
                                                   try {
-                                                    navigate(`/view_detail/Admin/${id}/${data.uid}`)
+                                                    navigate(`/past_event/${data.eid}`)
                                                     final((info) =>
                                                       info.filter((about) => about.verify != data.uid)
                                                     );
                                                   } catch (error) {
-                                                    alert(error);
-                                                    console.log(error);
+                                                    toast(error);
+      
                                                   }
                                                 }}
                                               >
-                                                View Photos
+                                                View Past Event
                                               </button>
                                             </div>
                                             <div class="flex items-center">
@@ -307,18 +304,21 @@ const CurrentEvent = () => {
                                                   const res = confirm("You have confirm to delete request ");
                                                   if (res) {
                                                       try {
-                                                      //   const storage = getStorage();
-                                                      //   const desertRef = ref(storage,`files/${data.ImageName}`);
-                                                      //  await deleteObject(desertRef)
+                                                        {data.EventImage.map(async(info)=>{
+                                                                 const storage = getStorage();
+                                                        const desertRef = ref(storage,`files/${info}`);
+                                                       await deleteObject(desertRef)
+                                                        })}
+                                
                                                           const response = await axios.delete(`https://backendsufal-shreyash-sanghis-projects.vercel.app/delete_event/${data.eid}`);
                                                           final((info) =>
                                                               info.filter((about) => about.eid != data.eid)
                                                           );
-                                                          console.log(response);
-                                                          alert("Success...");
+                                                        
+                                                          toast("Success...");
                                                       } catch (error) {
-                                                          alert(error);
-                                                          console.log(error);
+                                                          toast(error);
+                                                  
                                                       }
                                                   }
                                               }}
@@ -342,6 +342,7 @@ const CurrentEvent = () => {
           </div>
         </div>
       </div>
+      <ToastContainer/>
     </>
   )
 }

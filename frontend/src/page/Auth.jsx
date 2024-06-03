@@ -6,15 +6,18 @@ import { useSearchParams, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import axios from 'axios';
-import loginimg from '../assets/login-img2.png';
+import { DotSpinner } from '@uiball/loaders';
 
+import loginimg from '../assets/login-img2.png';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Auth = () => {
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
     const signupParam = searchParams.get('mode') === 'signup';
     const loginParam = searchParams.get('mode') === 'login';
     const [signUpForm, setSignUpForm] = useState(signupParam);
-
+    const [loading, setLoading] = useState(false);
     const [data, setData] = useState({
         Name: "",
         Email: "",
@@ -44,34 +47,46 @@ const Auth = () => {
 
     const saveData = async (e) => {
         e.preventDefault();
+        setLoading(true)
         try {
             const { Email, Password, Name } = data;
             const result = await axios.post("https://backendsufal-shreyash-sanghis-projects.vercel.app/sign_up", { Email, Password, Name });
-            alert("Success");
             const token = result.data.token;
+            const OwnerEmail = result.data.OwnerEmail;
             axios.defaults.headers.common["Authorization"] = token;
             localStorage.setItem("token", token);
-            navigate("/dashboard");
+            if(Email===OwnerEmail){
+            
+                navigate("/add_event");
+            }
+            else{
+                navigate("/");
+            }
         } catch (error) {
-            console.log(error);
-            alert(error);
+            setLoading(false);
+            toast(error);
         }
     };
 
     const saveLoginData = async (e) => {
         e.preventDefault();
+        setLoading(true)
         try {
             const { Email, Password } = loginData;
-            console.log(Email, Password);
             const result = await axios.post("https://backendsufal-shreyash-sanghis-projects.vercel.app/sign_in", { Email, Password });
-            console.log(result);
+            const OwnerEmail = result.data.OwnerEmail;
             const token = result.data.token;
             axios.defaults.headers.common["Authorization"] = token;
             localStorage.setItem('token', token);
-            navigate("/dashboard");
+            if(Email===OwnerEmail){
+                navigate("/add_event");
+            }
+            else{
+                navigate("/");
+            }
         } catch (error) {
-            alert(error.response.data.error);
-            console.log(error);
+            toast(error.response.data.error);
+            setLoading(false);
         }
     };
 
@@ -91,11 +106,12 @@ const Auth = () => {
     return (
         <>
             <Header />
+            
             <div className="w-full h-[calc(100vh-80px)] z-50 mb-20 lg:mb-10 flex flex-col items-center justify-center transition-all selection:bg-[#0a755862] py-8 ">
                 <div className="max-w-7xl w-full h-full grid grid-cols-1 lg:grid-cols-2">
                     <div className="hidden lg:flex h-full w-full p-2 mx-auto">
-                        <img
-                            className="mx-auto w-full rounded-md object-cover"
+                       <img
+                            className="mx-auto w-full  rounded-md object-cover"
                             src={loginimg}
                             alt=""
                            
@@ -218,14 +234,18 @@ const Auth = () => {
                                                 type="submit"
                                                 className="inline-flex w-full items-center justify-center rounded-md bg-[#0a7558] px-3.5 py-2.5 font-semibold leading-7 text-[#fbfcfc] hover:bg-[#0a7558] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0a7558]"
                                             >
-                                                Login
+                                                  {loading ? (
+                     <DotSpinner size={40} speed={0.9} color="white" className="flex justify-center m-auto" />
+                  ) : (
+                     "Login"
+                  )}
                                                 <BsArrowRight className="ml-2" size={16} />
                                             </button>
                                         </div>
                                     </div>
                                 </form>
                             )}
-                            <div className="mt-3 space-y-3">
+                            {/* <div className="mt-3 space-y-3">
                                 <button
                                     type="button"
                                     className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
@@ -244,12 +264,13 @@ const Auth = () => {
                                     </span>
                                     {signUpForm ? 'Sign up with Facebook' : 'Log in with Facebook'}
                                 </button>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
             </div>
             <Footer />
+            <ToastContainer />
         </>
     );
 };

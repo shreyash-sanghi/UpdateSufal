@@ -1,4 +1,4 @@
-import React from 'react';
+import {React,useState} from 'react';
 import { BsArrowRight } from 'react-icons/bs';
 import { FaFacebookF } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
@@ -10,9 +10,47 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import contactimg from '../assets/contact-img3.png';
 import volunteerimg from '../assets/Volunteer-img2.png';
-
-
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const ContactUs = () => {
+	const navigate = useNavigate();
+	const [initial, final] = useState({
+        FName: "",
+        LName: "",
+        Email: "",
+        Number: "",
+        DOB: "",
+        WhyYouWantToJoin: "",
+      })
+
+	  const setdata = (e)=>{
+		const {name,value} = e.target;
+		final((info)=>{
+           return{
+			...info,
+			[name]:value
+		   }
+		})
+	  }
+
+	  const savedata = async(e)=>{
+		try{
+			e.preventDefault();
+			const {FName,LName,Email,Number,DOB,WhyYouWantToJoin} = initial;
+   const result = await axios.post("https://backendsufal-shreyash-sanghis-projects.vercel.app/save_volunteer_data",{
+	FName,LName,Email,Number,DOB,WhyYouWantToJoin
+   })
+   setTimeout(()=>{
+	   toast("Success");
+
+   },1000)
+   navigate("/")
+		}catch(error){
+			toast(error);
+		}
+	  }
 	return (
 		<>
 		<Header></Header>
@@ -33,7 +71,7 @@ const ContactUs = () => {
 										Support & Serve in our mission towards healthier pregnancies.
 									</p>
 									<form
-										action=""
+
 										className="mt-8 space-y-6"
 									>
 										<div className="grid w-full gap-y-4 md:gap-x-4 lg:grid-cols-2">
@@ -49,6 +87,8 @@ const ContactUs = () => {
 													type="text"
 													id="first_name"
 													placeholder="First Name"
+													name="FName"
+													onChange={setdata}
 												/>
 											</div>
 											<div className="grid w-full  items-center gap-1.5">
@@ -63,6 +103,8 @@ const ContactUs = () => {
 													type="text"
 													id="last_name"
 													placeholder="Last Name"
+													name="LName"
+													onChange={setdata}
 												/>
 											</div>
 										</div>
@@ -78,6 +120,8 @@ const ContactUs = () => {
 												type="text"
 												id="email"
 												placeholder="Email"
+												name="Email"
+													onChange={setdata}
 											/>
 										</div>
 										<div className="grid w-full  items-center gap-1.5">
@@ -89,9 +133,11 @@ const ContactUs = () => {
 											</label>
 											<input
 												className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-[#16191E] focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-[#16191E] dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
-												type="tel"
+												type="number"
 												id="phone_number"
 												placeholder="Phone number"
+												name="Number"
+													onChange={setdata}
 											/>
 										</div>
                                         <div className="grid w-full  items-center gap-1.5">
@@ -104,7 +150,10 @@ const ContactUs = () => {
 											<input
 												className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-[#16191E] focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-[#16191E] dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
 												id="message"
+												type='date'
 												placeholder="Ex : 25th November, 2003"
+												name="DOB"
+													onChange={setdata}
 												
 											/>
 										</div>
@@ -119,6 +168,8 @@ const ContactUs = () => {
 												className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-[#16191E] focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-[#16191E] dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
 												id="message"
 												placeholder="Leave us a message"
+												name="WhyYouWantToJoin"
+													onChange={setdata}
 												rows={8}
 												cols={8}
 											/>
@@ -145,12 +196,21 @@ const ContactUs = () => {
 											</label>
 										</div>
 
-										<Button
+										{/* <Button
+								 
 											message={'Send Message'}
 											className="px-3 md:px-6 py-2.5 rounded-md bg-[#0a7558] "
 											text={true}
 											containerWidth={true}
-										/>
+											onClick={()=>savedata()}
+										/> */}
+										<button
+											// message={'Send Message'}
+											className="px-3 md:px-6 py-2.5 text-white rounded-md bg-[#0a7558] "
+											text={true}
+											containerWidth={true}
+											onClick={savedata}
+										>Send Message</button>
 									</form>
 								</div>
 							</div>
@@ -171,6 +231,7 @@ const ContactUs = () => {
 			
 		</div>
 		<Footer></Footer>
+		<ToastContainer/>
 		</>
 		
 	);

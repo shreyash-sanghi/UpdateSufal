@@ -12,7 +12,7 @@ router.post("/sign_up",async(req,res)=>{
         Name,Email,Password:hasePassword
     })
     const token = await result.SignUpToken();
-    res.status(202).json({token});
+    res.status(202).json({token,OwnerEmail:process.env.Owner_Email});
  } catch (error) {
     console.log(error);
     res.status(404).json({error});

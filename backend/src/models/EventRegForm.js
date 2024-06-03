@@ -5,7 +5,7 @@ const Events = new mongoose.Schema({
     Email:{type:String,required:true},
     Number:{type:Number,required:true},
     Address:{type:String,required:true},
-    WhyWeJoin:{type:String,required:true},
+    WhyWeJoin:{type:String},
     Eid:{type:String,required:true},
 })
 const Event = mongoose.model("EventsRegister",Events);  
