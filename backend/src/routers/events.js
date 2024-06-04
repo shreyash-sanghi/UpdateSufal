@@ -4,12 +4,7 @@ const Current = require("../models/Event");
 const CurreateReg = require("../models/EventRegForm");
 const mongoose = require("mongoose")
 const cloudinary = require("cloudinary");
-
-cloudinary.config({
-   cloud_name: 'djyu9nhjf',
-   api_key: '228761211916383',
-   api_secret: 'hsSw1SigoziE2LjKk-0rYyW6YEc'
- });
+const verify = require("../midelware/userauth")
 
 router.get("/get_current_event_data",async(req,res)=>{
     try {
@@ -20,6 +15,7 @@ router.get("/get_current_event_data",async(req,res)=>{
        res.status(404).json({error});
     }
    })
+
 router.get("/get_past_event_data",async(req,res)=>{
     try {
        const result = await Current.find({PastConform:true});
@@ -29,6 +25,7 @@ router.get("/get_past_event_data",async(req,res)=>{
        res.status(404).json({error});
     }
    })
+
 router.get("/get_past_event_data_byId/:id",async(req,res)=>{
     try {
       const id = req.params.id;
@@ -41,7 +38,7 @@ router.get("/get_past_event_data_byId/:id",async(req,res)=>{
    })
 
 
-  router.post("/uplodeEventData",async(req,res)=>{
+  router.post("/uplodeEventData",verify,async(req,res)=>{
     try {
        const {Organization,Duration,Fee,EventName,Discreption, Place, EDate,Time,EventBanner,CurrentConform,PastConform} = req.body;
        const result = await Current.create({
@@ -54,7 +51,7 @@ router.get("/get_past_event_data_byId/:id",async(req,res)=>{
     }
    })
 
-  router.post("/uplode_event_image/:id",async(req,res)=>{
+  router.post("/uplode_event_image/:id",verify,async(req,res)=>{
     try {
       const id = req.params.id;
       const arr = req.body.arr;
@@ -69,7 +66,7 @@ router.get("/get_past_event_data_byId/:id",async(req,res)=>{
     }
    })
 
-   router.post("/send_to_past_event/:id",async(req,res)=>{
+   router.post("/send_to_past_event/:id",verify,async(req,res)=>{
       try{
          const id = req.params.id;
           const result = await Current.findByIdAndUpdate(id,{
@@ -83,10 +80,7 @@ router.get("/get_past_event_data_byId/:id",async(req,res)=>{
       }
    })
 
-
-
-
-   router.delete("/delete_all_registration/:id",async(req,res)=>{
+   router.delete("/delete_all_registration/:id",verify,async(req,res)=>{
       try{
          const id = req.params.id;
           const result = await Current.findById(id);
@@ -99,15 +93,10 @@ router.get("/get_past_event_data_byId/:id",async(req,res)=>{
    })
 
 
-   router.delete("/delete_event/:id",async(req,res)=>{
+   router.delete("/delete_event/:id",verify,async(req,res)=>{
       try{
          const id = req.params.id;
          const data = await Current.findById(id);
-      //    const public_id = data.public_id;
-      //    console.log(public_id)
-      //  cloudinary.v2.uploader.destroy(public_id,async(err,result)=>{
-      //    console.log(err,result);
-      // });
           const result = await Current.findByIdAndDelete(id);
           res.sendStatus(202);
       }catch(error){
@@ -117,11 +106,10 @@ router.get("/get_past_event_data_byId/:id",async(req,res)=>{
    })
 
 
-router.delete("/delete_register/:eid",async(req,res)=>{
+router.delete("/delete_register/:eid",verify,async(req,res)=>{
    try{
       const id = req.params.eid;
 const result = await CurreateReg.findByIdAndDelete(id);
-console.log(result)
 res.sendStatus(202);
    }catch(error){
       console.log(error);
@@ -163,6 +151,7 @@ res.status(202).json({result })
       res.sendStatus(202);
    }
 })
+
 router.get("/get_view_register/:id",async(req,res)=>{
    try{
       const id = req.params.id;
@@ -173,6 +162,7 @@ res.status(202).json({result})
       res.sendStatus(202);
    }
 })
+
 router.get("/get_registerdata_byid/:id",async(req,res)=>{
    try{
       const id = req.params.id;
