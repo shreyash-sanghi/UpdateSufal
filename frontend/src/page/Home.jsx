@@ -8,6 +8,8 @@ import team2 from '../assets/team2.png';
 import Footer from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
 import {ref,uploadBytes,getStorage ,getDownloadURL,deleteObject} from "firebase/storage";
+import team3 from '../assets/team-3.png';
+
 // <<<<<<< HEAD
 // =======
 import Glimpses from '../components/Glimpses';
@@ -49,7 +51,7 @@ import axios from 'axios';
 const Info = ({ title, description }) => {
 	return (
 		<div className="flex flex-col items-start justify-start space-y-1">
-			<div className="text-4xl font-bold">{title}</div>
+			<div className="text-3xl md:text-4xl font-bold">{title}</div>
 			<div className="text-base font-medium text-[#868686] w-full md:w-[50%] selection:text-[#16191E]">
 				{description}
 			</div>
@@ -165,7 +167,7 @@ const Home = () => {
 	return (
 	       <>
 		   <Header/>
-		<div className="w-full bg-[#fefaf6] ">
+		<div className="w-full px-1 md:px-0 bg-[#fefaf6] ">
 			<div
 				id="home"
 				className="max-w-7xl lg:mt-10 mx-auto px-3 py-6 flex flex-col lg:flex-row items-center justify-between"
@@ -283,6 +285,35 @@ const Home = () => {
 					</div>
 				</div>
 			</div>
+
+			<section className="my-8 ">
+	<div className="container flex flex-col items-center p-0 mx-auto space-y-6 md:p-8">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="w-16 h-16 dark:text-violet-400">
+			<polygon points="328.375 384 332.073 458.999 256.211 406.28 179.924 459.049 183.625 384 151.586 384 146.064 496 182.756 496 256.169 445.22 329.242 496 365.936 496 360.414 384 328.375 384"></polygon>
+			<path d="M415.409,154.914l-2.194-48.054L372.7,80.933,346.768,40.414l-48.055-2.2L256,16.093,213.287,38.219l-48.055,2.2L139.3,80.933,98.785,106.86l-2.194,48.054L74.464,197.628l22.127,42.715,2.2,48.053L139.3,314.323l25.928,40.52,48.055,2.195L256,379.164l42.713-22.126,48.055-2.195,25.928-40.52L413.214,288.4l2.195-48.053,22.127-42.715Zm-31.646,76.949L382,270.377l-32.475,20.78-20.78,32.475-38.515,1.76L256,343.125l-34.234-17.733-38.515-1.76-20.78-32.475L130,270.377l-1.759-38.514L110.5,197.628,128.237,163.4,130,124.88,162.471,104.1l20.78-32.474,38.515-1.76L256,52.132l34.234,17.733,38.515,1.76,20.78,32.474L382,124.88l1.759,38.515L401.5,197.628Z"></path>
+		</svg>
+		<p className="px-6 py-2 text-2xl font-semibold text-center sm:font-bold sm:text-3xl md:text-4xl lg:max-w-2xl xl:max-w-4xl dark:text-gray-300">Ironman baby maker of India !</p>
+		<div className="flex justify-center items-center space-x-3 lg:space-x-6">
+			<img src={team3} alt="" className="size-20 lg:size-60 bg-center bg-cover rounded-md " />
+			
+			<div>
+				<p className="leadi">Dr. Priya Bhave</p>
+				<p className="text-sm leadi dark:text-gray-300">Director, Sufal</p>
+				
+				<a className="flex items-center py-2 space-x-1 text-sm dark:text-violet-400" href="/">
+					<span className='text-pink-800'>Read full story</span>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+						<path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
+					</svg>
+				</a>
+			</div>
+			
+		</div>
+		<p className='text-center px-4 bg-yellow-100 py-1 rounded-xl'>Dr. Priya Bhave stands as an illustrious beacon of hope, a revered fertility specialist, and a trailblazing gynaecological endoscopic surgeon at the esteemed Bansal Hospital in the heart of Bhopal. With unparalleled expertise and unwavering dedication, she orchestrates miracles, ushering in new beginnings and fulfilling dreams.</p>
+	</div>
+</section>
+
+
 			<div
 				id="categories"
 				className="max-w-7xl mx-auto px-5 md:px-0 pt-6 flex flex-col items-start justify-start selection:bg-[#0a755862]"
@@ -366,7 +397,7 @@ const Home = () => {
 				</div>
 			</div>
 
-			<main className="flex py-6 lg:py-10 pt-4 bg-white  flex-1 w-full flex-col items-center justify-center text-center md:text-start px-4 sm:mt-12 mt-20">
+			<main className="flex py-6 lg:py-14 pt-10 md:pt-6 bg-white  flex-1 w-full flex-col items-center justify-center text-center md:text-start px-4 sm:mt-12 mt-20">
         <h1 className="mx-auto max-w-4xl font-display text-5xl font-bold tracking-normal sm:text-5xl">
           Our
           <span className="relative whitespace-nowrap text-pink-700">
@@ -383,9 +414,9 @@ const Home = () => {
         </h1>
       </main>
     <section class=" overflow-hidden bg-white">
-  <div class="container px-2 md:px-6 sm:px-0 py-12 mx-auto">
-    <div class="lg:w-4/5 mx-auto flex flex-wrap justify-center text-center md:text-start">
-      <video alt="ecommerce" playsInline={true} autoPlay={false} loop={true} controls={true} class=" md:w-4/5 lg:w-1/2 mx-4 md:mx-0 w-full lg:h-80 h-64 object-contain object-center rounded" src={mothers}></video>
+  <div class="container px-2 md:px-6 sm:px-0 py-0 mx-auto">
+    <div class="lg:w-4/5 mx-auto rounded-xl flex flex-wrap justify-center text-center md:text-start">
+      <video alt="ecommerce" playsInline={true} autoPlay={false} loop={true} controls={true} class=" md:w-4/5 lg:w-1/2 mx-4 md:mx-0 w-full lg:h-80 h-64 object-contain object-center rounded-xl" src={mothers}></video>
       <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 px-4 md:px-20 mt-6 lg:mt-0">
         <h2 class="text-sm title-font mb-2 text-gray-500 tracking-widest">Initiative By Dr. Priya Bhave</h2>
         <h1 class="text-3xl title-font font-medium mb-1">Mamta Exhibition</h1>
@@ -426,7 +457,7 @@ const Home = () => {
             </a>
           </span>
         </div>
-        <p class="">We are here because of our mothers, and what better day to celebrate this than Mother's Day ?
+        <p class="leading-tight">We are here because of our mothers, and what better day to celebrate this than Mother's Day ?
 Mamta : 
 the essence of motherhood!
 It was great to be at the art gallery On the occasion of Mother's Day!🤗</p>
@@ -492,7 +523,7 @@ It was great to be at the art gallery On the occasion of Mother's Day!🤗</p>
 			</div> */}
 			{/*  */}
 {/* <<<<<<< HEAD */}
-<Glimpses></Glimpses>
+
 			
 			<section class="text-gray-600">
   <div class="container mx-auto flex px-5 lg:px-24 py-10 md:py-20 md:flex-row flex-col items-center">
@@ -657,90 +688,13 @@ It was great to be at the art gallery On the occasion of Mother's Day!🤗</p>
 					</div>
 				</div>
 			</div> */}
-			<div
-				id="news"
-				className="w-full max-w-7xl mx-auto px-5 pt-14 flex flex-col items-start justify-start selection:bg-[#0a755862]	"
-			>
-				{/* <div className="w-full flex  flex-col md:flex-row items-center justify-start md:justify-between">
-					<div className="w-full flex items-center justify-start">
-						<span className="text-3xl  md:text-5xl font-semibold text-[#16191E]">
-							News and Updates
-						</span>
-					</div>
-					<div className="w-full flex-col items-center justify-start space-y-3">
-						<span className="w-full text-sm md:text-base font-semibold text-[#868686] selection:text-[#16191E]">
-							Stay informed with the latest developments on
-							charity campaigns to keep you engaged.
-						</span>
-						<Button
-							message="See All News"
-							icon={<FiArrowUpRight />}
-							className="px-6	 py-2 rounded-lg text-[#0a7558] "
-							border={true}
-							href={'/news'}
-						/>
-					</div>
-				</div> */}
-				{/* <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 items-start justify-start gap-8 mt-8">
-					<NewsCard
-						title={
-							'Facts About COVID Kraken, The Latest Omicron Variant'
-						}
-						description={
-							'The latest Omicron variant has been detected in Indonesia. Previously, this variant was known to have first appeared in the country in 2019...'
-						}
-						img={
-							'https://images.unsplash.com/flagged/photo-1573823448235-3e7ded467ad3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-						}
-						date={randomDate}
-						href={'/news/1'}
-					/>
-					<NewsCard
-						title={
-							'The Shop Makes Donations For Cianjur Earthquake'
-						}
-						description={
-							'The Cianjur earthquake that occurred a few months ago has moved all Indonesian people to help the people  affected by th...'
-						}
-						img={
-							'https://plus.unsplash.com/premium_photo-1661508333411-0246522ee003?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGJ1c2luZXNzJTIwcGl0Y2h8ZW58MHx8MHx8fDA%3D'
-						}
-						date={randomDate}
-						href={'/news/1'}
-					/>
-					<NewsCard
-						title={
-							'Should Women Get Tetanus Shots Before Marriage?'
-						}
-						description={
-							'One of the requirements for women who are getting married is a tetanus shot or tetanus toxoid. TT injections are also know...'
-						}
-						img={
-							'https://plus.unsplash.com/premium_photo-1674499074711-be3eaadc49c9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aW5qZWN0aW9ufGVufDB8fDB8fHww'
-						}
-						date={randomDate}
-						href={'/news/1'}
-					/>
-					<NewsCard
-						title={
-							'Cases of Diabetes Mellitus in Children Soared Sharply!'
-						}
-						description={
-							'According to WHO, the frequency of diabetes mellitus worldwide is increasing.Based on research results, children are atm...'
-						}
-						img={
-							'https://plus.unsplash.com/premium_photo-1661780250041-86c3331cef25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8ZGlhYmV0ZXMlMjB0ZXN0fGVufDB8fDB8fHww'
-						}
-						date={randomDate}
-						href={'/news/1'}	
-					/>
-				</div> */}
-			</div>
+			
+			<Glimpses></Glimpses>
 			<div
 				id="team"
 				className="w-full max-w-7xl mx-auto px-3 pt-14 pb-16 selection:bg-[#0a755862]"
 			>
-				<div className="w-full flex items-center justify-start sm:justify-center gap-5 px-3 pb-5">
+				<div className="w-full flex items-center justify-center gap-5 px-3 pb-5">
 					<span className="text-3xl md:text-5xl font-semibold text-[#16191E]">
 						Our Team
 					</span>

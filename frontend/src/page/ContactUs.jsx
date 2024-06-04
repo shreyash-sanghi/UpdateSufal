@@ -156,7 +156,7 @@ const ContactUs = () => {
 				<div className="mx-auto w-full h-fit grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3   items-center justify-center  gap-14">
 					<ContactUsCard
 						title={'Address'}
-						description={['Mumbai']}
+						description={['Bansal Hospital,  Manisha Market, Sector C, Shahpura, Bhopal, Madhya Pradesh 462016']}
 						icon={
 							<HiOutlineLocationMarker
 								size={44}
@@ -167,7 +167,7 @@ const ContactUs = () => {
 					/>
 					<ContactUsCard
 						title={'Contact'}
-						description={['+91 9876543210', '+91 9876543210']}
+						description={['+91 9770606200', '+91 9425023531']}
 						icon={
 							<IoCall
 								size={44}

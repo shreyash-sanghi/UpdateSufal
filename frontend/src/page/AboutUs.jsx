@@ -12,7 +12,7 @@ import visionimg from '../assets/vision-img.png';
 const AboutUs = () => {
 	return ( <>
 	<Header></Header>
-	<div className="w-full h-full flex flex-col items-center justify-center transition-all selection:bg-[#0a755862] py-5 space-y-8	">
+	<div className="w-full h-full flex px-2 lg:px-0 flex-col items-center justify-center transition-all selection:bg-[#0a755862] py-5 space-y-8	">
 			<div className="max-w-7xl w-full h-full grid grid-cols-1  lg:grid-cols-2">
 				<div className="px-1 md:px-4">
 					<div className="py-6 md:py-24">
@@ -130,6 +130,7 @@ const AboutUs = () => {
 				</div>
 			</div>
 		</div>
+		<div className="h-20"></div>
 		<Footer></Footer>
 	</>
 		
