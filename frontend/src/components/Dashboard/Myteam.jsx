@@ -71,7 +71,7 @@ getdata();
                                 <th class="font-bold text-lg px-3 pt-0 pb-3 border-b border-gray-200 ">Position</th>
                                 <th class="font-bold text-lg px-3 pt-0 pb-3 border-b border-gray-200 ">Mission</th>
                                 <th class="font-bold text-lg px-3 pt-0 pb-3 border-b border-gray-200 ">Vision</th>
-                                <th class="font-bold text-lg px-3 pt-0 pb-3 border-b border-gray-200 ">About</th>
+                                {/* <th class="font-bold text-lg px-3 pt-0 pb-3 border-b border-gray-200 ">About</th> */}
                                 {/* <th class="font-bold text-lg px-3 pt-0 pb-3 border-b border-gray-200 ">Date Of Birth</th> */}
                                 {/* <th class="font-bold text-lg px-3 pt-0 pb-3 border-b border-gray-200 ">Total Registration</th> */}
 
@@ -88,7 +88,7 @@ getdata();
                                     <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 text-gray-100">{data.Position}</td>
                                     <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 text-gray-100">{data.Mission}</td>
                                     <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 text-gray-100">{data.Vision}</td>
-                                    <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 text-gray-100">{data.About}</td>
+                                    {/* <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 text-gray-100">{data.About}</td> */}
                                     {/* <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 text-gray-100">{data.RegisterData.length}</td> */}
                                   <div className='flex flex-col'>
                                     <td class="sm:p-3 py-2 px-1">
