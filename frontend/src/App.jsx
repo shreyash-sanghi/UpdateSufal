@@ -92,6 +92,10 @@ export const AppRouter = () => {
 				element={<EventDetails/>}
 			/>
 
+<Route
+				path="/view_past_event/:eid"
+				element={<ViewPastEvent/>}
+			/>
 
 			{/* Backend routes */}
 			<Route exact path="/dashboard" Component={Dashboard}></Route>
