@@ -101,7 +101,7 @@ const MyTeam =()=>{
               </a>
                             <div class="bg-white/90 rounded-full w-6 h-6 text-center ml-28 mt-4">
 
-                                <input onChange={(e)=>setProfile(e.target.files[0])} type="file" name="profile" id="upload_profile" hidden required/>
+                                <input onChange={(e)=>setProfile(e.target.files[0])} type="file" name="profile" id="upload_profile" hidden />
 
                                 <label for="upload_profile">
                                         <svg data-slot="icon" class="w-6 h-5 text-blue-700" fill="none"
@@ -128,7 +128,7 @@ const MyTeam =()=>{
               </a>
                             <div class="bg-white/90 rounded-full w-6 h-6 text-center ml-28 mt-4">
 
-                                <input onChange={(e)=>setProfile(e.target.files[0])} type="file" name="profile" id="upload_profile" hidden required/>
+                                <input onChange={(e)=>setProfile(e.target.files[0])} type="file" name="profile" id="upload_profile" hidden />
 
                                 <label for="upload_profile">
                                         <svg data-slot="icon" class="w-6 h-5 text-blue-700" fill="none"
