@@ -16,6 +16,10 @@ const Footer = () => {
 			path: '/about-us',
 		},
 		{
+			title: 'Volunteer',
+			path: '/volunteer',
+		},
+		{
 			title: 'Categories',
 			path: '/categories',
 		},
@@ -43,7 +47,7 @@ const Footer = () => {
 
 	return (
 		<footer className="w-full bg-[#fefaf6] py-4 selection:bg-[#0a755862] bg-gradient-to-r from-[#fbe7d0] via-[#ffeedbf5] to-emerald-100">
-			<div className="mx-auto flex flex-col md:flex-row max-w-7xl  items-start ">
+			<div className="mx-auto flex flex-col md:flex-row max-w-6xl  items-start ">
 				<div className="w-full px-4 md:w-1/2 lg:px-0">
 					<h1 className="max-w-sm text-3xl font-bold">
 						Don’t miss out on our upcoming events.
@@ -82,7 +86,7 @@ const Footer = () => {
 								</li>
 								<li className="mb-4">
 									<HashLink
-										to="/#upcoming-events"
+										to="/events"
 										className="text-base font-medium text-gray-900 hover:text-gray-700"
 									>
 										Upcoming Events
@@ -115,20 +119,28 @@ const Footer = () => {
 							<ul>
 								<li className="mb-4">
 									<HashLink
-										to="/#home"
+										to="/volunteer"
 										className="text-base font-medium text-gray-900 hover:text-gray-700"
 									>
-										Account
+										Volunteer
 									</HashLink>
 								</li>
 								<li className="mb-4">
 									<HashLink
-										to="/support-us"
+										to="/auth"
 										className="text-base font-medium text-gray-900 hover:text-gray-700"
 									>
-										Support Us
+										Create Account
 									</HashLink>
 								</li>
+										{/* <li >
+									<HashLink
+										to="/volunteer"
+										className="text-base font-medium text-gray-900 hover:text-gray-700"
+									>
+										Volunteer
+									</HashLink>
+								</li> */}
 								<li className="mb-4">
 									<HashLink
 										to="/contact-us"
@@ -145,10 +157,18 @@ const Footer = () => {
 										Customer Support
 									</HashLink>
 								</li>
+								{/* <li >
+									<HashLink
+										to="/volunteer"
+										className="text-base font-medium text-gray-900 hover:text-gray-700"
+									>
+										Volunteer
+									</HashLink>
+								</li> */}
 							</ul>
 						</div>
 					</div>
-					<div className=" min-w-fit flex-wrap w-full pt-6 pl-6 pb-6 md:p-6 md:w-1/2 lg:w-3/12">
+					{/* <div className=" min-w-fit flex-wrap w-full pt-6 pl-6 pb-6 md:p-6 md:w-1/2 lg:w-3/12">
 						<div className="h-full">
 							<h3 className="tracking-px mb-9  text-xs font-semibold uppercase text-gray-500">
 								Legals
@@ -178,13 +198,29 @@ const Footer = () => {
 										Licensing
 									</HashLink>
 								</li>
+										<li className="mb-4">
+									<HashLink
+										to="/volunteer"
+										className="text-base font-medium text-gray-900 hover:text-gray-700"
+									>
+										Volunteer
+									</HashLink>
+								</li>
+								<li>
+									<HashLink
+										to="/#team"
+										className="text-base font-medium text-gray-900 hover:text-gray-700"
+									>
+										Our Team
+									</HashLink>
+								</li>
 							</ul>
 						</div>
-					</div>
+					</div> */}
 				</div>
 			</div>
 			<hr className="my-4" />
-			<div className="mx-auto max-w-7xl items-center justify-between px-4 md:flex lg:px-0">
+			<div className="mx-auto max-w-6xl items-center justify-between px-4 md:flex lg:px-0">
 				<div className="inline-flex items-center">
 					<div className="text-xl font-semibold tracking-wide select-none">
 						<HashLink to="/">
