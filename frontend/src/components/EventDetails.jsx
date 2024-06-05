@@ -91,7 +91,7 @@ getdata();
           <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
           <main className="overflow-x-hidden lg:py-10 z-10 w-full flex-col items-center justify-start sm:mt-0 py-10 ">
         <h1 className="mx-auto max-w-4xl text-gray-800 lg:text-start font-display text-5xl font-bold tracking-normal sm:text-5xl">
-          Mamta <br className='' />
+          {initial.EventName} <br className='' />
           <span className="relative whitespace-wrap text-pink-700">
             <svg
               aria-hidden="true"
