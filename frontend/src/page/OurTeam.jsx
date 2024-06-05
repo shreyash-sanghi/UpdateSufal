@@ -87,7 +87,7 @@ const OurTeam = () => {
                 {info.Name}
               </h4>
               <h4 className="text-lg text-gray-600 mb-2  font-semibold text-center md:text-left">
-                Ex{info.Position}
+                {info.Position}
               </h4>
   
               <p className="dark:text-gray-400 text-sm line-clamp-6 lg:line-clamp-5">
