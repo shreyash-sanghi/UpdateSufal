@@ -692,7 +692,7 @@ It was great to be at the art gallery On the occasion of Mother's Day!🤗</p>
 			<Glimpses></Glimpses>
 			<div
 				id="team"
-				className="w-full max-w-7xl mx-auto px-3 pt-14 pb-16 selection:bg-[#0a755862]"
+				className="w-full max-w-7xl mx-auto px-3 pb-16 selection:bg-[#0a755862]"
 			>
 				<div className="w-full flex items-center justify-center gap-5 px-3 pb-5">
 				<main className="flex py-6  md:pt-6   flex-1 w-full flex-col items-center justify-center text-center md:text-start px-4 sm:mt-0 mt-0">
