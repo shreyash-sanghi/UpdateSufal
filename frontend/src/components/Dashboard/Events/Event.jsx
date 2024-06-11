@@ -284,7 +284,7 @@ const CurrentEvent = () => {
                                               <button class="w-28 h-8 inline-flex items-center justify-center text-lg text-green-400 ml-auto"
                                                 onClick={async () => {
                                                   try {
-                                                    navigate(`/past_event/${data.eid}`)
+                                                    navigate(`/view_past_event/${data.eid}`)
                                                     final((info) =>
                                                       info.filter((about) => about.verify != data.uid)
                                                     );

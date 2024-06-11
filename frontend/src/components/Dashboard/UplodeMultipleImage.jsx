@@ -26,9 +26,8 @@ const UplodeMultipleImage  = ()=>{
       for(let i=0;i<info.length;i++){
         const storage = getStorage();
         const image = `${info[i].name + v4()}`;
-        console.log(info[i].name)
         const imgref = ref(storage,`files/${image}`);
-        uploadBytes(imgref,info[i].name)
+        uploadBytes(imgref,info[i])
         arr.push(image);
       }
       const result = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/uplode_event_image/${eid}`,
