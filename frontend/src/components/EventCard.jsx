@@ -75,7 +75,7 @@ const EventCard = ({
 				<img
 					src={eventImg}
 					alt={eventTitle}
-					className="h-[200px] mx-auto w-full rounded-md object-cover"
+					className="h-[200px] mx-auto w-full rounded-md "
 					draggable="false"
 				/>
 			</div>
