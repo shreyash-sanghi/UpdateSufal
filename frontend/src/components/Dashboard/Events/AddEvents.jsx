@@ -7,6 +7,15 @@ import { ref, uploadBytes ,getStorage} from "firebase/storage";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { DotSpinner } from '@uiball/loaders';
+import EventCard from '../../EventCard';
+import {
+	Carousel,
+	CarouselContent,
+	CarouselItem,
+	CarouselNext,
+	CarouselPrevious,
+} from '../../ui/carousel';
+
 import {v4} from 'uuid';
 const AddEvent = () => {
   const navigate = useNavigate();
@@ -413,7 +422,7 @@ const AddEvent = () => {
               </div>
             </form>
 
-            <div class="hidden lg:block w-[30%] h-fit ml-5  border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            {/* <div class="hidden lg:block w-[30%] h-fit ml-5  border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
               <a href="#">
                 {(initialAddEventfile === undefined) ? (<>
                   <img class="rounded-t-lg object-cover w-full h-[35vh]" src="https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="" />
@@ -434,8 +443,45 @@ const AddEvent = () => {
 
                 </a>
               </div>
-            </div>
+            </div> */}
 
+<div className="px-5 basic-0 mx-auto  md:basis-1/2 lg:basis-1/3">
+{(initialAddEventfile === undefined) ? (<>
+  <EventCard
+  eventTitle={initialAddEvent.EventName}
+  eventDescription={initialAddEvent.Discreption}
+  eventImg={"https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80"}
+  eventDate={initialAddEvent.EDate}
+  eventTags={['For Mothers']}
+  eventLocation={initialAddEvent.Place}
+  eventLink="/book/blood-donation"
+  Duration={initialAddEvent.Duration}
+  eventTime={initialAddEvent.Time}
+  eventPrice={initialAddEvent.Fee}
+  eventOrganizer={initialAddEvent.Organization}
+  // eventPurchaseLink={`/book/register_booking/${info.eid}`}
+  registrationAndrsvp = "Register Now!"
+  isLiked={true}
+/>
+  </>) : (<>
+    <EventCard
+  eventTitle={initialAddEvent.EventName}
+  eventDescription={initialAddEvent.Discreption}
+  eventImg={URL.createObjectURL(initialAddEventfile)}
+  eventDate={initialAddEvent.EDate}
+  eventTags={['For Mothers']}
+  eventLocation={initialAddEvent.Place}
+  eventLink="/book/blood-donation"
+  Duration={initialAddEvent.Duration}
+  eventTime={initialAddEvent.Time}
+  eventPrice={initialAddEvent.Fee}
+  eventOrganizer={initialAddEvent.Organization}
+  // eventPurchaseLink={`/book/register_booking/${info.eid}`}
+  registrationAndrsvp = "Register Now!"
+  isLiked={true}
+/>
+  </>)}
+</div>
           </div>
 
         </div>
