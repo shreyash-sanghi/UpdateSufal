@@ -229,6 +229,7 @@ const Events = () => {
     <div class="flex flex-wrap -m-4">
       {initial.map((info)=>{
         if(!info.eid) return null;
+        if(!info.PastConform) return null;
         return(
           <>
                <div class="xl:w-1/4 md:w-1/2 p-4 ">
