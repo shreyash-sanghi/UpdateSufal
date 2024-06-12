@@ -173,7 +173,7 @@ const CurrentEvent = () => {
                                           try {
                 
                                             const response = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/send_to_past_event/${data.eid}`);
-                                            getdata();
+                                            // getdata();
                                             final((info) =>
                                               info.filter((about) => about.eid != data.eid)
                                             );
