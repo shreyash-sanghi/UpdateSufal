@@ -297,7 +297,7 @@ const Home = () => {
 			<img src={team3} alt="" className="size-20 lg:size-60 bg-center bg-cover rounded-md " />
 			
 			<div>
-				<p className="leadi">Dr. Priya Bhave</p>
+				<p className="leadi">Dr. Priya Bhave Chittawar</p>
 				<p className="text-sm leadi dark:text-gray-300">Director, Sufal</p>
 				
 				<a className="flex items-center py-2 space-x-1 text-sm dark:text-violet-400" href="/">
@@ -309,7 +309,7 @@ const Home = () => {
 			</div>
 			
 		</div>
-		<p className='text-center px-4 bg-yellow-100 py-1 rounded-xl'>Dr. Priya Bhave stands as an illustrious beacon of hope, a revered fertility specialist, and a trailblazing gynaecological endoscopic surgeon at the esteemed Bansal Hospital in the heart of Bhopal. With unparalleled expertise and unwavering dedication, she orchestrates miracles, ushering in new beginnings and fulfilling dreams.</p>
+		<p className='text-center px-4 bg-yellow-100 py-1 rounded-xl'>Dr. Priya Bhave Chittawar stands as an illustrious beacon of hope, a revered fertility specialist, and a trailblazing gynaecological endoscopic surgeon at the esteemed Bansal Hospital in the heart of Bhopal. With unparalleled expertise and unwavering dedication, she orchestrates miracles, ushering in new beginnings and fulfilling dreams.</p>
 	</div>
 </section>
 
@@ -418,7 +418,7 @@ const Home = () => {
     <div class="lg:w-4/5 mx-auto rounded-xl flex flex-wrap justify-center text-center md:text-start">
       <video alt="ecommerce" playsInline={true} autoPlay={false} loop={true} controls={true} class=" md:w-4/5 lg:w-1/2 mx-4 md:mx-0 w-full lg:h-80 h-64 object-contain object-center rounded-xl" src={mothers}></video>
       <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 px-4 md:px-20 mt-6 lg:mt-0">
-        <h2 class="text-sm title-font mb-2 text-gray-500 tracking-widest">Initiative By Dr. Priya Bhave</h2>
+        <h2 class="text-sm title-font mb-2 text-gray-500 tracking-widest">Initiative By Dr. Priya Bhave Chittawar</h2>
         <h1 class="text-3xl title-font font-medium mb-1">Mamta Exhibition</h1>
         <div class="flex mb-4 justify-center md:justify-start">
           <span class="flex items-center">
