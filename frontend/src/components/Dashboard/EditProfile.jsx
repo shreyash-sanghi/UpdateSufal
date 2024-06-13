@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import {ref,uploadBytes,getStorage ,getDownloadURL,deleteObject} from "firebase/storage";
 import { ToastContainer, toast } from 'react-toastify';
 import { DotSpinner } from '@uiball/loaders';
+import {v4} from 'uuid';
 
 import 'react-toastify/dist/ReactToastify.css';
 const MyTeam =()=>{
@@ -30,36 +31,33 @@ const MyTeam =()=>{
     const [profile,setProfile] = useState();
       
     const savedata = async(e)=>{
-        e.preventDefault();
-        // const data = new FormData();
-        // const cloudname = "djyu9nhjf";
-        // data.append("file", profile);
-        // data.append("upload_preset", 'mysufal');
-        // data.append("cloud_name", cloudname)
         try {
+            setLoading(true);
             if(profile === undefined){
                 const {Name,Position,Gender,DOB,About,FBId,InstaId,Vision,Mission,Number, Linkdin} = initial;
                const result = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/update_team_data/${id}`,
-                {Name,Position,Gender,DOB,About,FBId,InstaId,Vision,Mission,Number, Linkdin}
+                {Name,Position,Gender,DOB,About,FBId,InstaId,Vision,Mission,Number, Linkdin
+
+                }
                )            
             }
             else{
-                // const deleteImage = await axios.delete(`htpp://localhost:7000/delete_previous_image/${initial.public_id}`);
                 const storage = getStorage();
                 const desertRef = ref(storage,`files/${initial.imageName}`);
-               await deleteObject(desertRef)
-            //     const res = await axios.post(`https://api.cloudinary.com/v1_1/${cloudname}/image/upload`, data);
-            //    const public_id = res.data.public_id;
-            //    const ProfilImage = res.data.url;
+                await deleteObject(desertRef)
+      
+
                const {Name,Position,Gender,DOB,About,FBId,InstaId,Vision,Mission,Number, Linkdin} = initial;
+
                const image = `${profile.name + v4()}`;
                const imgref = ref(storage,`files/${image}`);
+               console.log(profile.name)
                console.log(Name,Position,Gender,DOB,About,FBId,InstaId,Vision,Mission)
-              const result = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/update_team_data/${id}`,
+              const result = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/update_team_data_withProfile/${id}`,
                {Name,Position,Gender,DOB,About,FBId,InstaId,Vision,Mission,ProfilImage:image,Number, Linkdin}
               );
               try {
-                uploadBytes(imgref,profile)
+               await uploadBytes(imgref,profile)
               } catch (error) {
                 toast("Your Banner is not uplode")
                 setLoading(false);
@@ -68,9 +66,9 @@ const MyTeam =()=>{
           toast("Success");
           setLoading(false);
 
-          setTimeout(() => {
-              navigate("/my_team")
-          }, 1000);
+        //   setTimeout(() => {
+        //       navigate("/my_team")
+        //   }, 1000);
         } catch (error) {
             toast(error);
         }
@@ -129,11 +127,11 @@ useEffect(()=>{
             <div class=" flex flex-col justify-between w-full ">
                 <form onSubmit={savedata} method='POST'>
                     {/* <!-- Cover Image --> */}
-                    {console.log(initial.image)}
                     <div
                         class="w-full rounded-sm bg-cover bg-center bg-no-repeat items-center">
                         {/* <!-- Profile Image -->{console.log(URL.createObjectURL(profile))} */}
                         {(profile === undefined) ? (<>
+                            {console.log(initial.image)}
                             <div
                             class={`mx-auto flex justify-center w-[130px] h-[130px] bg-blue-300/20 rounded-full bg-cover bg-center bg-no-repeat`}
                             style={{ backgroundImage: `url(${initial.image})` }}                       
@@ -143,7 +141,7 @@ useEffect(()=>{
                             <div class="bg-white/90 rounded-full w-6 h-6 text-center ml-28 mt-4">
 
                                 {/* <input onChange={(e)=>setProfile(e.target.files[0])} type="file" id="upload_profile" hidden required/> */}
-                                {/* <input onChange={(e)=>setProfile(e.target.files[0])} type="file" name="profile" id="upload_profile" hidden required/> */}
+                                <input onChange={(e)=>setProfile(e.target.files[0])} type="file" name="profile" id="upload_profile" hidden />
 
                                 <label for="upload_profile">
                                         <svg data-slot="icon" class="w-6 h-5 text-blue-700" fill="none"
@@ -264,18 +262,18 @@ useEffect(()=>{
                             <input type="text"
                             value={initial.Number}
                             onChange={setdata}
-                            name='Vision'
+                            name='Number'
                                     class="mt-2 p-2 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
-                                    placeholder="Vision"/>
+                                    placeholder="Number"/>
                         </div>
                         <div class="w-full  mb-4 lg:mt-6">
                             <label for="" class=" mb-2  font-semibold text-gray-300">Linkdin</label>
                             <input type="text"
-                            name='Mission'
+                            name='Linkdin'
                             value={initial.Linkdin}
                             onChange={setdata}
                                     class="mt-2 p-2 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
-                                    placeholder="Last Name"/>
+                                    placeholder="Linkdin"/>
                         </div>
                     </div>
                     <div class="flex lg:flex-row md:flex-col items-center sm:flex-col xs:flex-col gap-2 justify-center w-full">
