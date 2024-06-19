@@ -728,7 +728,7 @@ It was great to be at the art gallery On the occasion of Mother's Day!🤗</p>
 								const facebookid = info.FBId;
 								return(
 									<>
-										<CarouselItem className="px-5 basic-0  md:basis-1/2 lg:basis-1/3">
+										<CarouselItem className="px-5 basic-0  md:basis-1/2 lg:basis-[30%]">
 								<TeamCard
 									teamMemberName={info.Name}
 									profession={info.Position}

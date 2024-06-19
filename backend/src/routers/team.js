@@ -50,26 +50,32 @@ router.get("/get_volunteer_data",async(req,res)=>{
    })
 
 
-router.post("/update_team_data/:id",async(req,res)=>{
-    try {
-      const id = req.params.id;
-      const {Name,Position,Gender,DOB,About,FBId,InstaId,Vision,Mission,ProfilImage,Number,Linkdin} = req.body;
-      console.log(Gender)
-      if(ProfilImage=== undefined || ProfilImage===""){
-         const result = await AddTeam.findByIdAndUpdate(id,{
-            Name,Position,Gender,DOB,About,FBId,InstaId,Vision,Mission,Number,Linkdin
-         });
-      }else{
-         const result = await AddTeam.findByIdAndUpdate(id,{
-            Name,Position,Gender,DOB,About,FBId,InstaId,Vision,Mission,ProfilImage,Number,Linkdin
-         });
+   router.post("/update_team_data/:id",async(req,res)=>{
+      try {
+        const id = req.params.id;
+        const {Name,Position,Gender,DOB,About,FBId,InstaId,Vision,Mission,Number,Linkdin} = req.body;
+           const result = await AddTeam.findByIdAndUpdate(id,{
+              Name,Position,Gender,DOB,About,FBId,InstaId,Vision,Mission,Number,Linkdin
+           });
+         res.sendStatus(202);
+      } catch (error) {
+         console.log(error);
+         res.status(404).json({error});
       }
-       res.sendStatus(202);
-    } catch (error) {
-       console.log(error);
-       res.status(404).json({error});
-    }
-   })
+     })
+  router.post("/update_team_data_withProfile/:id",async(req,res)=>{
+      try {
+        const id = req.params.id;
+        const {Name,Position,Gender,DOB,About,FBId,InstaId,Vision,Mission,Number,ProfilImage,Linkdin} = req.body;
+           const result = await AddTeam.findByIdAndUpdate(id,{
+              Name,Position,Gender,DOB,About,FBId,InstaId,Vision,Mission,Number,Linkdin,ProfilImage
+           });
+         res.sendStatus(202);
+      } catch (error) {
+         console.log(error);
+         res.status(404).json({error});
+      }
+     })
 
 
 router.get("/get_team_data_byid/:id",async(req,res)=>{
