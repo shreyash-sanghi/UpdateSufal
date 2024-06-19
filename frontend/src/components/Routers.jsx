@@ -7,6 +7,7 @@ import Dashboard from "./Dashboard/Dashboard";
 import AddEvent from "./Dashboard/Events/AddEvents";
 import Event from "./Dashboard/Events/Event";
 import CreateRegisterForm from "./CreateRegisterForm";
+import PriyaMam from "../page/PriyaMam";
 const Routers = ()=>{
     return(
         <>
@@ -19,6 +20,8 @@ const Routers = ()=>{
         <Route exact path="/event/:kind_of_event" Component={Event}></Route>
         <Route exact path="/event/:kind_of_event/:rid" Component={Event}></Route>
         <Route exact path="/create_form" Component={CreateRegisterForm}></Route>
+        
+        
      </Routes>  
         </>
     )

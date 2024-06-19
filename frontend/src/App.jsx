@@ -27,6 +27,7 @@ import OurTeam from './page/OurTeam.jsx';
 import ViewPastEvent from './components/Dashboard/ViewPastEvent.jsx';
 import VolunteerData from './components/Dashboard/VolunteerData.jsx';
 import EventDetails from './components/EventDetails.jsx';
+import PriyaMam from './page/PriyaMam.jsx';
 const App = () => {
 	const {t} = useTranslation();
 	return ( 
@@ -96,6 +97,7 @@ export const AppRouter = () => {
 				path="/view_past_event/:eid"
 				element={<ViewPastEvent/>}
 			/>
+			<Route  path="/dr-priya-bhave-chittawar" element={<PriyaMam />}></Route>
 
 			{/* Backend routes */}
 			<Route exact path="/dashboard" Component={Dashboard}></Route>
