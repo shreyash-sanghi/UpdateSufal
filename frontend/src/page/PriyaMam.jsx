@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
 import team3 from '../assets/team-3.png';
 import {Link} from 'react-router-dom';
 import award1 from '../assets/award1.jpg';
-import triathlete from '../assets/triathlete2.png'
+import triathlete from '../assets/triathlete.png'
 import {
 	Carousel,
 	CarouselContent,
