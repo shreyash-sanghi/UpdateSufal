@@ -391,26 +391,26 @@ const PriyaMam = () => {
     </div>
   <div class="grid grid-cols-2 pb-10 justify-center text-center place-content-center items-center sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
 
-    <div class="border border-gray-400 border-opacity-50 rounded-lg flex flex-col justify-center p-4">
+    <div class="border border-gray-400 w-full h-36 border-opacity-50 rounded-lg flex flex-col justify-center p-4">
     <img src='https://www.pngall.com/wp-content/uploads/5/Star-Award-PNG-Image.png' className='size-14 self-center' />
 
         
           <h2 class="text-xs text-gray-700 font-medium title-font lg:mt-4 mt-3 ">Dr. Pankaj Tawar Gold Medal at IFS 2022</h2>
     </div>
     
-    <div class="border border-gray-400 border-opacity-50 rounded-lg flex flex-col justify-center p-4">
+    <div class="border border-gray-400 w-full h-36 border-opacity-50 rounded-lg flex flex-col justify-center p-4">
     <img src='https://i.pinimg.com/736x/2c/45/e5/2c45e5329ce6ac26bcae43d4071dfbc4.jpg' className='size-14 self-center' />
 
         
           <h2 class="text-xs text-gray-700 font-medium title-font lg:mt-4 mt-3 ">Ironman Triathlete Award</h2>
     </div>
-    <div class="border border-gray-400 border-opacity-50 rounded-lg flex flex-col justify-center p-4">
+    <div class="border border-gray-400 w-full h-36 border-opacity-50 rounded-lg flex flex-col justify-center p-4">
     <img src='https://images-cdn.ubuy.co.in/633ffe05bc76ab645c686bc1-bless-this-child-crib-medal-girl-crib.jpg' className='size-14 self-center' />
 
         
           <h2 class="text-xs text-gray-700 font-medium title-font lg:mt-4 mt-3 ">Ironman Baby Maker of India Award</h2>
     </div>
-    <div class="border border-gray-400 border-opacity-50 rounded-lg flex flex-col justify-center p-4">
+    <div class="border border-gray-400 w-full h-36 border-opacity-50 rounded-lg flex flex-col justify-center p-4">
     <img src='https://logowik.com/content/uploads/images/tedx4450.jpg' className='size-14 self-center' />
 
         
