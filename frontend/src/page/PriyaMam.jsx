@@ -333,7 +333,7 @@ const PriyaMam = () => {
   <div class="container px-5 py-24 mx-auto">
     <div class="flex flex-wrap justify-center -mx-4 -mb-10 text-center">
       <div class="sm:w-1/2 mb-10 px-4">
-        <div class="rounded-lg h-64 overflow-hidden">
+        <div class="rounded-lg h-auto lg:h-64 overflow-hidden">
           <img alt="content" class="object-cover object-center h-full w-full" src={triathlete}/>
         </div>
       
