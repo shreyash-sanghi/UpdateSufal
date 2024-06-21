@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import team3 from '../assets/team-3.png';
 import {Link} from 'react-router-dom';
 import award1 from '../assets/award1.jpg';
+import triathlete from '../assets/triathlete2.png'
 import {
 	Carousel,
 	CarouselContent,
@@ -333,7 +334,7 @@ const PriyaMam = () => {
     <div class="flex flex-wrap justify-center -mx-4 -mb-10 text-center">
       <div class="sm:w-1/2 mb-10 px-4">
         <div class="rounded-lg h-64 overflow-hidden">
-          <img alt="content" class="object-cover object-center h-full w-full" src="https://images.bhaskarassets.com/web2images/521/2022/11/14/new-project-41_1668433213.jpg"/>
+          <img alt="content" class="object-cover object-center h-full w-full" src={triathlete}/>
         </div>
       
         <h2 class="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">Ironman Triathlete Award</h2>
@@ -398,10 +399,22 @@ const PriyaMam = () => {
     </div>
     
     <div class="border border-gray-400 border-opacity-50 rounded-lg flex flex-col justify-center p-4">
-    <img src='https://www.pngall.com/wp-content/uploads/5/Star-Award-PNG-Image.png' className='size-14 self-center' />
+    <img src='https://i.pinimg.com/736x/2c/45/e5/2c45e5329ce6ac26bcae43d4071dfbc4.jpg' className='size-14 self-center' />
 
         
-          <h2 class="text-xs text-gray-700 font-medium title-font lg:mt-4 mt-3 ">Dr. Pankaj Tawar Gold Medal at IFS 2022</h2>
+          <h2 class="text-xs text-gray-700 font-medium title-font lg:mt-4 mt-3 ">Ironman Triathlete Award</h2>
+    </div>
+    <div class="border border-gray-400 border-opacity-50 rounded-lg flex flex-col justify-center p-4">
+    <img src='https://images-cdn.ubuy.co.in/633ffe05bc76ab645c686bc1-bless-this-child-crib-medal-girl-crib.jpg' className='size-14 self-center' />
+
+        
+          <h2 class="text-xs text-gray-700 font-medium title-font lg:mt-4 mt-3 ">Ironman Baby Maker of India Award</h2>
+    </div>
+    <div class="border border-gray-400 border-opacity-50 rounded-lg flex flex-col justify-center p-4">
+    <img src='https://logowik.com/content/uploads/images/tedx4450.jpg' className='size-14 self-center' />
+
+        
+          <h2 class="text-xs text-gray-700 font-medium title-font lg:mt-4 mt-3 ">Tedx Speaker Award</h2>
     </div>
     
 
