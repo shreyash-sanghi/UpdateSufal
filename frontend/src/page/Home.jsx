@@ -196,15 +196,15 @@ const Home = () => {
 					</div>
 					<div className="w-fit sm:w-full px-2 md:px-0 flex items-start gap-x-2 md:gap-x-0 justify-start pt-5 ">
 						<Info
-							title={'150+'}
-							description={'Incredible Volunteers'}
+							title={'5000+'}
+							description={'Successful IVF Cases'}
 						/>
 						<Info
 							title={'120+'}
 							description={'Successful Events'}
 						/>
 						<Info
-							title={'3000+'}
+							title={'6000+'}
 							description={'Total Attendes'}
 						/>
 					</div>
