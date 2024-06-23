@@ -43,7 +43,7 @@ import {
 } from '../components/ui/carousel';
 import TeamCard from '../components/TeamCard';
 import EventCard from '../components/EventCard';
-import aboutimg from '../assets/about-img2.png';
+import aboutimg from '../assets/aboutimg.png';
 import { ImWoman } from "react-icons/im";
 
 import Header from '../components/Header';
