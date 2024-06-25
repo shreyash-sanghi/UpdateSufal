@@ -7,7 +7,7 @@ import { BsFacebook } from 'react-icons/bs';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import missionimg from '../assets/misson-img.png';
-import aboutimg3 from '../assets/about-img3.png';
+import aboutimg3 from '../assets/aboutimg4.png';
 import visionimg from '../assets/vision-img.png';
 const AboutUs = () => {
 	return ( <>

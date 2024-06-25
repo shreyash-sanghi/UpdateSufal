@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { colorTheme } from '../constants/colorTheme';
 import herogif from '../assets/herogif6.mp4';
 import Button from '../components/Button';
 import { GrUserExpert } from "react-icons/gr";
-import team1 from '../assets/team1.png';
-import team2 from '../assets/team2.png';
 import Footer from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
 import {ref,uploadBytes,getStorage ,getDownloadURL,deleteObject} from "firebase/storage";
@@ -26,7 +23,6 @@ import { PiBowlFood, PiHandHeartFill } from 'react-icons/pi';
 import { MdOutlineSupportAgent } from "react-icons/md";
 
 import { LuHeartHandshake } from 'react-icons/lu';
-import { FiArrowRight, FiArrowUpRight } from 'react-icons/fi';
 import { GiMedicines } from 'react-icons/gi';
 import { BsFacebook, BsPeopleFill } from 'react-icons/bs';
 import { FaBookOpenReader } from 'react-icons/fa6';
