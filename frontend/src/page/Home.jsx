@@ -175,8 +175,8 @@ const Home = () => {
 			>
 				<div className="w-full lg:w-1/2 mt-6 md:mt-0 space-y-5 flex flex-col items-center justify-start mx-auto	selection:bg-[#0a755862]">
 					<div className="w-full flex flex-col items-start justify-start space-y-3">
-						<span className="text-4xl md:text-5xl lg:text-6xl lg:leading-snug font-bold ">
-						सुफल के साथ <br className='hidden md:block' /> मातृत्व को <br />खुशी से अपनाएं 
+						<span className="text-4xl md:text-5xl lg:text-6xl lg:leading-snug leading-normal font-bold ">
+						सुफल के साथ <br className='hidden md:block' /> मातृत्व <br className='md:hidden' /> को <br className='hidden md:block'/>खुशी से अपनाएं 
 						</span>
 						<span className="w-full md:w-[90%] lg:w-[80%] flex items-center justify-start pt-4 text-base font-semibold text-[#868686] selection:text-[#16191E]">
 						सुफल गर्भावस्था सपोर्ट ग्रुप है जिसमें प्रत्येक माह एक विषय विशेष पर चर्चा की जाएगी।						</span>
