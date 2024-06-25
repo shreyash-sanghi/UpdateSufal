@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { colorTheme } from '../constants/colorTheme';
-import herogif from '../assets/herogif4.mp4';
+import herogif from '../assets/herogif6.mp4';
 import Button from '../components/Button';
 import { GrUserExpert } from "react-icons/gr";
 import team1 from '../assets/team1.png';
@@ -175,11 +175,20 @@ const Home = () => {
 			>
 				<div className="w-full lg:w-1/2 mt-6 md:mt-0 space-y-5 flex flex-col items-center justify-start mx-auto	selection:bg-[#0a755862]">
 					<div className="w-full flex flex-col items-start justify-start space-y-3">
-						<span className="text-4xl md:text-5xl lg:text-6xl lg:leading-snug leading-normal font-bold ">
-						सुफल के साथ <br className='hidden md:block' /> मातृत्व <br className='md:hidden' /> को <br className='hidden md:block'/>खुशी से अपनाएं 
+						<span className="text-4xl md:text-5xl lg:text-6xl text-[#f2c145] lg:leading-snug leading-normal font-bold ">
+						सुफल : <span className='text-gray-800'><br /> गर्भावस्था सपोर्ट  ग्रुप</span>
 						</span>
-						<span className="w-full md:w-[90%] lg:w-[80%] flex items-center justify-start pt-4 text-base font-semibold text-[#868686] selection:text-[#16191E]">
-						सुफल गर्भावस्था सपोर्ट ग्रुप है जिसमें प्रत्येक माह एक विषय विशेष पर चर्चा की जाएगी।						</span>
+						<span className="w-full md:w-[90%] lg:w-[80%] flex items-center justify-start pt-4 text-sm leading-relaxed font-medium text-[#454444] selection:text-[#16191E]">
+						मातृत्व एक सुखद और भावनात्मक अनुभव है, जिसे हर स्त्री जीना चाहती है। गर्भावस्था के दौरान शारीरिक और मानसिक परिवर्तनों के कारण अक्सर अनजाना भय और तनाव होता है। इस समय को सुखद बनाने और अपनी तथा गर्भस्थ शिशु की पूरी देखभाल करने के उद्देश्य से गर्भसंस्कार एक महत्वपूर्ण प्रयास है। गर्भसंस्कार से श्रेष्ठ संतति का निर्माण संभव है और यह संस्कार देने का उत्तम समय है।
+
+सुफल गर्भावस्था सपोर्ट ग्रुप, प्रत्येक माह एक विशेष विषय पर चर्चा करता है। इस प्रोग्राम में आप अपने परिवार के सदस्यों के साथ शामिल हो सकती हैं।
+
+
+
+
+
+
+						</span>
 					</div>
 					<div className="w-full flex items-center justify-start md:space-x-4 pt-5 gap-3">
 						<Button
@@ -193,17 +202,17 @@ const Home = () => {
 							Watch Video
 						</button>
 					</div>
-					<div className="w-fit sm:w-full px-2 md:px-0 flex items-start gap-x-2 md:gap-x-0 justify-start pt-5 ">
+					<div className="w-fit sm:w-full px-2 md:px-0 flex items-start gap-x-3 md:gap-x-0 justify-start pt-5 ">
 						<Info
-							title={'5000+'}
-							description={'Successful IVF Cases'}
+							title={'10+'}
+							description={'Years of Success'}
 						/>
 						<Info
 							title={'120+'}
-							description={'Successful Events'}
+							description={'Events Successful'}
 						/>
 						<Info
-							title={'6000+'}
+							title={'3500+'}
 							description={'Total Attendes'}
 						/>
 					</div>
