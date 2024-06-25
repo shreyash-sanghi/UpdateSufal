@@ -43,7 +43,7 @@ import {
 } from '../components/ui/carousel';
 import TeamCard from '../components/TeamCard';
 import EventCard from '../components/EventCard';
-import aboutimg from '../assets/aboutimg.png';
+import aboutimg from '../assets/aboutimg4.png';
 import { ImWoman } from "react-icons/im";
 
 import Header from '../components/Header';
@@ -247,8 +247,8 @@ const Home = () => {
 						ABOUT US
 					</span>
 					<div className="w-full flex flex-col items-start justify-start space-y-3 pb-5">
-						<span className="text-4xl md:text-5xl font-semibold leading-tight">
-						Nurturing Healthy Pregnancies: Your Journey, Our Support.
+						<span className="text-4xl md:text-5xl font-semibold leading-tight md:leading-normal">
+						स्वस्थ गर्भधारण का पोषण: आपकी यात्रा, हमारा समर्थन।
 						</span>
 						<span className="w-full text-base font-semibold text-[#868686] selection:text-[#16191E]">
 						We provide essential support to expectant mothers worldwide.
@@ -256,7 +256,7 @@ const Home = () => {
 					</div>
 					<div className="w-full flex flex-col items-start justify-start gap-5">
 						<InfoCard
-							title={'Healthy Pregnancies'}
+							title={'स्वस्थ गर्भावस्था'}
 							description={
 								'Ensuring a healthy pregnancy through comprehensive support, resources, and care for expectant mothers.'
 							}
@@ -269,7 +269,7 @@ const Home = () => {
 							color={'#fee0ea'}
 						/>
 						<InfoCard
-							title={'Pre Pregnancy Care'}
+							title={'गर्भावस्था पूर्व देखभाल'}
 							description={
 								'Offering guidance, education, and support for women preparing for a healthy pregnancy journey.'
 							}
@@ -282,7 +282,7 @@ const Home = () => {
 							color={'#fef3d7'}
 						/>
 						<InfoCard
-							title={'Support Assistance'}
+							title={' सहायता तथा समर्थन'}
 							description={
 								'Providing emotional and practical support to ensure the well-being of pregnant women and new mothers.'
 							}
