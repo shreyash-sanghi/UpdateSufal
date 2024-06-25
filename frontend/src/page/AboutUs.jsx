@@ -23,10 +23,12 @@ const AboutUs = () => {
 										About Us
 									</p>
 									<p className="mt-1 text-4xl lg:text-5xl font-bold text-gray-800 ">
-										Sufal : We care you!
+									सुफल : We care you!
 									</p>
-									<p className="mt-4 text-base font-medium text-[#868686] leading-normal py-1  md:py-0">
-									Sufal is dedicated to supporting pregnant women through the ancient practice of Garbhasanskar, providing holistic prenatal care that encompasses mental, emotional, and spiritual well-being. Our expert-led sessions offer guidance on healthy living, positive thinking, and spiritual growth, ensuring a nurturing and enriching pregnancy experience for both mother and baby. We aim to foster a positive environment that benefits the unborn child and enhances maternal health.
+									<p className="mt-4 text-base font-medium text-[#868686] leading-relaxed py-1  md:py-0">
+									मातृत्व अपने आप में सुखद एवं भावनात्मक अनुभव है, जिसे हर स्त्री जीना चाहती है। गर्भावस्था में शारीरिक व मानसिक परिवर्तनों के कारण अनजाना भय और तनाव होता है। गर्भावस्था के समय सुखद अनुभूति कर पायें एवं अपनी व गर्भस्थ शिशु की पूरी देखभाल भलीभांति कर पायें, इस उद्देश्य के लिए गर्भसंस्कार एक खुबसूरत प्रयास है। गर्भसंस्कार से श्रेष्ठ संतति का निर्माण संभव है एवं संस्कार देने का उत्तम समय है।
+
+सुफल गर्भावस्था सपोर्ट ग्रुप है जिसमें प्रत्येक माह एक विषय विशेष पर चर्चा की जाएगी। इस प्रोग्राम में आप अपने परिवार के सदस्यों के साथ सम्मलित हो सकती हैं।
 
 
 
