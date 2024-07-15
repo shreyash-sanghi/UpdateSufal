@@ -6,7 +6,6 @@ import yb1 from '../assets/yearlybanners/yb1.jpg';
 import yb2 from '../assets/yearlybanners/yb2.jpg';
 import yb3 from '../assets/yearlybanners/yb3.jpg';
 import yb4 from '../assets/yearlybanners/yb4.jpg';
-import yb5 from '../assets/yearlybanners/yb5.jpg';
 
 
 const responsive = {
@@ -31,20 +30,20 @@ const Carousel2 = ({ deviceType }) => {
   const items = [
     
     {
-      image: yb2,
-      text: "2023"
+      image: yb1,
+      text: "Sufal 2018"
     },
     {
-      image: yb3,
-      text: "This is the description for Image 3"
+      image: yb2,
+      text: "Sufal 2019"
     },
     {
       image: yb4,
-      text: "This is the description for Image 4"
+      text: "Sufal 2020"
     },
     {
-      image: yb5,
-      text: "This is the description for Image 5"
+     image: yb3,
+      text: "Sufal 2021"
     }
   ];
 
@@ -85,8 +84,8 @@ const Carousel2 = ({ deviceType }) => {
         itemClass="carousel-item-padding-40-px"
       >
         {items.map((item, idx) => (
-          <div key={idx} className="flex flex-col items-center justify-center h-[28rem] w-72 mx-auto">
-            <img src={item.image} alt={`carousel-img-${idx}`} className="h-full w-full object-contain rounded-md" />
+          <div key={idx} className="flex flex-col items-center justify-center h-[36rem] w-72 mx-auto">
+            <img src={item.image} alt={`carousel-img-${idx}`} className="h-full w-full objext-contain rounded-md" />
             <p className="mt-4 bg-pink-700 w-full text-gray-100  text-center mb-10 rounded-xl font-semibold py-1 text-md">{item.text}</p> {/* Adjusted margin-top */}
           </div>
         ))}
