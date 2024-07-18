@@ -23,10 +23,11 @@ const AboutUs = () => {
 										About Us
 									</p>
 									<p className="mt-1 text-4xl lg:text-5xl font-bold text-gray-800 ">
-									सुफल : We care you!
+									सुफल : गर्भावस्था सपोर्ट ग्रुप
 									</p>
-									<p className="mt-4 text-base font-medium text-[#868686] leading-relaxed py-1  md:py-0">
+									<p className="mt-4 text-base font-medium text-gray-600 leading-relaxed py-1  md:py-0">
 									मातृत्व अपने आप में सुखद एवं भावनात्मक अनुभव है, जिसे हर स्त्री जीना चाहती है। गर्भावस्था में शारीरिक व मानसिक परिवर्तनों के कारण अनजाना भय और तनाव होता है। गर्भावस्था के समय सुखद अनुभूति कर पायें एवं अपनी व गर्भस्थ शिशु की पूरी देखभाल भलीभांति कर पायें, इस उद्देश्य के लिए गर्भसंस्कार एक खुबसूरत प्रयास है। गर्भसंस्कार से श्रेष्ठ संतति का निर्माण संभव है एवं संस्कार देने का उत्तम समय है।
+									
 
 सुफल गर्भावस्था सपोर्ट ग्रुप है जिसमें प्रत्येक माह एक विषय विशेष पर चर्चा की जाएगी। इस प्रोग्राम में आप अपने परिवार के सदस्यों के साथ सम्मलित हो सकती हैं।
 
@@ -80,16 +81,23 @@ const AboutUs = () => {
 							<div className="flex items-center justify-center">
 								<div className="px-2 space-y-4">
 									<p className="text-xl  -mb-2 text-[#0f1114] md:text-4xl">
-										Our Mission
+										Our Vision
 									</p>
 									<p className="mt-1 text-4xl lg:text-5xl font-bold text-gray-800 ">
-										Empowering Motherhood
+									Holistic Careful Pregnancy
 									</p>
-									<p className="mt-4 text-base font-medium text-[#868686] leading-normal  py-1  md:py-0">
-									Our mission at Sufal is to empower pregnant women through the transformative practice of Garbhasanskar. We strive to provide comprehensive prenatal care that nurtures mental, emotional, and spiritual well-being, fostering a positive environment for both mother and child. By promoting healthy living, positive thinking, and spiritual growth, we aim to enhance maternal health and ensure a harmonious and enriching pregnancy experience for all women we serve.
+									<p className="mt-4 text-base font-medium text-gray-600 leading-normal  py-1  md:py-0">
+									सुफल गभविस्था सपोर्ट ग्रुप का उद्देश्य गर्भसंस्कार के पारम्पारिक एवं वैज्ञानिक ज्ञान से राभवती महिलाओं को लाभान्वित करना है. राभविस्था में माँ एवं गभस्य जिन का शारीरिक, मानसिक एवं भावनात्मक विकास करना। माँ एवं शिशु स्वास्थ का ध्यान खना | Holistic approch મવિતી માઁ કે લમગ્ન સ્વાસ્થ્ય છો प्राप्त करना। गर्म-विज्ञान के ज्ञान से श्रेष्ठ संतति का निमनि उरना ही गर्भवस्कार का उद्देश्य है। राभविस्था ही संस्कार देने का अति उत्तम समय है। गर्भ शिक्षा, गर्भसंस्कार के माध्यम से तेजस्वी ओजस्वी संतति का सृजन संभव हैं हो सकता है। भारतीय संस्कृति में 16 संस्कारों का महत्व है। इन संस्कारों के कारण प्राचीन भारत भव्य एवं दिव्य था।
+
+गर्भसंस्कार के कार्यक्रमों में पारम्पारिक रिति-रिवाजों जैसे पुसंवन संस्कार, गोडभराई, प्राणायाम एवं ध्यान जाता है। माँ एवं गर्भस्थ शिशु के स्वास्थ्य के लिए
+  विभिन्न विषयों के विषय विशेषते। को आंमत्रित किया जाता है जिससे शारीरिक व मानसिक लाभ प्राप्त हो लो। गभविस्या में पारम्पारिक आहार का महत्व एवं नियमित जीवन शैली का प्रभाव माँ और शिशु उ लिए बताया जाता है।
+
+आसन, प्रसारण प्राणायाम एवं ध्यान से शारीरिक मानसिक एवं आध्यात्मिक स्वास्थ्य प्राप्त करना है।
+
+गभविस्या में ज्योतिषशास्त्र का महत्व एवं गर्भवती माँ का मनोबल बनाये २२खना।
 									</p>
 									<div className="w-full bg-pink-600 text-white flex items-start justify-center py-1 md:py-2">
-										Our Mission Is To Empower Motherhood
+										Creating World Of Holistic Careful Pregnancy
 									</div>
 								</div>
 							</div>
@@ -104,16 +112,19 @@ const AboutUs = () => {
 							<div className="flex items-center justify-center">
 								<div className="px-2 space-y-4">
 									<p className="text-xl  -mb-2 text-[#16191E] md:text-4xl">
-										Our Vision
+										Our Mission
 									</p>
 									<p className="mt-1 text-4xl lg:text-5xl font-bold text-gray-800 ">
-										Holistic Careful Pregnancy
+									Our Mission Is To Empower Motherhood
 									</p>
-									<p className="mt-4 text-base font-medium text-[#868686] leading-normal py-1  md:py-0">
-									Our vision at Sufal is to create a world where every pregnancy is celebrated and supported with holistic care. We envision a future where the ancient wisdom of Garbhasanskar is integrated into modern prenatal practices, empowering mothers to cultivate a nurturing environment for their unborn children. Through education, community support, and spiritual guidance, we aim to foster generations of healthy, happy, and well-rounded individuals, contributing to a more compassionate and harmonious society.
+									<p className="mt-4 text-base font-medium text-gray-600 leading-normal py-1  md:py-0">
+									भारतीय संस्कृति में ऋषियो- मुनियों ने संसार के गर्भ विज्ञान क का परिचय दिया। यह बुप्रयोजन शास्त्र है, जो सृष्टि को आगे बराने में महत्वपूर्ण कार्य करता है। गर्भसंस्कार का इतिहास गवाह है कि किस तरह से अभिमन्यु शुकदेव, प्रछाड, एवं परीक्षित ने गर्भ शिक्षा प्राप्त की थी। माँ जैसी संतान चाहे जैसी संतान पैदा कर सकती है। इसीलिए गर्भसंस्कार को नौ माह की 3तम पाठशाला माना जाता है।
+
+
+
 									</p>
 									<div className="w-full bg-pink-600 text-white flex items-start justify-center py-1 md:py-2">
-										To Create World of Holistic Careful Pregnancy
+									Our Mission Is To Empower Motherhood
 									</div>
 								</div>
 							</div>
