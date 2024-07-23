@@ -107,3 +107,24 @@ body {
   margin-right: 8px; /* Adjust the space between images */
 }
 
+.carousel-container {
+  margin: 20px;
+}
+
+.carousel-card {
+  padding: 10px;
+  text-align: center;
+}
+
+.carousel-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.carousel-text {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 18px;
+  color: #333;
+}
