@@ -118,8 +118,6 @@ const MyTeam =()=>{
                             </div>
                         </div>                </>) : (<>
                             <div
-                            // class={`mx-auto flex justify-center w-[130px] h-[130px] bg-blue-300/20 rounded-full bg-[url(${URL.createObjectURL(profile)})] bg-cover bg-center bg-no-repeat`}
-                            // class={`mx-auto flex justify-center w-[130px] h-[130px] bg-blue-300/20 rounded-full bg-[url()] bg-cover bg-center bg-no-repeat`}
                             class={`mx-auto flex justify-center w-[130px] h-[130px] bg-blue-300/20 rounded-full bg-cover bg-center bg-no-repeat`}
                             style={{ backgroundImage: `url(${URL.createObjectURL(profile)})` }}                       
                             >
