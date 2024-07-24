@@ -156,7 +156,7 @@ getdata();
 
             </div>
           </div>
-          <div className="lg:max-w-lg  lg:w-full -mt-14 sm:-mt-0 md:w-1/2 w-5/6">
+          <div className="lg:max-w-lg  overflow-hidden lg:w-full -mt-14 sm:-mt-0 md:w-1/2 w-5/6">
             <img
               className="object-cover object-center rounded"
               alt="event-banner"
@@ -186,11 +186,11 @@ getdata();
           <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {EventImage.map((src, index) =>{
               return(
-                         <div key={index} className="w-full h-64 overflow-hidden">
+                         <div key={index} className="w-full h-64 rounded-md overflow-hidden">
                 <img
                   src={src}
                   alt={`Event ${index + 1}`}
-                  className="w-full h-full object-cover rounded-lg"
+                  className="w-full h-full object-contain rounded-lg"
                 />
               </div>
               )
