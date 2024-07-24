@@ -84,7 +84,7 @@ const Carousel2 = ({ deviceType }) => {
         itemClass="carousel-item-padding-40-px"
       >
         {items.map((item, idx) => (
-          <div key={idx} className="flex flex-col items-center justify-center h-[36rem] w-80 sm:w-72 mx-auto">
+          <div key={idx} className="flex flex-col items-center justify-center h-[36rem] w-80 sm:w-72 mx-0 sm:mx-auto">
             <img src={item.image} alt={`carousel-img-${idx}`} className="h-full w-full objext-contain rounded-md" />
             <p className="mt-4 bg-pink-700 w-full text-gray-100  text-center mb-10 rounded-xl font-semibold py-1 text-md">{item.text}</p> {/* Adjusted margin-top */}
           </div>
