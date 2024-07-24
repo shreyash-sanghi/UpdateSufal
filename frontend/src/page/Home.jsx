@@ -5,6 +5,7 @@ import { GrUserExpert } from "react-icons/gr";
 import Footer from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
 import Carousel2 from '../components/Carousel2';
+import garbhavideo from '../assets/garbha-video.mp4';
 
 
 import {ref,uploadBytes,getStorage ,getDownloadURL,deleteObject} from "firebase/storage";
@@ -481,10 +482,10 @@ const Home = () => {
 			<section class="text-gray-600">
   <div class="container mx-auto flex px-5 lg:px-24 py-10 md:py-20 md:flex-row flex-col items-center">
   <div class="lg:max-w-sm lg:w-full md:w-1/2 w-5/6">
-      <img class="object-cover object-center rounded" alt="hero" src="https://palavigarbhasanskar.com/wp-content/uploads/2024/02/vector-952x1024.png"/>
+      <video class="" autoPlay playsInline muted loop alt="hero" src={garbhavideo}/>
     </div>
     <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left mt-10 md:mt-0 items-center text-center">
-      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Understanding <span className='text-yellow-700'> Garbhasanskar</span>
+      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">गर्भसंस्कार: कब? क्यों? और कैसे?
     
       </h1>
 	  <div className='flex mb-4'>
@@ -495,14 +496,25 @@ const Home = () => {
 		<img src="https://images.onlymyhealth.com/imported/images/2020/April/25_Apr_2020/big_14-Color-Tharepy.jpg" className='size-10 rounded-full -ml-4' alt="" />
 		<img src="https://thumbs.dreamstime.com/b/girl-listens-to-music-headphones-therapy-podcast-audiobook-radio-meditation-concept-profile-young-african-woman-vector-288627719.jpg" className='size-10 rounded-full -ml-4' alt="" />
 	  </div>
-      <p class="mb-8 leading-tight">Garbhasanskar is an ancient Indian practice that focuses on nurturing and educating the unborn child. The term "Garbhasanskar" is derived from two Sanskrit words: "Garbha" meaning "womb" and "Sanskar" meaning "ethics" or "values." It refers to a set of practices and rituals aimed at ensuring the physical, mental, and spiritual well-being of both the mother and the baby during pregnancy.</p>
-      <div class="flex justify-center">
-        <button class="inline-flex text-white bg-pink-500 border-0 py-2 px-4 focus:outline-none hover:bg-indigo-600 rounded text-sm">Explore</button>
+      {/* <p class="mb-4 leading-tight text-gray-600">Garbhasanskar is an ancient Indian practice that focuses on nurturing and educating the unborn child. The term "Garbhasanskar" is derived from two Sanskrit words: "Garbha" meaning "womb" and "Sanskar" meaning "ethics" or "values." It refers to a set of practices and rituals aimed at ensuring the physical, mental, and spiritual well-being of both the mother and the baby during pregnancy.</p> */}
+      <p class="mb-4 leading-tight text-gray-600">
+		<li> मनोवैज्ञानिक संतुलन: गर्भावस्था में मानसिक शांति बनाए रखना।
+		</li>
+		<li>सकारात्मकता एवं सृजनात्मकता: सकारात्मक और सृजनात्मक गतिविधियों में संलग्न रहना।</li>
+		<li>बागवानी, संगीत, पाक कला, स्वाध्याय (पढ़ना), मैत्री जप: ये गतिविधियाँ मानसिक स्वास्थ्य को सुदृढ़ करती हैं।</li>
+		<li>पारिवारिक सामंजस्य एवं भावनात्मक संतुलन: परिवार का सहयोग और भावनात्मक समर्थन।</li>
+		<li>खुशनुमा सफर: गर्भावस्था के नौ महीनों को सुखद और यादगार बनाना।</li>
+
+</p>
+     
+	  <div class="flex justify-center">
+        <button class="inline-flex mt-4  text-white bg-pink-600 border-0 py-2 px-4 focus:outline-none hover:bg-pink-700 rounded-2xl text-sm">Read More</button>
       </div>
     </div>
     
   </div>
 </section>
+
 {console.log(initial_length)}
 {/* {(initial_length>=1)?(<>
 			<div
