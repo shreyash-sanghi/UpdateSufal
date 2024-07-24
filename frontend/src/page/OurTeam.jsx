@@ -96,6 +96,15 @@ const navigate = useNavigate();
                 <span className="font-bold">About :</span> {info.About}
               </p>
               <div className="flex justify-start pt-2 space-x-4 align-center">
+                {(info.Name === "Dr. Shailja Trivedi")?(<>
+                  <button
+                onClick={()=>navigate(`/dr-priya-bhave-chittawar`)}
+                  rel="noopener noreferrer"
+                  className="py-1 rounded-md bg-pink-600 text-white px-6 text-xs hover:dark:text-violet-400"
+                >
+                  Read ...
+                </button>
+                </>):(<>
                 <button
                 onClick={()=>navigate(`/team_readMore/${info.tid}`)}
                   rel="noopener noreferrer"
@@ -103,6 +112,7 @@ const navigate = useNavigate();
                 >
                   Read ...
                 </button>
+                </>)}
               </div>
             </div>
           </div>
