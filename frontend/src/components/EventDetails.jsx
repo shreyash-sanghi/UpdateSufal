@@ -186,7 +186,7 @@ getdata();
           <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {EventImage.map((src, index) =>{
               return(
-                         <div key={index} className="w-full h-64 overflow-hidden">
+                         <div key={index} className="w-full h-64 rounded-md overflow-hidden">
                 <img
                   src={src}
                   alt={`Event ${index + 1}`}
