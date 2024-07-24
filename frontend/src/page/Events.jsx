@@ -241,7 +241,7 @@ const Events = () => {
         return(
           <>
                <div class="xl:w-1/4 md:w-1/2 p-4 ">
-        <div class="bg-gradient-to-r pb-0   from-yellow-50 bg-pink-100 border border-gray-200 p-6 rounded-lg">
+        <div class="bg-gradient-to-r pb-0 xl:w-1/4 md:w-1/2   from-yellow-50 bg-pink-100 border border-gray-200 p-6 rounded-lg">
           <img class="h-40 sm:h-48 rounded w-full object-cover object-center mb-6" src={info.EventBanner} alt="content"/>
           <div className="flex gap-x-4 items-center justify-center sm:justify-between">
           <div className="">
