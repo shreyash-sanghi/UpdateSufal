@@ -685,7 +685,7 @@ const Home = () => {
 							loop: true,
 						}}
 					>
-						<CarouselContent className=" w-[23rem] md:w-[44rem] lg:w-full	 ml-1 md:ml-0 py-5">
+						<CarouselContent className=" w-[23rem] md:w-[35rem] lg:w-full	 ml-1 md:ml-0 py-5">
 							{ini_team.map((info)=>{
 								if(!info.tid) return null;
 								const instaid = info.InataId;
@@ -719,54 +719,7 @@ const Home = () => {
 									</>
 								)
 							})}
-							{/* <CarouselItem className="px-5 basic-0  md:basis-1/2 lg:basis-1/3">
-								<TeamCard
-									teamMemberName="Shailja Mam"
-									profession="Executive"
-									profileImage={team1}
-									socialLinks={[
-										{
-											name: 'Linkedin',
-											href: '#',
-											icon: <IoLogoLinkedin size={24} />,
-										},
-										{
-											name: 'Instagram',
-											href: '#',
-											icon: <IoLogoInstagram size={24} />,
-										},
-										{
-											name: 'Facebook',
-											href: '#',
-											icon: <BsFacebook size={24} />,
-										},
-									]}
-								/>
-							</CarouselItem>
-							<CarouselItem className="px-5 basic-0  md:basis-1/2 lg:basis-1/3">
-								<TeamCard
-									teamMemberName="Shailja Mam"
-									profession="Director"
-									profileImage={team2}
-									socialLinks={[
-										{
-											name: 'Linkedin',
-											href: '#',
-											icon: <IoLogoLinkedin size={24} />,
-										},
-										{
-											name: 'Instagram',
-											href: '#',
-											icon: <IoLogoInstagram size={24} />,
-										},
-										{
-											name: 'Facebook',
-											href: '#',
-											icon: <BsFacebook size={24} />,
-										},
-									]}
-								/>
-							</CarouselItem> */}
+							
 							
 						</CarouselContent>
 						<CarouselPrevious className="ml-[3.2rem] sm:ml-12 md:ml-[4rem]		 	md:-bottom-[2rem]" />

@@ -65,7 +65,7 @@ const Carousel2 = ({ deviceType }) => {
           </span>
         </h1>
       </main>
-      <div className="container mx-auto">
+      <div className="container sm:mx-auto">
       <Carousel
         swipeable={true}
         draggable={true}
@@ -84,7 +84,7 @@ const Carousel2 = ({ deviceType }) => {
         itemClass="carousel-item-padding-40-px"
       >
         {items.map((item, idx) => (
-          <div className='flex justify-center items-center'><div key={idx} className="flex flex-col items-center justify-center h-[36rem] w-[30rem] sm:w-72 sm:p-4">
+          <div className='flex justify-center items-center'><div key={idx} className="flex flex-col items-center justify-center h-[36rem] w-full sm:w-72 sm:p-4">
           <img src={item.image} alt={`carousel-img-${idx}`} className="h-full w-full objext-cover rounded-md" />
           <p className="mt-4 bg-pink-700 w-full text-gray-100  text-center mb-10 rounded-xl font-semibold py-1 text-md">{item.text}</p> {/* Adjusted margin-top */}
         </div></div>
