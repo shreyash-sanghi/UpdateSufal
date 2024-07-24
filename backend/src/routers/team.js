@@ -63,9 +63,9 @@ router.get("/get_volunteer_data",async(req,res)=>{
    router.post("/update_team_data/:id",async(req,res)=>{
       try {
         const id = req.params.id;
-        const {Name,Position,Gender,AchivementsInputFields,AwardsInputFields,Speciality,About,FBId,InstaId,Vision,Mission,Number,Linkdin} = req.body;
+        const {Name,Sequence,Position,Gender,AchivementsInputFields,AwardsInputFields,Speciality,About,FBId,InstaId,Vision,Mission,Number,Linkdin} = req.body;
            const result = await AddTeam.findByIdAndUpdate(id,{
-              Name,Position,Gender,AchivementsInputFields,AwardsInputFields,Speciality,About,FBId,InstaId,Vision,Mission,Number,Linkdin
+              Name,Sequence,Position,Gender,AchivementsInputFields,AwardsInputFields,Speciality,About,FBId,InstaId,Vision,Mission,Number,Linkdin
            });
          res.sendStatus(202);
       } catch (error) {
@@ -76,9 +76,9 @@ router.get("/get_volunteer_data",async(req,res)=>{
   router.post("/update_team_data_withProfile/:id",async(req,res)=>{
       try {
         const id = req.params.id;
-        const {Name,Position,Gender,AchivementsInputFields,AwardsInputFields,Speciality,About,FBId,InstaId,Vision,Mission,Number,ProfilImage,Linkdin} = req.body;
+        const {Name,Sequence,Position,Gender,AchivementsInputFields,AwardsInputFields,Speciality,About,FBId,InstaId,Vision,Mission,Number,ProfilImage,Linkdin} = req.body;
            const result = await AddTeam.findByIdAndUpdate(id,{
-              Name,Position,Gender,AchivementsInputFields,AwardsInputFields,Speciality,About,FBId,InstaId,Vision,Mission,Number,Linkdin,ProfilImage
+              Name,Sequence,Position,Gender,AchivementsInputFields,AwardsInputFields,Speciality,About,FBId,InstaId,Vision,Mission,Number,Linkdin,ProfilImage
            });
          res.sendStatus(202);
       } catch (error) {
