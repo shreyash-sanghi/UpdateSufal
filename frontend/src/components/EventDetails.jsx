@@ -158,7 +158,7 @@ getdata();
           </div>
           <div className="lg:max-w-lg  lg:w-full -mt-14 sm:-mt-0 md:w-1/2 w-5/6">
             <img
-              className="object-contain h-72 w-48 sm:h-[60%] sm:w-[40%] object-center rounded"
+              className="object-cover h-72 w-48 sm:h-[60%] sm:w-[40%] object-center rounded"
               alt="event-banner"
               src={initial.EventBanner}
             />
