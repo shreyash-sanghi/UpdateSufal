@@ -7,8 +7,9 @@ import {ref,uploadBytes,getStorage ,getDownloadURL,deleteObject} from "firebase/
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from "react-router-dom";
 const OurTeam = () => {
-
+const navigate = useNavigate();
   const [ini_team,final_team] = useState([{
     tid:"",
     ProfilImage:"",
@@ -96,6 +97,7 @@ const OurTeam = () => {
               </p>
               <div className="flex justify-start pt-2 space-x-4 align-center">
                 <button
+                onClick={()=>navigate(`/team_readMore/${info.tid}`)}
                   rel="noopener noreferrer"
                   className="py-1 rounded-md bg-pink-600 text-white px-6 text-xs hover:dark:text-violet-400"
                 >

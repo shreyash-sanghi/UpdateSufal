@@ -73,11 +73,11 @@ const VolunteerData = ()=>{
                                     <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 text-gray-100">{data.Number}</td>
                                     <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 text-gray-100">{data.Email}</td>
                                     <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 text-gray-100">{data.DOB}</td>
-                                    <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 text-gray-100">{data.WhyYouWantToJoin}</td>
+                                    <td class="sm:p-3 py-2 px-1 whitespace-normal border-b border-gray-200 dark:border-gray-800 text-gray-100">{data.WhyYouWantToJoin}</td>
                                     {/* <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 text-gray-100">{data.RegisterData.length}</td> */}
                                   <div className='flex flex-col'>
                       
-                                    <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800">
+                                    <td class="sm:p-3 py-2 px-1 dark:border-gray-800">
                                       <div class="flex items-center">
 
                                       </div>

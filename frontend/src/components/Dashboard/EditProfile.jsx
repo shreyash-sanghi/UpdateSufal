@@ -14,7 +14,7 @@ const MyTeam =()=>{
         Name:"",
         Position:"",
         Gender:"",
-        DOB:"",
+        Speciality:"",
         About:"",
         FBId:"",
         InstaId:"",
@@ -31,12 +31,14 @@ const MyTeam =()=>{
     const [profile,setProfile] = useState();
       
     const savedata = async(e)=>{
+        e.preventDefault();
         try {
             setLoading(true);
+            console.log(AchivementsInputFields)
             if(profile === undefined){
-                const {Name,Position,Gender,DOB,About,FBId,InstaId,Vision,Mission,Number, Linkdin} = initial;
+                const {Name,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission,Number, Linkdin} = initial;
                const result = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/update_team_data/${id}`,
-                {Name,Position,Gender,DOB,About,FBId,InstaId,Vision,Mission,Number, Linkdin
+                {AchivementsInputFields,AwardsInputFields,Name,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission,Number, Linkdin
 
                 }
                )            
@@ -45,16 +47,15 @@ const MyTeam =()=>{
                 const storage = getStorage();
                 const desertRef = ref(storage,`files/${initial.imageName}`);
                 await deleteObject(desertRef)
-      
 
-               const {Name,Position,Gender,DOB,About,FBId,InstaId,Vision,Mission,Number, Linkdin} = initial;
+               const {Name,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission,Number, Linkdin} = initial;
 
                const image = `${profile.name + v4()}`;
                const imgref = ref(storage,`files/${image}`);
                console.log(profile.name)
-               console.log(Name,Position,Gender,DOB,About,FBId,InstaId,Vision,Mission)
+               console.log(Name,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission)
               const result = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/update_team_data_withProfile/${id}`,
-               {Name,Position,Gender,DOB,About,FBId,InstaId,Vision,Mission,ProfilImage:image,Number, Linkdin}
+               {AchivementsInputFields,AwardsInputFields,Name,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission,ProfilImage:image,Number, Linkdin}
               );
               try {
                await uploadBytes(imgref,profile)
@@ -82,11 +83,13 @@ const MyTeam =()=>{
         }
      })
     }
-
+console.log(initial)
     const getdata = async()=>{
         try{
         const result = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/get_team_data_byid/${id}`);
           const response = result.data.result;
+          setAchivementsInputFields(response.Achivements)
+          setAwardsInputFields(response.Awards)
           const storage = getStorage();
           const imgref = ref(storage,`files/${response.ProfilImage}`);
           getDownloadURL(imgref).then((url) => { 
@@ -94,7 +97,7 @@ const MyTeam =()=>{
                   Name : response.Name,
                   Position : response.Position,
                   Gender : response.Gender,
-                  DOB : response.DOB,
+                  Speciality : response.Speciality,
                   About : response.About,
                   FBId : response.FBId,         
                   InstaId : response.InstaId,         
@@ -111,6 +114,45 @@ const MyTeam =()=>{
           toast(error);
         }
       }
+
+          //Achivements
+  const [AchivementsInputFields, setAchivementsInputFields] = useState([{ value: '' }]);
+
+  const AchivementsAddField = () => {
+    setAchivementsInputFields([...AchivementsInputFields, { value: '' }]);
+  };
+
+  const AchivementsInputChange = (index, event) => {
+    const values = [...AchivementsInputFields];
+    values[index].value = event.target.value;
+    setAchivementsInputFields(values);
+  };
+
+
+  const AchivementsRemoveField = (index) => {
+    const values = [...AchivementsInputFields];
+    values.splice(index, 1);
+    setAchivementsInputFields(values);
+  };
+     //Awards
+  const [AwardsInputFields, setAwardsInputFields] = useState([{ value: '' }]);
+
+  const AwardsAddField = () => {
+    setAwardsInputFields([...AwardsInputFields, { value: '' }]);
+  };
+
+  const AwardsInputChange = (index, event) => {
+    const values = [...AwardsInputFields];
+    values[index].value = event.target.value;
+    setAwardsInputFields(values);
+  };
+
+
+  const AwardsRemoveField = (index) => {
+    const values = [...AwardsInputFields];
+    values.splice(index, 1);
+    setAwardsInputFields(values);
+  };
 useEffect(()=>{
  getdata();
 },[])
@@ -125,7 +167,7 @@ useEffect(()=>{
             >
             {/* <!--  --> */}
             <div class=" flex flex-col justify-between w-full ">
-                <form onSubmit={savedata} method='POST'>
+                <div  method='POST'>
                     {/* <!-- Cover Image --> */}
                     <div
                         class="w-full rounded-sm bg-cover bg-center bg-no-repeat items-center">
@@ -227,10 +269,10 @@ useEffect(()=>{
                                 </select>
                         </div>
                         <div class="w-full">
-                            <h3 class="text-gray-300 mb-2">Date Of Birth</h3>
-                            <input type="date"
-                            value={initial.DOB}
-                            onChange={setdata} name='DOB'
+                            <h3 class="text-gray-300 mb-2">Speciality</h3>
+                            <input type="text"
+                            value={initial.Speciality}
+                            onChange={setdata} name='Speciality'
                                     class="text-grey p-2 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"/>
                         </div>
                     </div>
@@ -308,15 +350,90 @@ useEffect(()=>{
                                     placeholder="Last Name"/>
                         </div>
                     </div>
+                    <div className='flex lg:flex-row flex-col gap-5'>
+                    <div class="flex lg:w-1/2 flex-col sm:flex-col xs:flex-col gap-2 mt-5 ">
+                    
+                            <label for="" class="font-semibold text-gray-300">Achivements</label>
+                    <div class="flex flex-col  sm:flex-col xs:flex-col justify-center w-full">
+                            <div class="w-full  mb-4 mt-2">
+                                        {AchivementsInputFields.map((AchivementsInputField, index) => (
+        <div className="flex flex-col" key={index}>
+          <input
+          class="mt-2 p-2 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
+            type="text"
+            value={AchivementsInputField.value}
+            onChange={(event) => AchivementsInputChange(index, event)}
+          />
+           <button className="text-lg cursor-pointer  rounded-full h-fit font-bold" onClick={() => AchivementsRemoveField(index)}>
+           <svg class="w-6 h-6 text-red-600 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+  <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm7.707-3.707a1 1 0 0 0-1.414 1.414L10.586 12l-2.293 2.293a1 1 0 1 0 1.414 1.414L12 13.414l2.293 2.293a1 1 0 0 0 1.414-1.414L13.414 12l2.293-2.293a1 1 0 0 0-1.414-1.414L12 10.586 9.707 8.293Z" clip-rule="evenodd"/>
+</svg>
 
+           </button>
+        </div>
+      ))}
+                        </div>
+                        <div className="flex gap-3 items-center">
+
+                        <button className="flex justify-start  rounded-full text-lg font-bold" onClick={AchivementsAddField}>
+                        <svg class="w-6 h-6 text-gray-100 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+  <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4.243a1 1 0 1 0-2 0V11H7.757a1 1 0 1 0 0 2H11v3.243a1 1 0 1 0 2 0V13h3.243a1 1 0 1 0 0-2H13V7.757Z" clip-rule="evenodd"/>
+</svg>
+
+                            </button>
+
+                            <h1 className='text-white'>Add Achivements</h1>
+                            </div>
+                        </div>
+            
+
+                    </div>
+                    <div class="flex lg:w-1/2 flex-col sm:flex-col xs:flex-col gap-2 mt-5 ">
+                    
+                            <label for="" class="font-semibold text-gray-300">Awards</label>
+                    <div class="flex flex-col  sm:flex-col xs:flex-col justify-center w-full">
+                            <div class="w-full  mb-4 mt-2">
+                                        {AwardsInputFields.map((AwardsInputField, index) => (
+        <div className="flex flex-col" key={index}>
+          <input
+          class="mt-2 p-2 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
+            type="text"
+            value={AwardsInputField.value}
+            onChange={(event) => AwardsInputChange(index, event)}
+          />
+           <button className="text-lg cursor-pointer  rounded-full h-fit font-bold" onClick={() => AwardsRemoveField(index)}>
+           <svg class="w-6 h-6 text-red-600 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+  <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm7.707-3.707a1 1 0 0 0-1.414 1.414L10.586 12l-2.293 2.293a1 1 0 1 0 1.414 1.414L12 13.414l2.293 2.293a1 1 0 0 0 1.414-1.414L13.414 12l2.293-2.293a1 1 0 0 0-1.414-1.414L12 10.586 9.707 8.293Z" clip-rule="evenodd"/>
+</svg>
+
+           </button>
+        </div>
+      ))}
+                        </div>
+                        <div className="flex gap-3 items-center">
+
+                        <button className="flex justify-start  rounded-full text-lg font-bold" onClick={AwardsAddField}>
+                        <svg class="w-6 h-6 text-gray-100 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+  <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4.243a1 1 0 1 0-2 0V11H7.757a1 1 0 1 0 0 2H11v3.243a1 1 0 1 0 2 0V13h3.243a1 1 0 1 0 0-2H13V7.757Z" clip-rule="evenodd"/>
+</svg>
+
+                            </button>
+
+                            <h1 className='text-white'>Add Awards</h1>
+                            </div>
+                        </div>
+            
+
+                    </div>
+                    </div>
                     <div class="w-fit px-10 rounded-lg bg-blue-500 mt-4 text-white text-lg font-semibold">
-                        <button type="submit" class="w-full p-2">     {loading ? (
+                        <button onClick={savedata} type="submit" class="w-full p-2">     {loading ? (
                      <DotSpinner size={40} speed={0.9} color="white" className="flex justify-center m-auto" />
                   ) : (
                      "Submit"
                   )}</button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>

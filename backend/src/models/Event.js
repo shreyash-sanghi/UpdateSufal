@@ -12,7 +12,8 @@ const Events = new mongoose.Schema({
     EventBanner:{type:String,required:true},
     CurrentConform:{type:Boolean,required:true},
     PastConform:{type:Boolean,required:true},   
-    EventImage:[] 
+    EventImage:[] ,
+    ChiefGuest:[] 
 })
 
 
