@@ -243,7 +243,7 @@ const Events = () => {
                <div class="xl:w-1/4 md:w-1/2 p-4 ">
         <div class="bg-gradient-to-r pb-0 from-yellow-50 bg-pink-100 border border-gray-200 p-6 rounded-lg">
           <img class="h-40 sm:h-48 rounded w-full object-cover object-center mb-6" src={info.EventBanner} alt="content"/>
-          <div className="flex gap-x-4 items-center justify-center sm:justify-between">
+          <div className="flex flex-wrap gap-x-4 items-center justify-center sm:justify-between">
           <div className="">
           <h3 class="tracking-widest text-pink-600 text-sm mb-1 font-medium title-font">{info.EDate}</h3>
           <h2 class="text-lg text-gray-900 font-medium title-font mb-4">{info.EventName}</h2>
