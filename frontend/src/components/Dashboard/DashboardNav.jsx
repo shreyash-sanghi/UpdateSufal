@@ -1,7 +1,7 @@
-import {React,useState} from 'react'
+import {React,useEffect,useState} from 'react'
 import { Link ,NavLink, useNavigate} from 'react-router-dom';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
-
+import axios from 'axios';
 const DashboardNav = ()=>{
   const navigate = useNavigate();
   const [nav, setNav] = useState(false);
@@ -14,6 +14,10 @@ const DashboardNav = ()=>{
     localStorage.clear("token");
     navigate("/");
   }
+  useEffect(()=>{
+    const token = localStorage.getItem("token");
+    axios.defaults.headers.common["Authorization"] = token;
+  },[])
     return(
         <>
             <div className="p-3 space-y-2 hidden md:block min-h-screen border-white    bg-gray-900 text-white  w-[16%] ">

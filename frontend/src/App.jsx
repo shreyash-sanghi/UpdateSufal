@@ -28,6 +28,7 @@ import ViewPastEvent from './components/Dashboard/ViewPastEvent.jsx';
 import VolunteerData from './components/Dashboard/VolunteerData.jsx';
 import EventDetails from './components/EventDetails.jsx';
 import PriyaMam from './page/PriyaMam.jsx';
+import TeamReadMore from './components/TeamReadMore.jsx';
 const App = () => {
 	const {t} = useTranslation();
 	return ( 
@@ -110,6 +111,7 @@ export const AppRouter = () => {
 		<Route exact path="/edit_profile/:id" Component={EditProfile}></Route>
 		<Route exact path="/view_register/:Eid" Component={ViewRegister}></Route>
 		<Route exact path="/volunteer_with_us" Component={VolunteerData}></Route>
+		<Route exact path="/team_readMore/:id" Component={TeamReadMore}></Route>
 		</Routes>
 	);
 };
