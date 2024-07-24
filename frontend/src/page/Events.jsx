@@ -16,6 +16,7 @@ import { useNavigate } from 'react-router-dom';
 const Events = () => {
   const [api, setApi] = useState();
   const navigate = useNavigate();
+  const [CountCurrentEvent,SetCountCurrentEvent] = useState(0);
   const [initial, final] = useState([{
     eid: "",
     EventName: "",
@@ -74,12 +75,14 @@ const Events = () => {
       const result = data.data.result;
       // console.log(result);
       result.map(async (info) => {
+        console.log(info.CurrentConform)
         let EventDate = info.EDate;
         const isDate1AfterDate = compareDates(todaydate, EventDate);
 		const storage = getStorage();
         const imgref = ref(storage,`files/${info.EventBanner}`);
         getDownloadURL(imgref).then(async(url) => {
         if (isDate1AfterDate && info.PastConform == false) {
+          
         //   await axios.post(`https://sufalbackend-shreyash-sanghis-projects.vercel.app/send_to_past_event/${info._id}`);
           await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/send_to_past_event/${info._id}`);
           final((about) => [
@@ -101,6 +104,9 @@ const Events = () => {
             }
           ])
         } else {
+          if(info.CurrentConform){
+            SetCountCurrentEvent = CountCurrentEvent +1;
+          }
           final((about) => [
             ...about, {
               eid: info._id,
@@ -154,13 +160,14 @@ const Events = () => {
   //     alert(error);
   //   }
   // })
+  console.log(CountCurrentEvent)
   useEffect(()=>{
    getdata();
   },[])
   return (
     <>
     <Header></Header>
-
+{(CountCurrentEvent>0)?(<>
     {(initial.length>1)?(<>
 			<div
 				id="upcoming-events"
@@ -215,6 +222,7 @@ const Events = () => {
 				</Carousel>
 			</div>
 			</>):(<></>)}
+      </>):(<></>)}
     <section class="">
   <div class="container px-2 py-10 md:py-24 mx-auto">
     <div class="flex flex-wrap w-full mb-20">

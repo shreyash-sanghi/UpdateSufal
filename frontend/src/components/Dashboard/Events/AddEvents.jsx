@@ -32,6 +32,25 @@ const AddEvent = () => {
     Duration: "",
     Fee: "",
   })
+  //Chief Guests
+  const [inputFields, setInputFields] = useState([{ value: '' }]);
+
+  const handleAddField = () => {
+    setInputFields([...inputFields, { value: '' }]);
+  };
+
+  const handleInputChange = (index, event) => {
+    const values = [...inputFields];
+    values[index].value = event.target.value;
+    setInputFields(values);
+  };
+
+
+  const handleRemoveField = (index) => {
+    const values = [...inputFields];
+    values.splice(index, 1);
+    setInputFields(values);
+  };
 
   const [initialAddEventfile, finalAddEventfile] = useState();
   const [limiterror, setlimitError] = useState("");
@@ -63,6 +82,7 @@ const AddEvent = () => {
     // data.append("cloud_name", cloudname)
 
     //Date
+
     let EDate = initialAddEvent.EDate;
     let todaydate = new Date();
     const months = ["January", "February", "March", "April", "May",
@@ -93,6 +113,7 @@ const AddEvent = () => {
         setLoading(false);
         return;
       }
+      console.log("Hello")
       // try{
       //   const res = await axios.post(`https://api.cloudinary.com/v1_1/${cloudname}/image/upload`, data);
       // }catch(error){
@@ -101,12 +122,12 @@ const AddEvent = () => {
       const storage = getStorage();
       const image = `${initialAddEventfile.name + v4()}`;
      const imgref = ref(storage,`files/${image}`);
-     
+     console.log(inputFields)
       // console.log(res);
       // const public_id = res.data.public_id;
       // const EventBannerurl = res.data.url;
       const response = await axios.post("https://backendsufal-shreyash-sanghis-projects.vercel.app/uplodeEventData"
-        , { Organization,Duration,Fee,EventName, Discreption, Place, EDate: date, Time, EventBanner: image, CurrentConform, PastConform })
+        , {ChiefGuest:inputFields, Organization,Duration,Fee,EventName, Discreption, Place, EDate: date, Time, EventBanner: image, CurrentConform, PastConform })
         try {
           uploadBytes(imgref,initialAddEventfile)
         } catch (error) {
@@ -143,10 +164,12 @@ const AddEvent = () => {
           <h1 className="text-3xl mt-5 justify-center flex text-gray-400 font-medium">
             Add An Event
           </h1>
-          <div className="flex items-center ">
-            <form
-              className="px-8 py-16 event-form text-lg w-full lg:w-[65%]  text-white"
-              onSubmit={EventSave}
+          <div className="flex flex-col-reverse lg:flex-row ">
+         <div className="px-8 py-16 event-form text-lg w-full lg:w-[65%]  text-white" >
+           
+            <div
+              
+              
               ref={form}
               id="form"
             >
@@ -412,40 +435,47 @@ const AddEvent = () => {
                 </div>
 
               </div>
+              <div className="my-5 md:my-10 gap-5">
+              <label
+                  for="floating_date"
+                  className="peer-focus:font-medium block mb-5   "
+                >
+               Chief Guests
+                </label>
+                <div className="flex flex-col gap-5">
+<div className="flex flex-wrap gap-5" >
+      {inputFields.map((inputField, index) => (
+        <div className="flex flex-col" key={index}>
+          <input
+          className="bg-transparent border-2 border-white"
+            type="text"
+            value={inputField.value}
+            onChange={(event) => handleInputChange(index, event)}
+          />
+           <button className="text-lg cursor-pointer w-fit border-2 bg-red-600 px-3 mt-2 rounded-full h-fit font-bold" onClick={() => handleRemoveField(index)}>-</button>
+        </div>
+      ))}
+      </div>
+      <div className="flex gap-3 items-center">
+      <button className="flex justify-start border-2 w-fit p-2 rounded-full px-4 text-lg font-bold" onClick={handleAddField}>+</button>
+      <h1>Add Chief Guest</h1>
+      </div>
+    </div>
+              </div>
+          
               <div className='flex justify-between'>
               {loading ? (
                      <DotSpinner size={40} speed={0.9} color="white" className="flex justify-center m-auto" />
                   ) : (
-                    <input type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">     
+                    <input onClick={EventSave} type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">     
                 </input>
                   )}
               </div>
-            </form>
-
-            {/* <div class="hidden lg:block w-[30%] h-fit ml-5  border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-              <a href="#">
-                {(initialAddEventfile === undefined) ? (<>
-                  <img class="rounded-t-lg object-cover w-full h-[35vh]" src="https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="" />
-                </>) : (<>
-                  <img class="rounded-t-lg object-cover w-full h-[35vh]" src={URL.createObjectURL(initialAddEventfile)} alt="" />
-                </>)}
-              </a>
-              <div class="p-5">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-100 dark:text-white">{initialAddEvent.EventName}</h5>
-                <div className="flex font-semibold items-center gap-5 text-white my-3">
-                  <h6>On - {initialAddEvent.EDate}</h6>
-                  <h6>Time -{initialAddEvent.Time}  </h6>
-                </div>
-                <h3 className="flex font-semibold text-white my-3">Vanue - {initialAddEvent.Place} </h3>
-                <p class="mb-3 font-normal text-gray-100 dark:text-gray-400">{initialAddEvent.Discreption}</p>
-                <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                  Register Now
-
-                </a>
+            </div>
+        
               </div>
-            </div> */}
 
-<div className="px-5 basic-0 mx-auto  md:basis-1/2 lg:basis-1/3">
+<div className="px-5 mt-5 basic-0 mx-auto lg:mt-24 md:basis-1/2 lg:basis-1/3">
 {(initialAddEventfile === undefined) ? (<>
   <EventCard
   eventTitle={initialAddEvent.EventName}
