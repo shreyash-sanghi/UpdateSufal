@@ -37,7 +37,7 @@ const TeamCard = ({
 			<div className="w-full h-auto flex items-center justify-center mt-4">
 				<img
 					src={profileImage}
-					alt={teamMemberName}
+				
 					className="w-full rounded-xl px-2 h-60 object-cover"
 					draggable="false"
 				/>
@@ -334,8 +334,8 @@ const PriyaMam = () => {
   <div class="container px-5 py-24 mx-auto">
     <div class="flex flex-wrap justify-center -mx-4 -mb-10 text-center">
       <div class="sm:w-1/2 mb-10 px-4">
-        <div class="rounded-lg h-auto lg:h-64 overflow-hidden">
-          <img alt="content" class="object-cover object-center h-full w-full" src={triathlete}/>
+        <div class="rounded-lg sm:h-[36rem] overflow-hidden">
+          <img alt="content" class="object-cover sm:object-contain sm:h- object-center h-full w-full" src={triathlete}/>
         </div>
       
         <h2 class="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">Ironman Triathlete Award</h2>

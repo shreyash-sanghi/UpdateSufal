@@ -29,6 +29,7 @@ import VolunteerData from './components/Dashboard/VolunteerData.jsx';
 import EventDetails from './components/EventDetails.jsx';
 import PriyaMam from './page/PriyaMam.jsx';
 import TeamReadMore from './components/TeamReadMore.jsx';
+import VideoGallery from './page/VideoGallery.jsx';
 const App = () => {
 	const {t} = useTranslation();
 	return ( 
@@ -80,6 +81,10 @@ export const AppRouter = () => {
 			<Route
 				path="/contact-us"
 				element={<ContactUs />}
+			/>
+			<Route
+				path="/video-gallery"
+				element={<VideoGallery />}
 			/>
 			<Route
 				path="/our-team"

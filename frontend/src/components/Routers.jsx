@@ -8,11 +8,13 @@ import AddEvent from "./Dashboard/Events/AddEvents";
 import Event from "./Dashboard/Events/Event";
 import CreateRegisterForm from "./CreateRegisterForm";
 import PriyaMam from "../page/PriyaMam";
+import VideoGallery from "../page/VideoGallery";
 const Routers = ()=>{
     return(
         <>
       <Routes>
-        <Route exact path="/" Component={Home}></Route>
+      <Route exact path="/" Component={Home}></Route>
+      <Route exact path="/video-gallery" Component={VideoGallery}></Route>
         <Route exact path="/signin" Component={SignIn}></Route>
         <Route exact path="/signup" Component={SignUp}></Route>
         <Route exact path="/dashboard" Component={Dashboard}></Route>
