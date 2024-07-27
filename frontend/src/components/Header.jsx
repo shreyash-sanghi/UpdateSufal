@@ -29,7 +29,7 @@ const Header = () => {
 		},
 		{
 			title: 'Gallery',
-			path: '/video-gallery',
+			path: '/photo-gallery',
 		},
 
 		{

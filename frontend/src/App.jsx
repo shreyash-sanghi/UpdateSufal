@@ -30,6 +30,7 @@ import EventDetails from './components/EventDetails.jsx';
 import PriyaMam from './page/PriyaMam.jsx';
 import TeamReadMore from './components/TeamReadMore.jsx';
 import VideoGallery from './page/VideoGallery.jsx';
+import PhotoGallery from './page/PhotoGallery.jsx';
 const App = () => {
 	const {t} = useTranslation();
 	return ( 
@@ -81,6 +82,10 @@ export const AppRouter = () => {
 			<Route
 				path="/contact-us"
 				element={<ContactUs />}
+			/>
+			<Route
+				path="/photo-gallery"
+				element={<PhotoGallery />}
 			/>
 			<Route
 				path="/video-gallery"
