@@ -22,7 +22,8 @@ const MyTeam =()=>{
         InstaId:"",
         Vision:"",
         Number:"",
-        Linkdin:""
+        Linkdin:"",
+        Sequence:""
     })
     const [profile,setProfile] = useState();
 
@@ -76,11 +77,11 @@ const MyTeam =()=>{
             const storage = getStorage();
             const image = `${profile.name + v4()}`;
            const imgref = ref(storage,`files/${image}`);
-            const {Name,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission,Number,Linkdin} = initial;
+            const {Name,Sequence,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission,Number,Linkdin} = initial;
             // console.log(Name,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission)
            const result = await axios.post("https://backendsufal-shreyash-sanghis-projects.vercel.app/save_team_data",
             {Achivements:AchivementsInputFields,
-                Awards:AwardsInputFields,Name,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission,ProfilImage:image,Number,Linkdin}
+                Sequence,Awards:AwardsInputFields,Name,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission,ProfilImage:image,Number,Linkdin}
            );
            try {
             uploadBytes(imgref,profile)
@@ -252,12 +253,12 @@ const MyTeam =()=>{
                                     placeholder="1234567890"/>
                         </div>
                         <div class="w-full  mb-4 lg:mt-6">
-                            <label for="" class=" mb-2  font-semibold text-gray-300">Linkdin Id</label>
-                            <input type="text"
-                            name='Linkdin'
+                            <label for="" class=" mb-2  font-semibold text-gray-300">Sequence</label>
+                            <input type="number"
+                            name='Sequence'
                             onChange={setdata}
                                     class="mt-2 p-2 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
-                                    placeholder="Linkdin"/>
+                                    placeholder="Sequence"/>
                         </div>
                     </div>
                     <div class="flex lg:flex-row md:flex-col items-center sm:flex-col xs:flex-col gap-2 justify-center w-full">
@@ -271,7 +272,7 @@ const MyTeam =()=>{
                                     class="mt-2 p-2 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
                                     placeholder="Insta Link"/>
                         </div>
-                        <div class="w-full  ">
+                        <div class="w-full mb-4 ">
                             <label for="" class=" mb-2  font-semibold text-gray-300">Facebook Link</label>
                             <input type="text"
                                  onChange={setdata}
@@ -279,13 +280,22 @@ const MyTeam =()=>{
                                     class="mt-2 p-2 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
                                     placeholder="Facebook Link"/>
                         </div>
+                        <div class="w-full ">
+                            <label for="" class=" mb-2  font-semibold text-gray-300">Linkdin Id Link</label>
+                            <input type="text"
+                                 onChange={setdata}
+                                 name='Linkdin'
+                                    class="mt-2 p-2 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
+                                    placeholder="Linkdin Id Link"/>
+                        </div>
+             
                         </div>
                         <div class="flex flex-col mt-2 sm:flex-col xs:flex-col gap-2  w-full">
                         <label for="" class="  font-semibold text-gray-300">About </label>
                             <textarea type="text"
                             onChange={setdata}
                             name='About'
-                                    class="mt-2 p-1 h-36 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
+                                    class="mt-2 p-1 h-52 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
                                     placeholder="Last Name"/>
                         </div>
                     </div>

@@ -15,6 +15,7 @@ const Team = new mongoose.Schema({
     ProfilImage:{type:String},
     Number:{type:String,required:true},
     Linkdin:{type:String},
+    Sequence:{type:Number},
 })
 
 const Myteam = mongoose.model("Myteam",Team);  

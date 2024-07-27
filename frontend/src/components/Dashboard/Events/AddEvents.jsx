@@ -66,8 +66,8 @@ const AddEvent = () => {
 
     // Count words in description
     const wordCount = value.trim().split(/\s+/).length;
-    if (value.length > 200) {
-      setlimitError("Description should be within 200 characters.");
+    if (value.length > 500) {
+      setlimitError("Description should be within 500 characters.");
     } else {
       setlimitError("");
     }
@@ -410,7 +410,7 @@ const AddEvent = () => {
                       for="floating_password"
                       className="peer-focus:font-medium   hidden md:block absolute  duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                     >
-                      Event Description (max 200 characters)
+                      Event Description (max 500 characters)
                     </label>
                     {/* {console.log(URL.createObjectURL(initialAddEventfile))} */}
                     {limiterror && (

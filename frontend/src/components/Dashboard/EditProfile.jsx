@@ -24,7 +24,8 @@ const MyTeam =()=>{
         image:"",
         imageName:"",
         Number:"",
-        Linkdin:""
+        Linkdin:"",
+        Sequence:""
     })
     const [loading, setLoading] = useState(false);
 
@@ -34,11 +35,10 @@ const MyTeam =()=>{
         e.preventDefault();
         try {
             setLoading(true);
-            console.log(AchivementsInputFields)
             if(profile === undefined){
-                const {Name,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission,Number, Linkdin} = initial;
+                const {Name,Sequence,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission,Number, Linkdin} = initial;
                const result = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/update_team_data/${id}`,
-                {AchivementsInputFields,AwardsInputFields,Name,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission,Number, Linkdin
+                {Sequence,AchivementsInputFields,AwardsInputFields,Name,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission,Number, Linkdin
 
                 }
                )            
@@ -48,14 +48,14 @@ const MyTeam =()=>{
                 const desertRef = ref(storage,`files/${initial.imageName}`);
                 await deleteObject(desertRef)
 
-               const {Name,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission,Number, Linkdin} = initial;
+               const {Name,Sequence,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission,Number, Linkdin} = initial;
 
                const image = `${profile.name + v4()}`;
                const imgref = ref(storage,`files/${image}`);
                console.log(profile.name)
                console.log(Name,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission)
               const result = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/update_team_data_withProfile/${id}`,
-               {AchivementsInputFields,AwardsInputFields,Name,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission,ProfilImage:image,Number, Linkdin}
+               {Sequence,AchivementsInputFields,AwardsInputFields,Name,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission,ProfilImage:image,Number, Linkdin}
               );
               try {
                await uploadBytes(imgref,profile)
@@ -108,6 +108,7 @@ console.log(initial)
                   imageName : response.ProfilImage,         
                   Number : response.Number,         
                   Linkdin : response.Linkdin,         
+                  Sequence : response.Sequence,         
           })
         })
         }catch(error){
@@ -309,13 +310,13 @@ useEffect(()=>{
                                     placeholder="Number"/>
                         </div>
                         <div class="w-full  mb-4 lg:mt-6">
-                            <label for="" class=" mb-2  font-semibold text-gray-300">Linkdin</label>
+                            <label for="" class=" mb-2  font-semibold text-gray-300">Sequence</label>
                             <input type="text"
-                            name='Linkdin'
-                            value={initial.Linkdin}
+                            name='Sequence'
+                            value={initial.Sequence}
                             onChange={setdata}
                                     class="mt-2 p-2 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
-                                    placeholder="Linkdin"/>
+                                    placeholder="Sequence"/>
                         </div>
                     </div>
                     <div class="flex lg:flex-row md:flex-col items-center sm:flex-col xs:flex-col gap-2 justify-center w-full">
@@ -339,6 +340,15 @@ useEffect(()=>{
                                     class="mt-2 p-2 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
                                     placeholder="Facebook Link"/>
                         </div>
+                        <div class="w-full  ">
+                            <label for="" class=" mb-2  font-semibold text-gray-300">Linkdin Id</label>
+                            <input type="text"
+                                 onChange={setdata}
+                                 name='Linkdin'
+                                 value={initial.Linkdin}
+                                    class="mt-2 p-2 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
+                                    placeholder="Linkdin Id"/>
+                        </div>
                         </div>
                         <div class="flex flex-col mt-2 sm:flex-col xs:flex-col gap-2  w-full">
                         <label for="" class="  font-semibold text-gray-300">About </label>
@@ -346,7 +356,7 @@ useEffect(()=>{
                             value={initial.About}
                             onChange={setdata}
                             name='About'
-                                    class="mt-2 p-1 h-36 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
+                                    class="mt-2 p-1 h-52 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
                                     placeholder="Last Name"/>
                         </div>
                     </div>

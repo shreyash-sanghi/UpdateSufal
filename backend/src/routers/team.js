@@ -6,9 +6,9 @@ const cloudinary = require("cloudinary");
 
 router.post("/save_team_data",async(req,res)=>{
     try {
-       const {Name,Position,Gender,Achivements,Awards,Speciality,About,FBId,InstaId,Vision,Mission,ProfilImage,Number,Linkdin} = req.body;
+       const {Name,Sequence,Position,Gender,Achivements,Awards,Speciality,About,FBId,InstaId,Vision,Mission,ProfilImage,Number,Linkdin} = req.body;
        const result = await AddTeam.create({
-         Name,Position,Gender,Achivements,Awards,Speciality,About,FBId,InstaId,Vision,Mission,ProfilImage,Number,Linkdin
+         Sequence, Name,Position,Gender,Achivements,Awards,Speciality,About,FBId,InstaId,Vision,Mission,ProfilImage,Number,Linkdin
        })
        res.sendStatus(202);
     } catch (error) {
@@ -32,7 +32,7 @@ router.post("/save_volunteer_data",async(req,res)=>{
 
 router.get("/get_team_data",async(req,res)=>{
     try {
-       const result = await AddTeam.find().sort({ Name: 1 });
+       const result = await AddTeam.find().sort({ Sequence: 1 });
        res.status(202).json({result});
     } catch (error) {
        console.log(error);
@@ -63,9 +63,9 @@ router.get("/get_volunteer_data",async(req,res)=>{
    router.post("/update_team_data/:id",async(req,res)=>{
       try {
         const id = req.params.id;
-        const {Name,Position,Gender,AchivementsInputFields,AwardsInputFields,Speciality,About,FBId,InstaId,Vision,Mission,Number,Linkdin} = req.body;
+        const {Name,Sequence,Position,Gender,AchivementsInputFields,AwardsInputFields,Speciality,About,FBId,InstaId,Vision,Mission,Number,Linkdin} = req.body;
            const result = await AddTeam.findByIdAndUpdate(id,{
-              Name,Position,Gender,AchivementsInputFields,AwardsInputFields,Speciality,About,FBId,InstaId,Vision,Mission,Number,Linkdin
+              Name,Sequence,Position,Gender,AchivementsInputFields,AwardsInputFields,Speciality,About,FBId,InstaId,Vision,Mission,Number,Linkdin
            });
          res.sendStatus(202);
       } catch (error) {
@@ -76,9 +76,9 @@ router.get("/get_volunteer_data",async(req,res)=>{
   router.post("/update_team_data_withProfile/:id",async(req,res)=>{
       try {
         const id = req.params.id;
-        const {Name,Position,Gender,AchivementsInputFields,AwardsInputFields,Speciality,About,FBId,InstaId,Vision,Mission,Number,ProfilImage,Linkdin} = req.body;
+        const {Name,Sequence,Position,Gender,AchivementsInputFields,AwardsInputFields,Speciality,About,FBId,InstaId,Vision,Mission,Number,ProfilImage,Linkdin} = req.body;
            const result = await AddTeam.findByIdAndUpdate(id,{
-              Name,Position,Gender,AchivementsInputFields,AwardsInputFields,Speciality,About,FBId,InstaId,Vision,Mission,Number,Linkdin,ProfilImage
+              Name,Sequence,Position,Gender,AchivementsInputFields,AwardsInputFields,Speciality,About,FBId,InstaId,Vision,Mission,Number,Linkdin,ProfilImage
            });
          res.sendStatus(202);
       } catch (error) {
