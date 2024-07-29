@@ -67,7 +67,7 @@ Video
             <div class="relative bg-white py-6 px-6 rounded-3xl w-80 border border-gray-100 my-4 shadow-xl">
             <div class=" text-white flex items-center absolute rounded-full py-4 px-4 shadow-xl bg-pink-500 left-4 -top-6">
                 
-            <img className='size-8' src={info.Videoimage} alt="" />
+            <img className='size-10 rounded-full' src={info.Videoimage} alt="" />
             </div>
             <div class="mt-8">
                 <p class="text-base  font-semibold my-2">{info.AboutVideo}</p>
