@@ -25,7 +25,7 @@ const SignIn = ()=>{
         e.preventDefault();
     try {
         const {Email,Password} = login_data;
-        const result = await axios.post(`${import.meta.env.VITE_Backend_URL}/sign_in`,{
+        const result = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/sign_in`,{
             Email,Password
         });
         const token = result.data.token;

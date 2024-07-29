@@ -22,7 +22,7 @@ const [initila,final] = useState([
 ])
 const getdata = async()=>{
   try{
-  const result = await axios.get(`${import.meta.env.VITE_Backend_URL}/get_team_data`);
+  const result = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/get_team_data`);
     const data = result.data.result;
     data.map((response)=>{
       const storage = getStorage();
@@ -111,7 +111,7 @@ getdata();
                                             const res = confirm("You have confirm to delete...");
                                             if (res) {
                                                 try {
-                                                    const response = await axios.delete(`${import.meta.env.VITE_Backend_URL}/delete_team_member/${data.tid}`);
+                                                    const response = await axios.delete(`https://backendsufal-shreyash-sanghis-projects.vercel.app/delete_team_member/${data.tid}`);
                                                     const storage = getStorage();
                                                     const desertRef = ref(storage,`files/${data.ImageName}`);
                                                    await deleteObject(desertRef)

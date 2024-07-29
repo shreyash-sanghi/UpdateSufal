@@ -71,7 +71,7 @@ const Events = () => {
     }
     todaydate = `${curdate}/${month}/${curyear}`;
     try {
-      const data = await axios.get(`${import.meta.env.VITE_Backend_URL}/get_current_event_data`);
+      const data = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/get_current_event_data`);
       const result = data.data.result;
       // console.log(result);
       result.map(async (info) => {
@@ -84,7 +84,7 @@ const Events = () => {
         if (isDate1AfterDate && info.PastConform == false) {
           
         //   await axios.post(`https://sufalbackend-shreyash-sanghis-projects.vercel.app/send_to_past_event/${info._id}`);
-          await axios.post(`${import.meta.env.VITE_Backend_URL}/send_to_past_event/${info._id}`);
+          await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/send_to_past_event/${info._id}`);
           final((about) => [
             ...about, {
               eid: info._id,
@@ -136,7 +136,7 @@ const Events = () => {
   }
   // const getdata = (async()=>{
   //   try {
-  //     const result = await axios.get("${import.meta.env.VITE_Backend_URL}/get_past_event_data");
+  //     const result = await axios.get("https://backendsufal-shreyash-sanghis-projects.vercel.app/get_past_event_data");
   //     const response = result.data.result;
   //     response.map((info)=>{
   //       const storage = getStorage();

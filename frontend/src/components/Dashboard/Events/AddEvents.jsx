@@ -126,7 +126,7 @@ const AddEvent = () => {
       // console.log(res);
       // const public_id = res.data.public_id;
       // const EventBannerurl = res.data.url;
-      const response = await axios.post(`${import.meta.env.VITE_Backend_URL}/uplodeEventData`
+      const response = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/uplodeEventData`
         , {ChiefGuest:inputFields, Organization,Duration,Fee,EventName, Discreption, Place, EDate: date, Time, EventBanner: image, CurrentConform, PastConform })
         try {
           uploadBytes(imgref,initialAddEventfile)

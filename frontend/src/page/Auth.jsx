@@ -50,7 +50,7 @@ const Auth = () => {
         setLoading(true)
         try {
             const { Email, Password, Name } = data;
-            const result = await axios.post(`${import.meta.env.VITE_Backend_URL}/sign_up`, { Email, Password, Name });
+            const result = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/sign_up`, { Email, Password, Name });
             const token = result.data.token;
             const OwnerEmail = result.data.OwnerEmail;
             axios.defaults.headers.common["Authorization"] = token;
@@ -73,7 +73,7 @@ const Auth = () => {
         setLoading(true)
         try {
             const { Email, Password } = loginData;
-            const result = await axios.post(`${import.meta.env.VITE_Backend_URL}/sign_in`, { Email, Password });
+            const result = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/sign_in`, { Email, Password });
             const OwnerEmail = result.data.OwnerEmail;
             const token = result.data.token;
             axios.defaults.headers.common["Authorization"] = token;

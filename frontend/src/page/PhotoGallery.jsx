@@ -26,7 +26,7 @@ const PhotoGallery = () => {
 
       const getMyPhotos = async()=>{
         try {
-          const result = await axios.get(`${import.meta.env.VITE_Backend_URL}/get_my_photo`);
+          const result = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/get_my_photo`);
 
          if(result.data.response != null){
           const photos = result.data.response.Photo;

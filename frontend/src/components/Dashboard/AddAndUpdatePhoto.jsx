@@ -30,7 +30,7 @@
           uploadBytes(imgref,info[i])
           arr.push(image);
         }
-        const result = await axios.post(`${import.meta.env.VITE_Backend_URL}/uplode_photo`,
+        const result = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/uplode_photo`,
         { arr}
         )
         toast("Success...");
@@ -78,7 +78,7 @@
 
         const getMyPhotos = async()=>{
           try {
-            const result = await axios.get(`${import.meta.env.VITE_Backend_URL}/get_my_photo`);
+            const result = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/get_my_photo`);
            if(result.data.response != null){
             const photos = result.data.response.Photo;
             const photoData = await Promise.all(
@@ -208,7 +208,7 @@
                resultArray.map((res)=>{
                 finalResult.push(res.ImageId);
                })
-                const response = await axios.post(`${import.meta.env.VITE_Backend_URL}/delete_my_photo`,{
+                const response = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/delete_my_photo`,{
                  resultArray:finalResult
                 })
                 const storage = getStorage();

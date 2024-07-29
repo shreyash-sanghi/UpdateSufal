@@ -37,7 +37,7 @@ const MyTeam =()=>{
             setLoading(true);
             if(profile === undefined){
                 const {Name,Sequence,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission,Number, Linkdin} = initial;
-               const result = await axios.post(`${import.meta.env.VITE_Backend_URL}/update_team_data/${id}`,
+               const result = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/update_team_data/${id}`,
                 {Sequence,AchivementsInputFields,AwardsInputFields,Name,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission,Number, Linkdin
 
                 }
@@ -54,7 +54,7 @@ const MyTeam =()=>{
                const imgref = ref(storage,`files/${image}`);
                console.log(profile.name)
                console.log(Name,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission)
-              const result = await axios.post(`${import.meta.env.VITE_Backend_URL}/update_team_data_withProfile/${id}`,
+              const result = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/update_team_data_withProfile/${id}`,
                {Sequence,AchivementsInputFields,AwardsInputFields,Name,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission,ProfilImage:image,Number, Linkdin}
               );
               try {
@@ -86,7 +86,7 @@ const MyTeam =()=>{
 console.log(initial)
     const getdata = async()=>{
         try{
-        const result = await axios.get(`${import.meta.env.VITE_Backend_URL}/get_team_data_byid/${id}`);
+        const result = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/get_team_data_byid/${id}`);
           const response = result.data.result;
           setAchivementsInputFields(response.Achivements)
           setAwardsInputFields(response.Awards)

@@ -26,7 +26,7 @@ const ViewPastEvent = ()=>{
   const [EventImageName,setEventImageName] = useState([]);
   const getdata = async () => {
     try {
-      const data = await axios.get(`${import.meta.env.VITE_Backend_URL}/get_past_event_data_byId/${eid}`);
+      const data = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/get_past_event_data_byId/${eid}`);
       const result = data.data.result;
         const storage = getStorage();
         const imgref = ref(storage,`files/${result.EventBanner}`);

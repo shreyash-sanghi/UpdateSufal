@@ -30,7 +30,7 @@ const UplodeMultipleImage  = ()=>{
         uploadBytes(imgref,info[i])
         arr.push(image);
       }
-      const result = await axios.post(`${import.meta.env.VITE_Backend_URL}/uplode_event_image/${eid}`,
+      const result = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/uplode_event_image/${eid}`,
        { arr}
       )
       toast("Success...");

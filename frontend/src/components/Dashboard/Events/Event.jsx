@@ -64,7 +64,7 @@ const CurrentEvent = () => {
     }
     todaydate = `${curdate}/${month}/${curyear}`;
     try {
-      const data = await axios.get(`${import.meta.env.VITE_Backend_URL}/get_current_event_data`);
+      const data = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/get_current_event_data`);
       const result = data.data.result;
       // console.log(result);
       result.map(async (info) => {
@@ -76,7 +76,7 @@ const CurrentEvent = () => {
         getDownloadURL(imgref).then(async(url) => {
           // conosle.log(url)
         if (isDate1AfterDate && info.PastConform == false) {
-          await axios.post(`${import.meta.env.VITE_Backend_URL}/send_to_past_event/${info._id}`);
+          await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/send_to_past_event/${info._id}`);
      
           final((about) => [
             ...about, {
@@ -172,7 +172,7 @@ const CurrentEvent = () => {
                                         if (res) {
                                           try {
                 
-                                            const response = await axios.post(`${import.meta.env.VITE_Backend_URL}/send_to_past_event/${data.eid}`);
+                                            const response = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/send_to_past_event/${data.eid}`);
                                             // getdata();
                                             final((info) =>
                                               info.filter((about) => about.eid != data.eid)
@@ -234,7 +234,7 @@ const CurrentEvent = () => {
                                             const res = confirm("You have confirm to delete all registration...");
                                             if (res) {
                                                 try {
-                                                    const response = await axios.delete(`${import.meta.env.VITE_Backend_URL}/delete_all_registration/${data.eid}`);
+                                                    const response = await axios.delete(`https://backendsufal-shreyash-sanghis-projects.vercel.app/delete_all_registration/${data.eid}`);
                                                     final((info) =>
                                                         info.filter((about) => about.eid != data.eid)
                                                     );
@@ -310,7 +310,7 @@ const CurrentEvent = () => {
                                                        await deleteObject(desertRef)
                                                         })}
                                 
-                                                          const response = await axios.delete(`${import.meta.env.VITE_Backend_URL}/delete_event/${data.eid}`);
+                                                          const response = await axios.delete(`https://backendsufal-shreyash-sanghis-projects.vercel.app/delete_event/${data.eid}`);
                                                           final((info) =>
                                                               info.filter((about) => about.eid != data.eid)
                                                           );

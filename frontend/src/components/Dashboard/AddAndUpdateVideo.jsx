@@ -29,7 +29,7 @@ const AddAndUpdateVideo  = ()=>{
         const storage = getStorage();
           const image = `${images.name + v4()}`;
           const imgref = ref(storage,`files/${image}`);
-          await axios.post(`${import.meta.env.VITE_Backend_URL}/set_my_video`,{
+          await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/set_my_video`,{
               VideoUrl,
               VideoDate
               ,Videoimage:image,
@@ -52,7 +52,7 @@ setVideoDate("")
     
    const getMyVideo = async()=>{
     try {
-        const response = await axios.get(`${import.meta.env.VITE_Backend_URL}/get_my_video`)
+        const response = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/get_my_video`)
         if(response.data.result.length >0 ){
             const res = response.data.result;
             res.map((info)=>{
@@ -178,7 +178,7 @@ setVideoDate("")
                             const storage = getStorage();
                 const desertRef = ref(storage,`files/${info.VideoImageName}`);
                 await deleteObject(desertRef)
-                            await axios.delete(`${import.meta.env.VITE_Backend_URL}/delete_video/${info.Vid}`)
+                            await axios.delete(`https://backendsufal-shreyash-sanghis-projects.vercel.app/delete_video/${info.Vid}`)
                          alert("Success...");
                          setVideoData(()=>
                               videoData.filter((data)=>data.Vid != info.Vid )
