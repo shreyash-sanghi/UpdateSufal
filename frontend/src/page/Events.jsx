@@ -73,9 +73,8 @@ const Events = () => {
     try {
       const data = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/get_current_event_data`);
       const result = data.data.result;
-      // console.log(result);
       result.map(async (info) => {
-        console.log(info.CurrentConform)
+  
         let EventDate = info.EDate;
         const isDate1AfterDate = compareDates(todaydate, EventDate);
 		const storage = getStorage();
@@ -130,7 +129,6 @@ const Events = () => {
 	})
 
     } catch (error) {
-      console.log(error);
       alert(error);
     }
   }
@@ -156,11 +154,9 @@ const Events = () => {
   //     })
   //   })
   //   } catch (error) {
-  //     console.log(error);
   //     alert(error);
   //   }
   // })
-  console.log(CountCurrentEvent)
   useEffect(()=>{
    getdata();
   },[])
@@ -191,7 +187,6 @@ const Events = () => {
 					<CarouselContent className="w-full  mx-auto py-5">
 				
 						{initial.map((info)=>{
-							console.log(info)
 							if(!info.eid) return null;
 							if(!info.CurrentConform) return null
 							return(<>

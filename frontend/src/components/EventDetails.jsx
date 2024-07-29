@@ -44,7 +44,6 @@ const getdata = async () => {
 try {
   const data = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/get_past_event_data_byId/${eid}`);
   const result = data.data.result;
-  console.log(result)
     const storage = getStorage();
     const imgref = ref(storage,`files/${result.EventBanner}`);
     getDownloadURL(imgref).then(async(url1) => {
@@ -61,25 +60,23 @@ try {
         }
       )
   })
- console.log(result.EventImage[0])
+
   result.EventImage.map((about)=>{
-    console.log(about)
+
     const storage = getStorage();
     const imgref = ref(storage,`files/${about}`);
     getDownloadURL(imgref).then(async(url2) => {
-      console.log(url2)
+
        setEventImage((setdata)=>[
         ...setdata,url2
        ])
     })
   })
 } catch (error) {
-  console.log(error);
   alert(error);
 }
 }
-// console.log(initial.EventBanner)
-// console.log(EventImage)
+
 //Use Effect
 useEffect(() => {
 getdata();

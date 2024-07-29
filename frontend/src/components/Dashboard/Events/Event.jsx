@@ -66,7 +66,6 @@ const CurrentEvent = () => {
     try {
       const data = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/get_current_event_data`);
       const result = data.data.result;
-      // console.log(result);
       result.map(async (info) => {
   
         let EventDate = info.EDate;

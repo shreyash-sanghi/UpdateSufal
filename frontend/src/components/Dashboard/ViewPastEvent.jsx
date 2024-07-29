@@ -178,7 +178,6 @@ const ViewPastEvent = ()=>{
                 <button onClick={async()=>{
                   const ind = index;
                   try {
-             console.log(EventImageName)
                             const storage = getStorage();
                             const desertRef = ref(storage,`files/${EventImageName[index]}`);
                            await deleteObject(desertRef)
@@ -188,7 +187,6 @@ const ViewPastEvent = ()=>{
                                alert("Success")
                   } catch (error) {
                     alert(error);
-                    console.log(error);
                   }
                 }} className=" flex justify-center mx-auto mt-2 font-semibold text-red-500 z-999">Delete</button>
               </div>

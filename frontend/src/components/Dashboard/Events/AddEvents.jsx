@@ -113,17 +113,9 @@ const AddEvent = () => {
         setLoading(false);
         return;
       }
-      console.log("Hello")
-      // try{
-      //   const res = await axios.post(`https://api.cloudinary.com/v1_1/${cloudname}/image/upload`, data);
-      // }catch(error){
-      //   alert(error+" in cloudinary...")
-      // }
       const storage = getStorage();
       const image = `${initialAddEventfile.name + v4()}`;
      const imgref = ref(storage,`files/${image}`);
-     console.log(inputFields)
-      // console.log(res);
       // const public_id = res.data.public_id;
       // const EventBannerurl = res.data.url;
       const response = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/uplodeEventData`
@@ -412,7 +404,6 @@ const AddEvent = () => {
                     >
                       Event Description (max 500 characters)
                     </label>
-                    {/* {console.log(URL.createObjectURL(initialAddEventfile))} */}
                     {limiterror && (
                       <div className="text-red-500">{limiterror}</div>
                     )}

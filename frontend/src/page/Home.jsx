@@ -155,10 +155,8 @@ const Home = () => {
 	}
    }catch(error){
 	  alert(error);
-	  console.log(error);
    }
   }
-//   console.log(token);
 	  useEffect(()=>{
 		  if(token != null || token != undefined){
 			  verifytoken();
@@ -513,147 +511,6 @@ const Home = () => {
     
   </div>
 </section>
-
-{console.log(initial_length)}
-{/* {(initial_length>=1)?(<>
-			<div
-				id="upcoming-events"
-				className="w-full max-w-7xl mx-auto px-3 pt-14 pb-16"
-			>
-				<div className="w-full flex flex-col mb-2 items-center justify-center">
-					<span className="text-4xl font-medium text-[#f9c950]">
-						Upcoming Events 
-					</span> 
-					
-				</div>
-				<Carousel
-					orientation="horizontal"
-					opts={{
-						align: 'start',
-						loop: true,
-					}}
-					setApi={setApi}
-					className="w-full"
-				>
-					<CarouselContent className="w-full  mx-auto py-5">
-				
-						{initial.map((info)=>{
-							console.log(info)
-							if(!info.eid) return null;
-							if(!info.CurrentConform) return null
-							return(<>
-						<CarouselItem className="px-5 basic-0 mx-auto  md:basis-1/2 lg:basis-1/3">
-
-							<EventCard
-								eventTitle={info.EventName}
-								eventDescription={info.Discreption}
-								eventImg={info.EventBanner}
-								eventDate={info.EDate}
-								eventTags={['For Mothers']}
-								eventLocation={info.Place}
-								eventLink="/book/blood-donation"
-								Duration={info.Duration}
-								eventTime={info.Time}
-								eventPrice={info.Fee}
-								eventOrganizer={info.Organization}
-								eventPurchaseLink={`/book/register_booking/${info.eid}`}
-								registrationAndrsvp = "Register Now!"
-								isLiked={true}
-							/>
-						</CarouselItem>
-						</>)
-						})}
-					</CarouselContent>
-					<CarouselPrevious className="ml-4	 sm:ml-28 md:ml-16		 md:-bottom-8" />
-					<CarouselNext className="mr-6 sm:mr-0 md:mr-1 md:-bottom-8" />
-				</Carousel>
-			</div>
-			</>):(<></>)} */}
-			{/*  */}
-			{/* <div
-				id="campaign"
-				className="max-w-7xl mx-auto px-5 pt-6 flex flex-col items-start justify-start selection:bg-[#0a755862]"
-			>
-				<div className="w-full flex flex-col items-center justify-center mt-8">
-					<div className="w-full flex flex-col items-center justify-start">
-						<div className="w-full flex items-center justify-start gap-5 ">
-							<span className="text-3xl md:text-5xl font-semibold text-[#16191E]">
-								Introduce Our Campaign
-							</span>
-						</div>
-						<div className="w-full flex flex-col gap-3 md:gap-2 md:flex-row items-center justify-between">
-							<span className="w-full text-sm md:text-base font-semibold text-[#868686] selection:text-[#16191E]">
-								How do something great to help others
-							</span>
-
-							<span className="flex flex-row justify-center">
-								<Button
-									message="View All"
-									icon={<FiArrowUpRight />}
-									className="px-6 py-3 rounded-xl text-[#0a7558] "
-									text={true}
-									href={'/view-all'}
-								/>
-							</span>
-						</div>
-					</div>
-					<div className="w-full mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start justify-start">
-						<PatientDonationCard
-							title={'Help Donate For Cianjur Earthquake Victims'}
-							tags={['Social Service']}
-							description={
-								'Help Donate for Cianjur Earthquake Victims by providing food, clothes, medicines for their daily needs.'
-							}
-							img={
-								'https://c.ndtvimg.com/2023-02/3dp24qug_building_640x480_08_February_23.jpg'
-							}
-							amountRaised={'1250'}
-							goal={'5000'}
-							progress={'50'}
-							href={'/donate'}
-							buttonTitle={'Donate'}
-							tagColor={'#dfdcfa'}
-							tagTextColor={'#8c7cf9'}
-						/>
-						<PatientDonationCard
-							title={'Campaign To Provide Books For Children'}
-							tags={['Education']}
-							description={
-								'Campaign to provide quality books for children who are in need of proper education for their development.'
-							}
-							img={
-								'https://pragya.org/assets/images/icons/1560508933_India_Issues_Inner_Edu1.jpg'
-							}
-							amountRaised={'2450'}
-							goal={'3500'}
-							progress={'70'}
-							href={'/donate'}
-							buttonTitle={'Donate'}
-							tagColor={'#f9dce6'}
-							tagTextColor={'#f96499'}
-						/>
-						<PatientDonationCard
-							title={'Help Children Cancer Fighters'}
-							tags={['Medical Help']}
-							description={
-								'Help the Children of Cancer Warriors to meet their needs for care and treatment as well as possible to achieve recovery.'
-							}
-							img={
-								'https://st4.depositphotos.com/2249091/22137/i/450/depositphotos_221371480-stock-photo-weak-girl-cancer-wearing-pink.jpg'
-							}
-							amountRaised={'4050'}
-							goal={'4500'}
-							progress={'90'}
-							href={'/donate'}
-							buttonTitle={'Donate'}
-							tagColor={'#cee3de'}
-							tagTextColor={'#228268'}
-						/>
-					</div>
-				</div>
-			</div> */}
-			
-			{/* <Glimpses></Glimpses> */}
 			<div
 				id="team"
 				className="w-full max-w-7xl mx-auto px-3 pb-16 selection:bg-[#0a755862]"

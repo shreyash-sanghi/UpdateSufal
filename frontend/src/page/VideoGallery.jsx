@@ -18,7 +18,6 @@ const VideoGallery = () => {
     const getMyVideo = async()=>{
         try {
             const response = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/get_my_video`)
-            console.log(response)
             if(response.data.result.length >0 ){
                 const res = response.data.result;
                 res.map((info)=>{

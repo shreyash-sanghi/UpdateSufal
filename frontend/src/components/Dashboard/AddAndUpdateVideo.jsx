@@ -80,7 +80,6 @@ setVideoDate("")
    useEffect(()=>{
      getMyVideo();
    },[])
-   console.log(videoData)
     return(
         <div>
         <div className="flex md:flex-row flex-col bg-gray-800">

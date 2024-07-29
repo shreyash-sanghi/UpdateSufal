@@ -29,7 +29,7 @@ const VolunteerData = ()=>{
               )
             })
         } catch (error) {
-          console.log(error);
+
           alert(error);
         }
       }
@@ -62,7 +62,7 @@ const VolunteerData = ()=>{
                               </tr>
                             </thead>
                             {initial.map((data, index) => {
-                              console.log(data);
+             
                               if (!data.vid) return null;
                               return (<>
                                 <tbody class="text-gray-600 dark:text-gray-100">
@@ -92,11 +92,11 @@ const VolunteerData = ()=>{
                                                     final((info) =>
                                                         info.filter((about) => about.vid != data.vid)
                                                     );
-                                                    console.log(response);
+    
                                                     alert("Success...");
                                                 } catch (error) {
                                                     alert(error);
-                                                    console.log(error);
+                                     
                                                 }
                                             }
                                         }}

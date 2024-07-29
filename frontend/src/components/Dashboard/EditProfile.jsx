@@ -52,8 +52,7 @@ const MyTeam =()=>{
 
                const image = `${profile.name + v4()}`;
                const imgref = ref(storage,`files/${image}`);
-               console.log(profile.name)
-               console.log(Name,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission)
+
               const result = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/update_team_data_withProfile/${id}`,
                {Sequence,AchivementsInputFields,AwardsInputFields,Name,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission,ProfilImage:image,Number, Linkdin}
               );
@@ -83,7 +82,6 @@ const MyTeam =()=>{
         }
      })
     }
-console.log(initial)
     const getdata = async()=>{
         try{
         const result = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/get_team_data_byid/${id}`);
@@ -172,9 +170,8 @@ useEffect(()=>{
                     {/* <!-- Cover Image --> */}
                     <div
                         class="w-full rounded-sm bg-cover bg-center bg-no-repeat items-center">
-                        {/* <!-- Profile Image -->{console.log(URL.createObjectURL(profile))} */}
+
                         {(profile === undefined) ? (<>
-                            {console.log(initial.image)}
                             <div
                             class={`mx-auto flex justify-center w-[130px] h-[130px] bg-blue-300/20 rounded-full bg-cover bg-center bg-no-repeat`}
                             style={{ backgroundImage: `url(${initial.image})` }}                       

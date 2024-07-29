@@ -48,8 +48,6 @@ const PhotoGallery = () => {
       useEffect(()=>{
         getMyPhotos();
       },[])
-
-      console.log(myPhotos.length)
   return (<>
   <Header></Header>
   <main className="flex lg:py-10 flex-1 w-full flex-col items-center justify-center text-center md:text-start px-4 sm:mt-0 pt-16 ">

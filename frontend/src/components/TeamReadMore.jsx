@@ -12,7 +12,6 @@ const TeamReadMore = ()=>{
     const getdata = async()=>{
         try {
             const response = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/getPerticulatTeamMember/${id}`)
-          console.log(response.data.result);
           const storage = getStorage();
           const imgref = ref(storage,`files/${response.data.result.ProfilImage}`);
           getDownloadURL(imgref).then((url) => { 
@@ -23,8 +22,6 @@ const TeamReadMore = ()=>{
             alert(error);
         }
     }
-
-    console.log(initial);
     useEffect(()=>{
      getdata();
     },[])

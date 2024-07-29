@@ -34,7 +34,6 @@ const SignIn = ()=>{
         navigate("/dashboard")
     } catch (error) {
         alert(error.response.data.error)
-        console.log(error)
     }
     }
 

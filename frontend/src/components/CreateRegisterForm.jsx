@@ -40,12 +40,12 @@ const saveRegister = async(event)=>{
      const {Name,Email,Number,Address,WhyWeJoin} = fields;
    const result = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/save_register`,
    {Name,Email,Number,Address,WhyWeJoin,Eid:rid});
-   console.log(result)
+
    alert("success")
    navigate(`/`)
   } catch (error) {
     alert(error);
-    console.log(error);
+  
   }
 }
 
@@ -62,7 +62,7 @@ final({
   Fee:result.Fee,
 })
   }catch(error){
-    console.log(error);
+   
     alert(error);
   }
 }

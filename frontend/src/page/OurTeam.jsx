@@ -25,7 +25,7 @@ const navigate = useNavigate();
     try{
          const response = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/get_team_data`);
        const result  = response.data.result;
-       console.log(result)
+
        result.map((info)=>{
        const storage = getStorage();
        const imgref = ref(storage,`files/${info.ProfilImage}`);

@@ -135,7 +135,6 @@ const UplodeMultipleImage  = ()=>{
             </>):(<>
             <div className="flex sm:w-[40vw] md:w-[30vw] xl:w-[20vw] m-2 flex-col">
             <img src={URL.createObjectURL(image[0])} alt={`Image ${index}`}  />
-            {/* {console.log(images[index].length)} */}
             <button className="font-semibold text-red-500" onClick={() => handleDelete(index)}>Delete</button>
             </div>
             </>)}

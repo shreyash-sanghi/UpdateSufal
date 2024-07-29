@@ -78,7 +78,6 @@ const MyTeam =()=>{
             const image = `${profile.name + v4()}`;
            const imgref = ref(storage,`files/${image}`);
             const {Name,Sequence,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission,Number,Linkdin} = initial;
-            // console.log(Name,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission)
            const result = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/save_team_data`,
             {Achivements:AchivementsInputFields,
                 Sequence,Awards:AwardsInputFields,Name,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission,ProfilImage:image,Number,Linkdin}
@@ -111,8 +110,6 @@ const MyTeam =()=>{
         }
      })
     }
-    // console.log(URL.createObjectURL(profile))
-    // URL.createObjectURL(e.data.urlOrBold)
     return(
         <>
         <section class="flex md:flex-row flex-col my-auto bg-gray-800 dark:bg-gray-900">
@@ -127,7 +124,6 @@ const MyTeam =()=>{
                     {/* <!-- Cover Image --> */}
                     <div
                         class="w-full rounded-sm bg-cover bg-center bg-no-repeat items-center">
-                        {/* <!-- Profile Image -->{console.log(URL.createObjectURL(profile))} */}
                         {(profile === undefined) ? (<>
                             <div
                             class={`mx-auto flex justify-center w-[130px] h-[130px] bg-blue-300/20 rounded-full bg-cover bg-center bg-no-repeat`}

@@ -164,7 +164,6 @@
               </>):(<>
               <div className="flex sm:w-[40vw] md:w-[30vw] xl:w-[20vw] m-2 flex-col">
               <img src={URL.createObjectURL(image[0])} alt={`Image ${index}`}  />
-              {/* {console.log(images[index].length)} */}
               <button className="font-semibold text-red-500" onClick={() => handleDelete(index)}>Delete</button>
               </div>
               </>)}
@@ -173,31 +172,12 @@
         </div>
     
         <div className="w-full h-1 my-10 bg-white"></div>
-        {/* <div >
-          <h1 className="text-white font-bold sm:text-xl text-lg lg:text-3xl underline flex justify-center">My Photo Gallery</h1>
-      {(myPhotos.length>0)?(<>
-      {myPhotos.map((info)=>{
-        const storage = getStorage();
-        const imgref = ref(storage,`files/${info}`);
-        getDownloadURL(imgref).then(async(url,index) => {
-          console.log(url)
-          return(
-            <>
-          <img src={`${url}`} alt={`with index ${index}`}/>
-            </>
-          )
-        }
-    )
-      })}
-      </>):(<></>)}
-        </div>   */}
             <div className="flex flex-col ml-10 flex-wrap   ">
             <h1 className="text-white font-bold sm:text-xl text-lg lg:text-3xl underline my-10 flex justify-center">My Photo's</h1>
 <div>
 <div className="flex flex-wrap">
           {myPhotos.map((photo, index) =>  (
             <div key={index} className="w-1/4 p-2">
-              {console.log(photo)}
               <img src={photo.ImageUrl} alt={`Photo ${index}`} className="w-full" />
               <button className="text-red-600  align-middle flex justify-center items-center mx-auto mt-2" onClick={async()=>{
              try {

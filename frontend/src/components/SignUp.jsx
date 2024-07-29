@@ -33,7 +33,6 @@ const SignUp = ()=>{
         localStorage.setItem("token",token);
         navigate("/dashboard")
     } catch (error) {
-        console.log(error)
         alert(error)
     }
     }
