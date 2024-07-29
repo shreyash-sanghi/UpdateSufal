@@ -79,7 +79,7 @@ const MyTeam =()=>{
            const imgref = ref(storage,`files/${image}`);
             const {Name,Sequence,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission,Number,Linkdin} = initial;
             // console.log(Name,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission)
-           const result = await axios.post("https://backendsufal-shreyash-sanghis-projects.vercel.app/save_team_data",
+           const result = await axios.post(`${import.meta.env.VITE_Backend_URL}/save_team_data`,
             {Achivements:AchivementsInputFields,
                 Sequence,Awards:AwardsInputFields,Name,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission,ProfilImage:image,Number,Linkdin}
            );

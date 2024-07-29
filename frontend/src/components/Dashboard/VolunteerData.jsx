@@ -13,7 +13,7 @@ const VolunteerData = ()=>{
       }])
       const getdata = async () => {
         try {
-          const data = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/get_volunteer_data`);
+          const data = await axios.get(`${import.meta.env.VITE_Backend_URL}/get_volunteer_data`);
           const response = data.data.result;
             response.map((result)=>{
               final((info)=>[
@@ -88,7 +88,7 @@ const VolunteerData = ()=>{
                                             const res = confirm("You have confirm to delete...");
                                             if (res) {
                                                 try {
-                                                    const response = await axios.delete(`https://backendsufal-shreyash-sanghis-projects.vercel.app/delete_volunteer_member/${data.vid}`);
+                                                    const response = await axios.delete(`${import.meta.env.VITE_Backend_URL}/delete_volunteer_member/${data.vid}`);
                                                     final((info) =>
                                                         info.filter((about) => about.vid != data.vid)
                                                     );

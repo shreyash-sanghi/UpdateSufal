@@ -23,7 +23,7 @@ const navigate = useNavigate();
 
    const getTeamData  = async()=>{
     try{
-         const response = await axios.get("https://backendsufal-shreyash-sanghis-projects.vercel.app/get_team_data");
+         const response = await axios.get(`${import.meta.env.VITE_Backend_URL}/get_team_data`);
        const result  = response.data.result;
        console.log(result)
        result.map((info)=>{

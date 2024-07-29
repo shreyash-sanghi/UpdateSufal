@@ -1,4 +1,6 @@
-import React from 'react'
+import {React,useEffect,useState} from "react";
+import axios from "axios";
+import { ref,deleteObject, uploadBytes ,getStorage,getDownloadURL} from "firebase/storage"; 
 import '../App.css'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -20,8 +22,34 @@ const PhotoGallery = () => {
         { id: 6, url: sa6 },
         { id: 7, url: sa7 },
       ];
-      
-    
+      const [myPhotos,setMyPhotos] = useState([]);
+
+      const getMyPhotos = async()=>{
+        try {
+          const result = await axios.get(`${import.meta.env.VITE_Backend_URL}/get_my_photo`);
+
+         if(result.data.response != null){
+          const photos = result.data.response.Photo;
+          const photoData = await Promise.all(
+            photos.map(async (photoId) => {
+              const storage = getStorage();
+              const imgref = ref(storage, `files/${photoId}`);
+              const url = await getDownloadURL(imgref);
+              return url;
+            })
+          );
+          setMyPhotos(photoData); 
+         }
+       
+        } catch (error) {
+          alert(error);
+        }
+      }
+      useEffect(()=>{
+        getMyPhotos();
+      },[])
+
+      console.log(myPhotos.length)
   return (<>
   <Header></Header>
   <main className="flex lg:py-10 flex-1 w-full flex-col items-center justify-center text-center md:text-start px-4 sm:mt-0 pt-16 ">
@@ -35,11 +63,13 @@ Photo
         </h1>
       </main>
   <div className='gallery py-10 sm:py-6 md:py-2 px-10 sm:px-16'>
-    {images.map(image => (
+    {(myPhotos.length>0)?(<>
+    {myPhotos.map(image => (
       <div key={image.id} className='pics '>
-        <img src={image.url} className='rounded-xl' alt={`Image ${image.id}`} />
+        <img src={image} className='rounded-xl' alt={`Image ${image.id}`} />
       </div>
     ))}
+    </>):(<></>)}
   </div>
   <Footer></Footer></>
    

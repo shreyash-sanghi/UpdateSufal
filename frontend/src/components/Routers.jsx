@@ -9,6 +9,7 @@ import Event from "./Dashboard/Events/Event";
 import CreateRegisterForm from "./CreateRegisterForm";
 import VideoGallery from "../page/VideoGallery";
 import PhotoGallery from "../page/PhotoGallery";
+import AddAndUpdatePhoto from "./Dashboard/AddAndUpdatePhoto";
 const Routers = ()=>{
     return(
         <>
@@ -23,6 +24,7 @@ const Routers = ()=>{
         <Route exact path="/event/:kind_of_event" Component={Event}></Route>
         <Route exact path="/event/:kind_of_event/:rid" Component={Event}></Route>
         <Route exact path="/create_form" Component={CreateRegisterForm}></Route>
+        <Route exact path="/add_photo" Component={AddAndUpdatePhoto}></Route>
         
         
      </Routes>  

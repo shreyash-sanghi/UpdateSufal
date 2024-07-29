@@ -39,7 +39,7 @@ const ContactUs = () => {
 		try{
 			e.preventDefault();
 			const {FName,LName,Email,Number,DOB,WhyYouWantToJoin} = initial;
-   const result = await axios.post("https://backendsufal-shreyash-sanghis-projects.vercel.app/save_volunteer_data",{
+   const result = await axios.post(`${import.meta.env.VITE_Backend_URL}/save_volunteer_data`,{
 	FName,LName,Email,Number,DOB,WhyYouWantToJoin
    })
    setTimeout(()=>{

@@ -110,7 +110,7 @@ const Home = () => {
  
   const getTeamData  = async()=>{
 	try{
-       const response = await axios.get("https://backendsufal-shreyash-sanghis-projects.vercel.app/get_team_data");
+       const response = await axios.get(`${import.meta.env.VITE_Backend_URL}/get_team_data`);
 	   const result  = response.data.result;
 	   result.map((info)=>{
 	   const storage = getStorage();
@@ -141,11 +141,10 @@ const Home = () => {
 
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
-  
   const verifytoken = async()=>{
    try{
 	  axios.defaults.headers.common["Authorization"] = token;
-	  const result = await axios.get("https://backendsufal-shreyash-sanghis-projects.vercel.app/user_auth");
+	  const result = await axios.get(`${import.meta.env.VITE_Backend_URL}/user_auth`);
 	  const OwnerEmail = result.data.OwnerEmail;
 	  const Email = result.data.Email;
 	  if(Email===OwnerEmail){

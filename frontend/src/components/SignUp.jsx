@@ -24,7 +24,7 @@ const SignUp = ()=>{
         e.preventDefault();
     try {
         const {Email,Password,Name} = data;
-        const result = await axios.post("https://backendsufal-shreyash-sanghis-projects.vercel.app/sign_up",{
+        const result = await axios.post(`${import.meta.env.VITE_Backend_URL}/sign_up`,{
             Email,Password,Name
         });
         alert("Success")

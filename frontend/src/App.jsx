@@ -31,6 +31,8 @@ import PriyaMam from './page/PriyaMam.jsx';
 import TeamReadMore from './components/TeamReadMore.jsx';
 import VideoGallery from './page/VideoGallery.jsx';
 import PhotoGallery from './page/PhotoGallery.jsx';
+import AddAndUpdatePhoto from './components/Dashboard/AddAndUpdatePhoto.jsx';
+import AddAndUpdateVideo from './components/Dashboard/AddAndUpdateVideo.jsx';
 const App = () => {
 	const {t} = useTranslation();
 	return ( 
@@ -122,6 +124,8 @@ export const AppRouter = () => {
 		<Route exact path="/view_register/:Eid" Component={ViewRegister}></Route>
 		<Route exact path="/volunteer_with_us" Component={VolunteerData}></Route>
 		<Route exact path="/team_readMore/:id" Component={TeamReadMore}></Route>
+		<Route exact path="/add_photo" Component={AddAndUpdatePhoto}></Route>
+		<Route exact path="/add_video" Component={AddAndUpdateVideo}></Route>
 		</Routes>
 	);
 };

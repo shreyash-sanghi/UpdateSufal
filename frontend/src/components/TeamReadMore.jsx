@@ -11,7 +11,7 @@ const TeamReadMore = ()=>{
     const [profile,setprofile] = useState();
     const getdata = async()=>{
         try {
-            const response = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/getPerticulatTeamMember/${id}`)
+            const response = await axios.get(`${import.meta.env.VITE_Backend_URL}/getPerticulatTeamMember/${id}`)
           console.log(response.data.result);
           const storage = getStorage();
           const imgref = ref(storage,`files/${response.data.result.ProfilImage}`);
