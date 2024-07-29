@@ -69,6 +69,7 @@ Photo
     ))}
     </>):(<></>)}
   </div>
+  <div className="h-20"></div>
   <Footer></Footer></>
    
   )
