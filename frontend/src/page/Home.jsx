@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import herogif from '../assets/herogif6.mp4';
+import herogif from '../assets/herogiffinal.mp4';
 import Button from '../components/Button';
 import { GrUserExpert } from "react-icons/gr";
 import Footer from '../components/Footer';
