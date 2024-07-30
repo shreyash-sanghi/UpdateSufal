@@ -582,7 +582,7 @@ const Home = () => {
 						<CarouselNext className="mr-10 sm:mr-12 md:-mr-[3rem] md:right-16	 md:-bottom-[2rem]" />
 					</Carousel>
 				</div>
-				<div className="w-full h-auto  hidden  items-center justify-center ">
+				<div className="w-full h-auto overflow-x-hidden  hidden  items-center justify-center ">
 					<Carousel
 						orientation="horizontal"
 						opts={{
