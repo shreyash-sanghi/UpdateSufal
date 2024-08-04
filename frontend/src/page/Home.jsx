@@ -541,7 +541,7 @@ const Home = () => {
 							loop: true,
 						}}
 					>
-						<CarouselContent className=" w-[23rem] md:w-[35rem] lg:w-full	 ml-1 md:ml-0 py-5">
+						<CarouselContent className=" lg:w-[23rem] md:w-[35rem] w-full	 ml-1 md:ml-0 py-5">
 							{ini_team.map((info)=>{
 								if(!info.tid) return null;
 								const instaid = info.InataId;
