@@ -548,7 +548,7 @@ const Home = () => {
 								const facebookid = info.FBId;
 								return(
 									<>
-										<CarouselItem className="px-5 basic-0 min-w-fit py-2  md:basis-1/2 lg:basis-[30%]">
+										<CarouselItem className="px-5 basic-0 md:w-1/3 sm:w-1/2 w-full lg:w-1/4 py-2  md:basis-1/2 lg:basis-[30%]">
 								<TeamCard
 									teamMemberName={info.Name}
 									profession={info.Position}
