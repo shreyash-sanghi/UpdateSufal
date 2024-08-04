@@ -515,7 +515,7 @@ const Home = () => {
 				id="team"
 				className="w-full max-w-7xl mx-auto px-3 pb-16 selection:bg-[#0a755862]"
 			>
-				{/* <div className="w-full flex items-center justify-center gap-5 px-3 pb-5">
+				<div className="w-full flex items-center justify-center gap-5 px-3 pb-5">
 				<main className="flex py-6  md:pt-6   flex-1 w-full flex-col items-center justify-center text-center md:text-start px-4 sm:mt-0 mt-0">
         <h1 className="mx-auto max-w-4xl font-display text-5xl font-bold tracking-normal sm:text-5xl">
 		हमारे 
@@ -532,8 +532,8 @@ const Home = () => {
           </span>
         </h1>
       </main>
-				</div> */}
-				{/* <div className="w-full flex items-center justify-center">
+				</div>
+				<div className="w-full flex items-center justify-center">
 					<Carousel
 						orientation="horizontal"
 						opts={{
@@ -581,7 +581,7 @@ const Home = () => {
 						<CarouselPrevious className="ml-[3.2rem] sm:ml-12 md:ml-[4rem]		 	md:-bottom-[2rem]" />
 						<CarouselNext className="mr-10 sm:mr-12 md:-mr-[3rem] md:right-16	 md:-bottom-[2rem]" />
 					</Carousel>
-				</div> */}
+				</div>
 				{/* <div className="w-full h-auto overflow-x-hidden  hidden  items-center justify-center ">
 					<Carousel
 						orientation="horizontal"
