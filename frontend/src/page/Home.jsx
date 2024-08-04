@@ -541,14 +541,14 @@ const Home = () => {
 							loop: true,
 						}}
 					>
-						<CarouselContent className=" lg:w-[23rem] md:w-[35rem] w-full	 ml-1 md:ml-0 py-5">
+						<CarouselContent className=" w-[23rem] md:w-[35rem] lg:[90%]	 ml-1 md:ml-0 py-5">
 							{ini_team.map((info)=>{
 								if(!info.tid) return null;
 								const instaid = info.InataId;
 								const facebookid = info.FBId;
 								return(
 									<>
-										<CarouselItem className="px-5 basic-0  md:basis-1/2 lg:basis-[30%]">
+										<CarouselItem className="px-5 basic-0 min-w-fit py-2  md:basis-1/2 lg:basis-[30%]">
 								<TeamCard
 									teamMemberName={info.Name}
 									profession={info.Position}
