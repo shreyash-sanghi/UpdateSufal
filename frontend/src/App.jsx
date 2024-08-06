@@ -33,6 +33,7 @@ import VideoGallery from './page/VideoGallery.jsx';
 import PhotoGallery from './page/PhotoGallery.jsx';
 import AddAndUpdatePhoto from './components/Dashboard/AddAndUpdatePhoto.jsx';
 import AddAndUpdateVideo from './components/Dashboard/AddAndUpdateVideo.jsx';
+import UplodePhotoWithDate from './components/Dashboard/UplodePhotoWithDate.jsx';
 const App = () => {
 	const {t} = useTranslation();
 	return ( 
@@ -126,6 +127,7 @@ export const AppRouter = () => {
 		<Route exact path="/team_readMore/:id" Component={TeamReadMore}></Route>
 		<Route exact path="/add_photo" Component={AddAndUpdatePhoto}></Route>
 		<Route exact path="/add_video" Component={AddAndUpdateVideo}></Route>
+		<Route exact path="/uplode_photo_with_date" Component={UplodePhotoWithDate}></Route>
 		</Routes>
 	);
 };

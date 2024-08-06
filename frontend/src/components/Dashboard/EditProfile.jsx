@@ -27,10 +27,10 @@ const MyTeam =()=>{
         Linkdin:"",
         Sequence:""
     })
-    const [loading, setLoading] = useState(false);
 
+    const [loading, setLoading] = useState(false);
     const [profile,setProfile] = useState();
-      
+
     const savedata = async(e)=>{
         e.preventDefault();
         try {
@@ -73,6 +73,7 @@ const MyTeam =()=>{
             toast(error);
         }
     }
+
     const setdata =(e)=>{
      const {name,value} = e.target;
      final((info)=>{
@@ -82,6 +83,7 @@ const MyTeam =()=>{
         }
      })
     }
+
     const getdata = async()=>{
         try{
         const result = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/get_team_data_byid/${id}`);

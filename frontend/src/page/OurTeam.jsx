@@ -96,7 +96,7 @@ const navigate = useNavigate();
                 <span className="font-bold">About :</span> {info.About}
               </p>
               <div className="flex justify-start pt-2 space-x-4 align-center">
-                {(info.Name === "Dr. Shailja Trivedi")?(<>
+                {(info.Name === "Dr. Priya Bhave Chittawar")?(<>
                   <button
                 onClick={()=>navigate(`/dr-priya-bhave-chittawar`)}
                   rel="noopener noreferrer"
