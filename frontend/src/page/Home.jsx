@@ -6,6 +6,8 @@ import Footer from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
 import Carousel2 from '../components/Carousel2';
 import garbhavideo from '../assets/garbha-video.mp4';
+import EUI from '../extraComponent/EUI';
+import EJim from '../extraComponent/EJim';
 
 
 import {ref,uploadBytes,getStorage ,getDownloadURL,deleteObject} from "firebase/storage";
@@ -43,7 +45,7 @@ import {
 } from '../components/ui/carousel';
 import TeamCard from '../components/TeamCard';
 import EventCard from '../components/EventCard';
-import aboutimg from '../assets/aboutimg4.png';
+import aboutimg from '../assets/aboutimgfinal.png';
 import { ImWoman } from "react-icons/im";
 
 import Header from '../components/Header';
@@ -208,6 +210,7 @@ const Home = () => {
 	return (
 	       <>
 		   <Header/>
+		   
 		<div className="w-full px-1 md:px-0 bg-[#fefaf6] ">
 			<div
 				id="home"
@@ -335,7 +338,9 @@ const Home = () => {
 				</div>
 			</div>
 
-			<section className="my-8 ">
+			<EJim></EJim>
+
+			{/* <section className="my-8 ">
 	<div className="container flex flex-col items-center p-0 mx-auto space-y-6 md:p-8">
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="w-16 h-16 dark:text-violet-400">
 			<polygon points="328.375 384 332.073 458.999 256.211 406.28 179.924 459.049 183.625 384 151.586 384 146.064 496 182.756 496 256.169 445.22 329.242 496 365.936 496 360.414 384 328.375 384"></polygon>
@@ -360,12 +365,12 @@ const Home = () => {
 			
 		</div>
 	</div>
-</section>
+</section> */}
 
 
 			<div
 				id="categories"
-				className="max-w-7xl mx-auto px-5 md:px-0 pt-6 flex flex-col items-start justify-start selection:bg-[#0a755862]"
+				className="max-w-7xl mx-auto px-5 md:px-0 py-10 flex flex-col items-start justify-start selection:bg-[#0a755862]"
 			>
 				<div className="w-full flex flex-col items-center justify-center space-y-4">
 					<span className="text-3xl font-medium text-[#f0c048]">
@@ -424,6 +429,7 @@ const Home = () => {
 					/>
 				</div>
 			</div>
+			<EUI></EUI>
 
 			
     
@@ -476,7 +482,7 @@ const Home = () => {
 
 <Carousel2></Carousel2>
 			
-			<section class="text-gray-600">
+			{/* <section class="text-gray-600">
   <div class="container mx-auto flex px-5 lg:px-24 py-10 md:py-20 md:flex-row flex-col items-center">
   <div class="lg:max-w-sm lg:w-full md:w-1/2 w-5/6">
       <video class="" autoPlay playsInline muted loop alt="hero" src={garbhavideo}/>
@@ -493,7 +499,6 @@ const Home = () => {
 		<img src="https://images.onlymyhealth.com/imported/images/2020/April/25_Apr_2020/big_14-Color-Tharepy.jpg" className='size-10 rounded-full -ml-4' alt="" />
 		<img src="https://thumbs.dreamstime.com/b/girl-listens-to-music-headphones-therapy-podcast-audiobook-radio-meditation-concept-profile-young-african-woman-vector-288627719.jpg" className='size-10 rounded-full -ml-4' alt="" />
 	  </div>
-      {/* <p class="mb-4 leading-tight text-gray-600">Garbhasanskar is an ancient Indian practice that focuses on nurturing and educating the unborn child. The term "Garbhasanskar" is derived from two Sanskrit words: "Garbha" meaning "womb" and "Sanskar" meaning "ethics" or "values." It refers to a set of practices and rituals aimed at ensuring the physical, mental, and spiritual well-being of both the mother and the baby during pregnancy.</p> */}
       <p class="mb-4 leading-tight text-gray-600">
 		<li> मनोवैज्ञानिक संतुलन: गर्भावस्था में मानसिक शांति बनाए रखना।
 		</li>
@@ -510,7 +515,7 @@ const Home = () => {
     </div>
     
   </div>
-</section>
+</section> */}
 			<div
 				id="team"
 				className="w-full max-w-7xl mx-auto px-3 pb-16 selection:bg-[#0a755862]"

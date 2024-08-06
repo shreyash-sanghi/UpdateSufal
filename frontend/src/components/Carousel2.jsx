@@ -49,7 +49,7 @@ const Carousel2 = ({ deviceType }) => {
 
   return (
     <>
-    <main className="flex py-6  md:pt-6 mb-4 flex-1 w-full flex-col items-center justify-center text-center md:text-start px-4 sm:mt-20 mt-20">
+    <main className="flex py-6  md:pt-6 mb-4 flex-1 w-full flex-col items-center justify-center text-center md:text-start px-4">
         <h1 className="mx-auto max-w-4xl font-display text-5xl font-bold tracking-normal sm:text-5xl">
         वार्षिक 
           <span className="relative whitespace-nowrap text-pink-700">
