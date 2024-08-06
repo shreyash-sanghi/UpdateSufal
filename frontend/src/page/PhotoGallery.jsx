@@ -60,6 +60,15 @@ Photo
           </span>
         </h1>
       </main>
+  {/* <div className='gallery py-10 sm:py-6 md:py-2 px-10 sm:px-16'>
+    {(myPhotos.length>0)?(<>
+    {myPhotos.map(image => (
+      <div key={image.id} className='pics '>
+        <img src={image} className='rounded-xl' alt={`Image ${image.id}`} />
+      </div>
+    ))}
+    </>):(<></>)}
+  </div> */}
   <div className='gallery py-10 sm:py-6 md:py-2 px-10 sm:px-16'>
     {(myPhotos.length>0)?(<>
     {myPhotos.map(image => (

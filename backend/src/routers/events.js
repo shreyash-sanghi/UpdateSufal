@@ -2,10 +2,10 @@ const express = require("express");
 const router = new express.Router();
 const Current = require("../models/Event");
 const CurreateReg = require("../models/EventRegForm");
-const MyPhoto = require("../models/MyPhoto");
+const MyPhoto = require("../models/MyPhot o");
 const MyVideo = require("../models/MyVideo");
+const ImageWithDate = require("../models/ImageWithdate");
 const mongoose = require("mongoose")
-const cloudinary = require("cloudinary");
 const verify = require("../midelware/userauth")
 
 router.get("/get_current_event_data", async (req, res) => {
@@ -63,7 +63,35 @@ router.get("/get_my_photo", async (req, res) => {
       res.status(404).json({ error });
    }
 })
-
+router.get("/get_image_with_date", async (req, res) => {
+   try {
+      const result = await ImageWithDate.find();
+      res.status(202).json({result});
+   } catch (error) {
+      console.log(error);
+      res.status(404).json({ error });
+   }
+})
+router.post("/set_image_with_date", verify, async (req, res) => {
+   try {
+      const { ImageDate,Image} = req.body;
+      await ImageWithDate.create({ImageDate,Image});
+        res.sendStatus(202);
+   } catch (error) {
+      console.log(error);
+      res.status(404).json({ error });
+   }
+})
+router.delete("/delete_photo_with_date/:id", verify, async (req, res) => {
+   try {
+      const id = req.params.id;
+        const result =  await ImageWithDate.findByIdAndDelete(id);
+           res.sendStatus(202);
+   } catch (error) {
+      console.log(error);
+      res.status(404).json({ error });
+   }
+})
 router.post("/set_my_video", verify, async (req, res) => {
    try {
        const { VideoUrl,VideoDate,Videoimage,AboutVideo} = req.body;
@@ -140,9 +168,17 @@ router.post("/uplode_event_image/:id", verify, async (req, res) => {
    try {
       const id = req.params.id;
       const arr = req.body.arr;
-
+      const data = await Current.findById(id);
+      const Images = data.EventImage;
+      const TotalImage = [];
+      Images.map((info)=>{
+         TotalImage.push(info);
+      })
+      arr.map((info)=>{
+         TotalImage.push(info);
+      })
       const result = await Current.findByIdAndUpdate(id, {
-         EventImage: arr
+         EventImage: TotalImage
       })
       res.sendStatus(202);
    } catch (error) {
