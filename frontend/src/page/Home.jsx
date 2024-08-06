@@ -8,6 +8,7 @@ import Carousel2 from '../components/Carousel2';
 import garbhavideo from '../assets/garbha-video.mp4';
 import EUI from '../extraComponent/EUI';
 import EJim from '../extraComponent/EJim';
+import EInvestBusiness from '../extraComponent/EInvestBusiness';
 
 
 import {ref,uploadBytes,getStorage ,getDownloadURL,deleteObject} from "firebase/storage";
@@ -337,35 +338,11 @@ const Home = () => {
 					</div>
 				</div>
 			</div>
-
-			<EJim></EJim>
-
-			{/* <section className="my-8 ">
-	<div className="container flex flex-col items-center p-0 mx-auto space-y-6 md:p-8">
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="w-16 h-16 dark:text-violet-400">
-			<polygon points="328.375 384 332.073 458.999 256.211 406.28 179.924 459.049 183.625 384 151.586 384 146.064 496 182.756 496 256.169 445.22 329.242 496 365.936 496 360.414 384 328.375 384"></polygon>
-			<path d="M415.409,154.914l-2.194-48.054L372.7,80.933,346.768,40.414l-48.055-2.2L256,16.093,213.287,38.219l-48.055,2.2L139.3,80.933,98.785,106.86l-2.194,48.054L74.464,197.628l22.127,42.715,2.2,48.053L139.3,314.323l25.928,40.52,48.055,2.195L256,379.164l42.713-22.126,48.055-2.195,25.928-40.52L413.214,288.4l2.195-48.053,22.127-42.715Zm-31.646,76.949L382,270.377l-32.475,20.78-20.78,32.475-38.515,1.76L256,343.125l-34.234-17.733-38.515-1.76-20.78-32.475L130,270.377l-1.759-38.514L110.5,197.628,128.237,163.4,130,124.88,162.471,104.1l20.78-32.474,38.515-1.76L256,52.132l34.234,17.733,38.515,1.76,20.78,32.474L382,124.88l1.759,38.515L401.5,197.628Z"></path>
-		</svg>
-		<p className="px-6 py-2 text-2xl font-semibold text-center sm:font-bold sm:text-3xl md:text-4xl lg:max-w-2xl xl:max-w-4xl dark:text-gray-300">संयोजक, 
-		सुफल</p>
-		<div className="flex flex-col md:flex-row justify-center text-center md:text-start  items-center  space-x-3 lg:space-x-6">
-			<img src={team3} alt="" className="size-40 mb-4 lg:size-60 bg-center bg-cover rounded-md " />
+			<EUI></EUI>
 			
-			<div>
-				<p className="font-semibold">Dr. Priya Bhave Chittawar</p>
-				<p className="text-sm leadi dark:text-gray-300">Head of Reproductive Medicine & Surgery. <br /> Bansal Hospital Bhopal</p>
-				
-				<a className="flex items-center justify-center md:justify-start py-2 space-x-1 text-sm dark:text-violet-400" href="/">
-					<span className='text-pink-800'><Link onClick={() => {window.scrollTo(0,0)}} to="dr-priya-bhave-chittawar">Read full story</Link></span>
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 ">
-						<path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
-					</svg>
-				</a>
-			</div>
-			
-		</div>
-	</div>
-</section> */}
+
+		
+
 
 
 			<div
@@ -429,93 +406,12 @@ const Home = () => {
 					/>
 				</div>
 			</div>
-			<EUI></EUI>
 
+			<EJim></EJim>
 			
-    
-			{/* <div className="max-w-7xl mx-auto px-5 pt-6 flex flex-col items-start justify-start selection:bg-[#7fe0c662] gap-5">
-				
-
-				<div className="w-full flex flex-col items-center justify-center py-4">
-					<div className="relative w-full h-[21rem] sm:h-[22rem] md:h-72 flex items-center justify-start md:rounded-r-full bg-[#0a7558] rounded-lg py-10		 lg:py-0">
-						<div className="absolute top-[1rem] right-[1rem] w-[16rem] h-[16rem] hidden md:flex border-2 border-zinc-50 bg-image rounded-full lg:hidden">
-							<div className="absolute top-[4rem] -right- sm:-right-[1rem] w-[8rem] h-[8rem] flex items-center justify-center bg-[#55b8ff] rounded-full">
-								<span className="text-5xl font-bold">35%</span>
-							</div>
-						</div>
-
-						<div className="w-full sm:w-[60%] lg:w-[50%] flex flex-col items-center lg:items-start justify-start mx-auto sm:mx-0 pl-5  py-10 md:pl-5 lg:pl-44">
-							<div className="items-center justify-items-center gap-x-4 gap-y-5">
-								<p className="mt-1 text-xl lg:text-2xl font-bold text-white lg:text-[#16191E]">
-									Helping businesses succeed through the power
-									of video.
-								</p>
-								<p className="mt-4 text-base font-medium text-white lg:text-[#16191ebd] leading-normal lg:leading-loose py-1 md:py-0">
-									Helping businesses succeed through the power
-									of video and content marketing that sets us
-									apart from the competition and helps us stay
-									ahead of the curve and achieve our goals for
-									the future were we are here today to help
-									you achieve your goals.
-								</p>
-								<div className="w-full flex items-start justify-start py-2 md:pt-2">
-									<Button
-										message="Sign Up"
-										href="/auth?mode=signup"
-										className="px-8 sm:px-12 py-2 text-base rounded-md border border-white text-white hover:bg-white hover:text-[#16191E] outline-none"
-									/>
-								</div>
-							</div>
-						</div>
-						<div className="absolute top-[1rem] right-[1rem] hidden lg:flex w-[16rem] h-[16rem] flex-1 border-2 border-zinc-50 bg-image rounded-full">
-							<div className="absolute top-[4rem] -right-[4rem] w-[8rem] h-[8rem] flex items-center justify-center bg-[#55b8ff] rounded-full">
-								<span className="text-5xl font-bold">35%</span>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				
-			</div> */}
-			{/*  */}
-{/* <<<<<<< HEAD */}
-
 <Carousel2></Carousel2>
-			
-			{/* <section class="text-gray-600">
-  <div class="container mx-auto flex px-5 lg:px-24 py-10 md:py-20 md:flex-row flex-col items-center">
-  <div class="lg:max-w-sm lg:w-full md:w-1/2 w-5/6">
-      <video class="" autoPlay playsInline muted loop alt="hero" src={garbhavideo}/>
-    </div>
-    <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left mt-10 md:mt-0 items-center text-center">
-      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">गर्भसंस्कार: कब? क्यों? और कैसे?
-    
-      </h1>
-	  <div className='flex mb-4'>
-		<img src="https://cdn-icons-png.freepik.com/256/1414/1414254.png?semt=ais_hybrid" className='size-10 rounded-full' alt="" />
-		<img src="https://img.freepik.com/premium-photo/cute-woman-meditation-yoga-cartoon-vector-icon-illustration-people-sport-icon-concept-isolated-flat_839035-1015803.jpg" className='size-10 -ml-4 rounded-full' alt="" />
-		<img src="https://cdn-icons-png.freepik.com/512/2906/2906476.png" className='size-10 rounded-full -ml-4' alt="" />
-		<img src="https://cdn-icons-png.freepik.com/512/5001/5001175.png" className='size-10 rounded-full -ml-4' alt="" />
-		<img src="https://images.onlymyhealth.com/imported/images/2020/April/25_Apr_2020/big_14-Color-Tharepy.jpg" className='size-10 rounded-full -ml-4' alt="" />
-		<img src="https://thumbs.dreamstime.com/b/girl-listens-to-music-headphones-therapy-podcast-audiobook-radio-meditation-concept-profile-young-african-woman-vector-288627719.jpg" className='size-10 rounded-full -ml-4' alt="" />
-	  </div>
-      <p class="mb-4 leading-tight text-gray-600">
-		<li> मनोवैज्ञानिक संतुलन: गर्भावस्था में मानसिक शांति बनाए रखना।
-		</li>
-		<li>सकारात्मकता एवं सृजनात्मकता: सकारात्मक और सृजनात्मक गतिविधियों में संलग्न रहना।</li>
-		<li>बागवानी, संगीत, पाक कला, स्वाध्याय (पढ़ना), मैत्री जप: ये गतिविधियाँ मानसिक स्वास्थ्य को सुदृढ़ करती हैं।</li>
-		<li>पारिवारिक सामंजस्य एवं भावनात्मक संतुलन: परिवार का सहयोग और भावनात्मक समर्थन।</li>
-		<li>खुशनुमा सफर: गर्भावस्था के नौ महीनों को सुखद और यादगार बनाना।</li>
+			<EInvestBusiness></EInvestBusiness>
 
-</p>
-     
-	  <div class="flex justify-center">
-        <button class="inline-flex mt-4  text-white bg-pink-600 border-0 py-2 px-4 focus:outline-none hover:bg-pink-700 rounded-2xl text-sm">Read More</button>
-      </div>
-    </div>
-    
-  </div>
-</section> */}
 			<div
 				id="team"
 				className="w-full max-w-7xl mx-auto px-3 pb-16 selection:bg-[#0a755862]"
@@ -587,69 +483,7 @@ const Home = () => {
 						<CarouselNext className="mr-10 sm:mr-12 md:-mr-[3rem] md:right-16	 md:-bottom-[2rem]" />
 					</Carousel>
 				</div>
-				{/* <div className="w-full h-auto overflow-x-hidden  hidden  items-center justify-center ">
-					<Carousel
-						orientation="horizontal"
-						opts={{
-							align: 'start',
-							loop: true,
-						}}
-					>
-						<CarouselContent className=" w-[23rem] ml-1 md:ml-0 py-5">
-							<CarouselItem className="px-5 basic-0  md:basis-1/2 lg:basis-1/3">
-								<TeamCard
-									teamMemberName="Vinay Kumar"
-									profession="CEO 1"
-									profileImage="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-									socialLinks={[
-										{
-											name: 'Linkedin',
-											href: '#',
-											icon: <IoLogoLinkedin size={24} />,
-										},
-										{
-											name: 'Instagram',
-											href: '#',
-											icon: <IoLogoInstagram size={24} />,
-										},
-										{
-											name: 'Facebook',
-											href: '#',
-											icon: <BsFacebook size={24} />,
-										},
-									]}
-								/>
-							</CarouselItem>
-							<CarouselItem className="px-5 basic-0  md:basis-1/2 lg:basis-1/3">
-								<TeamCard
-									teamMemberName="Sunil Kumar"
-									profession="CEO 2"
-									profileImage="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D"
-									socialLinks={[
-										{
-											name: 'Linkedin',
-											href: '#',
-											icon: <IoLogoLinkedin size={24} />,
-										},
-										{
-											name: 'Instagram',
-											href: '#',
-											icon: <IoLogoInstagram size={24} />,
-										},
-										{
-											name: 'Facebook',
-											href: '#',
-											icon: <BsFacebook size={24} />,
-										},
-									]}
-								/>
-							</CarouselItem>
-							
-						</CarouselContent>
-						<CarouselPrevious className="ml-[3.2rem] sm:ml-12 md:ml-32 	md:-bottom-44" />
-						<CarouselNext className="mr-10 sm:mr-12 md:-mr-[3rem] md:-right-1 md:bottom-[9rem]" />
-					</Carousel>
-				</div> */}
+				
 			</div>
 		</div>
 		<Footer/>

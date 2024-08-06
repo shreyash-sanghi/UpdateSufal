@@ -19,7 +19,7 @@ import {
 
 const EUI = () => {
   return (
-    <MaxWidthWrapper className="py-20 bg-white mt-4 overflow-auto">
+    <MaxWidthWrapper className="py-10 bg-white mt-4 overflow-auto">
       <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-10">
         <div className="flex flex-col items-center justify-center space-y-5 lg:space-y-4">
           <Motion

@@ -10,19 +10,19 @@ import priyamam2 from "../assets/priyamam2.png";
 const EJim = () => {
   return (
     <main className="relative overflow-auto">
-      <div className="sm:absolute sm:top-1/2 sm:left-28 lg:top-1/2 lg:left-40  sm:transform sm:-translate-y-1/2  sm:grid sm:grid-rows-3 gap-1 flex items-center justify-start mt-5 px-3">
+      <div className="sm:absolute hidden sm:flex sm:top-1/2 sm:left-28 lg:top-1/2 lg:left-40  sm:transform sm:-translate-y-1/2  sm:grid sm:grid-rows-3 gap-1 items-center justify-start mt-5 px-3">
         <span className="p-2 rounded-full">
-          <a href=""><IoLogoCodepen className="text-pink-500 size-6 " /></a>
+          <a href=""><IoLogoCodepen className="text-pink-600 size-8 " /></a>
         </span>
         <span className="p-2 rounded-full">
-          <a href=""><IoLogoLinkedin className="text-pink-500 size-6" /></a>
+          <a href=""><IoLogoLinkedin className="text-pink-600 size-8" /></a>
         </span>
         <span className="p-2 rounded-full ">
-          <a href=""><IoLogoWhatsapp className="text-pink-500 size-6 " /></a>
+          <a href=""><IoLogoWhatsapp className="text-pink-600 size-8 " /></a>
         </span>
       </div>
 
-      <MaxWidthWrapper className="relative px-4 md:px-6 text-center  py-4 sm:py-10">
+      <MaxWidthWrapper className="relative px-4 md:px-6 text-center  py-4 ">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 place-items-center lg:px-28">
           <div className="flex flex-col space-y-6 text-left max-w-2xl mx-auto lg:text-left ">
             <Motion direction="left" className="w-full">
@@ -41,14 +41,14 @@ const EJim = () => {
               Bansal Hospital Bhopal
               </p>
             </Motion>
-            <div className="flex  items-center justify-start gap-4 lg:w-full">
+            <div className="flex  items-center justify-center md:justify-start gap-4 lg:w-full">
               <Motion direction="left">
                 <Button
                   bg
                   href="/dr-priya-bhave-chittawar"
-                  className="transition-all bg-orange-300   rounded-md px-8 py-3 flex items-center gap-2"
+                  className="transition-all bg-orange-400 text-center   rounded-md px-8 py-3 flex items-center gap-2"
                 >
-                  Read More ...
+                  Read More 
                   <ChevronRight />
                 </Button>
               </Motion>
