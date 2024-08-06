@@ -92,7 +92,7 @@ export const AppRouter = () => {
 				element={<PhotoGallery />}
 			/>
 					<Route
-				path="/photo-gallery_with_date"
+				path="/photo_gallery_with_date"
 				element={<PhotoGalleryWithDate />}
 			/>
 			<Route
