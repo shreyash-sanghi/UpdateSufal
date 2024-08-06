@@ -34,6 +34,7 @@ import PhotoGallery from './page/PhotoGallery.jsx';
 import AddAndUpdatePhoto from './components/Dashboard/AddAndUpdatePhoto.jsx';
 import AddAndUpdateVideo from './components/Dashboard/AddAndUpdateVideo.jsx';
 import UplodePhotoWithDate from './components/Dashboard/UplodePhotoWithDate.jsx';
+import PhotoGalleryWithDate from './page/PhotoGalleryWithDate.jsx';
 const App = () => {
 	const {t} = useTranslation();
 	return ( 
@@ -89,6 +90,10 @@ export const AppRouter = () => {
 			<Route
 				path="/photo-gallery"
 				element={<PhotoGallery />}
+			/>
+					<Route
+				path="/photo-gallery_with_date"
+				element={<PhotoGalleryWithDate />}
 			/>
 			<Route
 				path="/video-gallery"
