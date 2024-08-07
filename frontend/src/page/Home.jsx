@@ -563,7 +563,7 @@ const Home = () => {
 			if(!info.tid) return null;
 		 return (
             <div key={index} className="w-80 h-80 flex flex-col justify-center items-center border gap-x-4 p-6 rounded-xl">
-              <img src={info.ProfilImage} alt={`team ${index}`} className="w-full rounded-xl h-72 object-cover" />
+              <img src={image.src} alt={image.alt} className="w-full rounded-xl h-72 object-contain" />
               <div className="flex gap-4 mt-4">
                 <a href={info.InataId} target="_blank" rel="noopener noreferrer">
                   <FaInstagram className="text-2xl text-yellow-500 hover:text-blue-700" />
