@@ -45,6 +45,9 @@ const EJim = () => {
               <Motion direction="left">
                 <Button
                   bg
+                  onClick={() => {
+                    window.scrollTo(0, 0);
+                  }}
                   href="/dr-priya-bhave-chittawar"
                   className="transition-all bg-orange-400 text-center   rounded-md px-8 py-3 flex items-center gap-2"
                 >
