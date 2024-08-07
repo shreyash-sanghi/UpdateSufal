@@ -112,6 +112,27 @@ router.get("/get_my_video",  async (req, res) => {
       res.status(404).json({ error });
    }
 })
+router.post("/updateAnEvent/:id", verify, async (req, res) => {
+   try {
+      const id = req.params.id;
+      const { ChiefGuest, EventName, Discreption, Place, Time, Organization, Duration, Fee} = req.body;
+      const result = await Current.updateOne({_id:id},{ $set: { ChiefGuest, EventName, Discreption, Place, Time, Organization, Duration, Fee  } } )
+      res.sendStatus(202);
+   } catch (error) {
+      console.log(error);
+      res.status(404).json({ error });
+   }
+})
+router.get("/getEventData/:id", verify, async (req, res) => {
+   try {
+      const id= req.params.id;
+      const result = await Current.findById(id);
+      res.status(202).json({result});
+   } catch (error) {
+      console.log(error);
+      res.status(404).json({ error });
+   }
+})
 router.delete("/delete_video/:id", verify, async (req, res) => {
    try {
       const id = req.params.id;

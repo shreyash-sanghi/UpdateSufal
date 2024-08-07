@@ -558,22 +558,26 @@ const Home = () => {
 <div className="flex justify-center items-center">
       <div className="w-full max-w-7xl">
         <Slider {...settings}>
-          {images.map((image, index) => (
+          {ini_team.map((info, index) => 
+		  {
+			if(!info.tid) return null;
+		 return (
             <div key={index} className="w-80 h-80 flex flex-col justify-center items-center border gap-x-4 p-6 rounded-xl">
               <img src={image.src} alt={image.alt} className="w-full rounded-xl h-72 object-contain" />
               <div className="flex gap-4 mt-4">
-                <a href={image.links.instagram} target="_blank" rel="noopener noreferrer">
+                <a href={info.InataId} target="_blank" rel="noopener noreferrer">
                   <FaInstagram className="text-2xl text-yellow-500 hover:text-blue-700" />
                 </a>
-                <a href={image.links.facebook} target="_blank" rel="noopener noreferrer">
+                <a href={info.FBId} target="_blank" rel="noopener noreferrer">
                   <FaFacebook className="text-2xl text-yellow-500 hover:text-blue-700" />
                 </a>
-                <a href={image.links.linkedin} target="_blank" rel="noopener noreferrer">
+                <a href={info.FBId} target="_blank" rel="noopener noreferrer">
                   <FaLinkedin className="text-2xl text-yellow-500	 hover:text-blue-700" />
                 </a>
               </div>
             </div>
-          ))}
+          )
+})}
         </Slider>
       </div>
     </div>
