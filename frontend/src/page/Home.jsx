@@ -558,7 +558,7 @@ const Home = () => {
 <div className="flex justify-center items-center">
       <div className="w-full max-w-7xl">
         <Slider {...settings}>
-          {ini_team.map.map((info, index) => 
+          {ini_team.map((info, index) => 
 		  {
 			if(!info.tid) return null;
 		 return (
