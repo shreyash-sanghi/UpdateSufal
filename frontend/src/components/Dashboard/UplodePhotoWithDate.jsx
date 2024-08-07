@@ -117,7 +117,7 @@ const UplodePhotoWithDate  = ()=>{
 
    
 </div>
-<button onClick={savevideo} className="border-2 w-full px-5 my-10 rounded-lg bg-green-600 font-bold text-white  py-1">Save Video</button>
+<button onClick={savevideo} className="border-2 w-full px-5 my-10 rounded-lg bg-green-600 font-bold text-white  py-1">Save</button>
 </div>   
 </div>  
 </div> 
