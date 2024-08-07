@@ -142,7 +142,7 @@ const CurrentEvent = () => {
                             <th class="font-bold text-lg px-3 pt-0 pb-3 border-b border-gray-200 ">Date</th>
                             <th class="font-bold text-lg px-3 pt-0 pb-3 border-b border-gray-200 ">Time</th>
                             <th class="font-bold text-lg px-3 pt-0 pb-3 border-b border-gray-200 ">About Event</th>
-                            {/* <th class="font-normal px-3 pt-0 pb-3 border-b border-gray-200 ">Price</th> */}
+                            <th class="font-normal px-3 pt-0 pb-3 border-b border-gray-200 "></th>
 
                           </tr>
                         </thead>
@@ -160,6 +160,18 @@ const CurrentEvent = () => {
                                 <td class="sm:p-3 py-2 px-3 border-b border-gray-200 dark:border-gray-800 text-gray-100">{data.EDate}</td>
                                 <td class="sm:p-3 py-2 px-3 border-b border-gray-200 dark:border-gray-800 text-gray-100">{data.Time}</td>
                                 <td class="sm:p-3 px-3 max-w-20 overflow-x-hidden py-2 border-b border-gray-200 dark:border-gray-800 text-gray-100">{data.Discreption}</td>
+                                <td class="sm:p-3 py-2 px-3 border-b border-gray-200 dark:border-gray-800">
+                                  <div class="flex items-center">
+                                  </div>
+                                  <div class="flex items-center">
+
+                                    <button class="w-24 h-8 inline-flex items-center justify-center text-lg text-green-400 ml-auto"
+                                      onClick={()=>navigate(`/edit_event/${data.eid}`)}
+                                    >
+                                      Edit
+                                    </button>
+                                  </div>
+                                </td>
                                 <td class="sm:p-3 py-2 px-3 border-b border-gray-200 dark:border-gray-800">
                                   <div class="flex items-center">
                                   </div>

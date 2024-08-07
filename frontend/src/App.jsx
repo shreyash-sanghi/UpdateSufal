@@ -35,6 +35,7 @@ import AddAndUpdatePhoto from './components/Dashboard/AddAndUpdatePhoto.jsx';
 import AddAndUpdateVideo from './components/Dashboard/AddAndUpdateVideo.jsx';
 import UplodePhotoWithDate from './components/Dashboard/UplodePhotoWithDate.jsx';
 import PhotoGalleryWithDate from './page/PhotoGalleryWithDate.jsx';
+import EditAnEvent from './components/Dashboard/Events/EditAnEvent.jsx';
 const App = () => {
 	const {t} = useTranslation();
 	return ( 
@@ -133,6 +134,7 @@ export const AppRouter = () => {
 		<Route exact path="/add_photo" Component={AddAndUpdatePhoto}></Route>
 		<Route exact path="/add_video" Component={AddAndUpdateVideo}></Route>
 		<Route exact path="/uplode_photo_with_date" Component={UplodePhotoWithDate}></Route>
+		<Route exact path="/edit_event/:id" Component={EditAnEvent}></Route>
 		</Routes>
 	);
 };
