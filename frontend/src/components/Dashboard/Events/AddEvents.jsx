@@ -82,7 +82,13 @@ const AddEvent = () => {
     // data.append("cloud_name", cloudname)
 
     //Date
+    const { EventName, Discreption, Place, Time ,Organization,Duration,Fee} = initialAddEvent;
+    if(EventName == ""||Discreption==""|| Place==""|| Time=="" ||Organization==""||Duration==""||Fee==""){
+      toast("Please Fill All Detail")
+      setLoading(false);
+      return;
 
+    }else{
     let EDate = initialAddEvent.EDate;
     let todaydate = new Date();
     const months = ["January", "February", "March", "April", "May",
@@ -107,7 +113,6 @@ const AddEvent = () => {
     }
 
     try {
-      const { EventName, Discreption, Place, Time ,Organization,Duration,Fee} = initialAddEvent;
       if (initialAddEventfile === null || initialAddEventfile === undefined) {
         toast("Please Uplode image...")
         setLoading(false);
@@ -143,6 +148,7 @@ const AddEvent = () => {
       toast(error);
       setLoading(false);
     }
+  }
   }
   // ---------------------------------------------------
 

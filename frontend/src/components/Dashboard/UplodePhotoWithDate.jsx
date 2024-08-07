@@ -25,14 +25,15 @@ const UplodePhotoWithDate  = ()=>{
         const storage = getStorage();
           const image = `${images.name + v4()}`;
           const imgref = ref(storage,`files/${image}`);
+          try {
+            uploadBytes(imgref,images)
+        } catch (error) {
+            alert("Profile have been not Uplode...")
+            return;
+        }
           await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/set_image_with_date`,{
               ImageDate,
               Image:image,})
-            try {
-                uploadBytes(imgref,images)
-            } catch (error) {
-                alert("Profile have been not Uplode...")
-            }
             setImages();
             setImageDate("")
         alert("Success..")
