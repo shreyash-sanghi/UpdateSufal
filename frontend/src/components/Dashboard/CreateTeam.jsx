@@ -77,18 +77,20 @@ const MyTeam =()=>{
             const storage = getStorage();
             const image = `${profile.name + v4()}`;
            const imgref = ref(storage,`files/${image}`);
+           try {
+            uploadBytes(imgref,profile)
+            
+          } catch (error) {
+            toast("Your Profile have not uplode")
+            setLoading(false)
+              return;
+          }
             const {Name,Sequence,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission,Number,Linkdin} = initial;
            const result = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/save_team_data`,
             {Achivements:AchivementsInputFields,
                 Sequence,Awards:AwardsInputFields,Name,Position,Gender,Speciality,About,FBId,InstaId,Vision,Mission,ProfilImage:image,Number,Linkdin}
            );
-           try {
-            uploadBytes(imgref,profile)
-          } catch (error) {
-            toast("Your Profile have not uplode")
-            setLoading(false)
-
-          }
+    
          
            toast("Success");
            setLoading(false)
