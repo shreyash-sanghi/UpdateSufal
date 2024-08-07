@@ -7,6 +7,7 @@ import { CgMenuGridO } from 'react-icons/cg';
 import { FcCloseUpMode } from 'react-icons/fc';
 import { IoClose } from 'react-icons/io5';
 import { BiChevronRight } from 'react-icons/bi';
+import logo from './../assets/logo.png';
 
 const Header = () => {
 	const pathname = useLocation();
@@ -69,7 +70,8 @@ const Header = () => {
 					<div className="text-xl font-semibold tracking-wide select-none">
 						<Link to={'/'}>
 							<span className={`text-[${colorTheme.zinc}]`}>
-								Sufal.in
+								{/* Sufal.in */}
+								<img className='w-36 h-8 sm:w-44 sm:h-8 sm:mt-2' 	src={logo} alt="" />
 								<span className={`text-[${colorTheme.green}]`}>
 									
 								</span>
