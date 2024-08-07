@@ -1,6 +1,12 @@
 import { FaHouse } from "react-icons/fa6";
-import { GiTakeMyMoney } from "react-icons/gi";
+import { RxVideo } from "react-icons/rx";
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
+import { MdOutlineEventSeat } from "react-icons/md";
+import { GrUserExpert } from "react-icons/gr";
+
+import { IoMdPhotos } from "react-icons/io";
+import { Link } from "react-router-dom";
+
 import { IoSettingsOutline } from "react-icons/io5";
 import { PiPresentationChart } from "react-icons/pi";
 import Button from "./Button";
@@ -20,19 +26,19 @@ const EInvestBusiness = () => {
             className="z-50 bg-zinc-50 border-[1px] border-zinc-400/20 rounded-3xl max-w-96 shadow-xl"
           >
             <div className="flex flex-col items-start justify-start px-6 py-6">
-              <span className="p-2 rounded-xl bg-[#65cdaa] mb-2">
-                <GiTakeMyMoney
+              <span className="p-2 rounded-xl bg-orange-300 mb-2">
+                <Link to="video-gallery">
+                <RxVideo
                   className="p-1 lg:p-3 mx-auto size-14 lg:size-16 text-zinc-200    "
                   size={12}
-                />
+                /></Link>
               </span>
               <div className="w-full flex flex-col items-start text-left">
-                <H3 className="text-lg text-zinc-800 font-bold mb-2">
-                  Business Growth
+                <H3 className="text-lg text-zinc-800 font-semibold mb-2">
+                  Video Gallery
                 </H3>
-                <p className="text-zinc-600 font-semibold font-polySans">
-                  Proident do ut ut ea excepteur pariatur aliqua sit aute.
-                  Laborum proident nostrud.
+                <p className="text-zinc-600 font-polySans">
+                हमारे वीडियो गैलरी में देखें अनमोल वीडियो, जो आपके मातृत्व को आनंदमय बनाएंगे।
                 </p>
               </div>
             </div>
@@ -42,19 +48,19 @@ const EInvestBusiness = () => {
             className="z-50 bg-zinc-50/35 border-[1px] border-zinc-400/20 rounded-3xl max-w-96 shadow-xl    "
           >
             <div className="flex flex-col items-start justify-start px-6 py-6">
-              <span className="p-2 rounded-xl bg-[#908dde] mb-2">
-                <PiPresentationChart
+              <span className="p-2 rounded-xl bg-pink-300 mb-2">
+                <Link to="/photo-gallery">
+                <IoMdPhotos
                   className="p-1 lg:p-3 mx-auto size-14 lg:size-16 text-zinc-200    "
                   size={12}
-                />
+                /></Link>
               </span>
               <div className="w-full flex flex-col items-start text-left">
-                <H3 className="text-lg text-zinc-800 font-bold mb-2">
-                  Strategic Guidance
+                <H3 className="text-lg text-zinc-800 font-semibold mb-2">
+                  Photo Gallery
                 </H3>
-                <p className="text-zinc-600 font-semibold font-polySans">
-                  Proident do ut ut ea excepteur pariatur aliqua sit aute.
-                  Laborum proident nostrud.
+                <p className="text-zinc-600  font-polySans">
+                अनमोल और खूबसूरत पलों की झलक हमारी फोटो गैलरी में देखें।
                 </p>
               </div>
             </div>
@@ -66,18 +72,21 @@ const EInvestBusiness = () => {
           >
             <div className="flex flex-col items-start justify-start px-6 py-6">
               <span className="p-2 rounded-xl bg-[#908dde] mb-2">
-                <IoSettingsOutline
-                  className="p-1 lg:p-3 mx-auto size-14 lg:size-16 text-zinc-200    "
-                  size={12}
-                />
+               <Link to=
+               "/events"> 
+               <MdOutlineEventSeat
+
+className="p-1 lg:p-3 mx-auto size-14 lg:size-16 text-zinc-200    "
+size={12}
+/>
+               </Link>
               </span>
               <div className="w-full flex flex-col items-start text-left">
-                <H3 className="text-lg text-zinc-800 font-bold mb-2">
-                  Exit Strategy
+                <H3 className="text-lg text-zinc-800 font-semibold mb-2">
+                  Sufal Events
                 </H3>
-                <p className="text-zinc-600 font-semibold font-polySans">
-                  Proident do ut ut ea excepteur pariatur aliqua sit aute.
-                  Laborum proident nostrud.
+                <p className="text-zinc-600 font-polySans">
+                सुफल इवेंट्स में भाग लेकर गर्भावस्था और मातृत्व से संबंधित महत्वपूर्ण जानकारियों और अनुभवों को साझा करें।
                 </p>
               </div>
             </div>
@@ -89,18 +98,18 @@ const EInvestBusiness = () => {
           >
             <div className="flex flex-col items-start justify-start px-6 py-6">
               <span className="p-2 rounded-xl bg-[#65cdaa] mb-2">
-                <FaHouse
+                <Link to="our-team">
+                <GrUserExpert
                   className="p-1 lg:p-3 mx-auto size-14 lg:size-16 text-zinc-200    "
                   size={12}
-                />
+                /></Link>
               </span>
               <div className="w-full flex flex-col items-start text-left">
-                <H3 className="text-lg text-zinc-800 font-bold mb-2">
-                  Advising Startups
+                <H3 className="text-lg text-zinc-800 font-semibold mb-2">
+                  Our Experts
                 </H3>
-                <p className="text-zinc-600 font-semibold font-polySans">
-                  Proident do ut ut ea excepteur pariatur aliqua sit aute.
-                  Laborum proident nostrud.
+                <p className="text-zinc-600 font-polySans">
+                हमारी विशेषज्ञ टीम आपकी गर्भावस्था और मातृत्व यात्रा को सुरक्षित और सुखद बनाने के लिए समर्पित है।
                 </p>
               </div>
             </div>
@@ -111,19 +120,18 @@ const EInvestBusiness = () => {
           <Motion direction="right">
             <div className="inline-flex  items-center justify-center py-1 transition ease-out text-[#8f81c8] hover:duration-300  mb-3 uppercase tracking-wide ">
               <span className="text-sm items-center justify-center">
-                WHAT WE DO
+              हम क्या करते हैं
               </span>
             </div>
           </Motion>
           <Motion direction="right">
-            <H3 className="text-4xl sm:text-5xl font-bold tracking-tight  mb-4">
-              Always ready to invest in any business
+            <H3 className="text-4xl sm:text-4xl font-semibold  mb-4">
+            आपके मातृत्व को सुरक्षित और खुबसूरत बनाने के लिए तत्पर
             </H3>
           </Motion>
           <Motion direction="right">
-            <P className=" text-[#27272a]/80 md:text-xl text-left">
-              Sint nulla ex cupidatat duis irure cillum labore. Lorem nostrud
-              mollit amet do esse dolor.
+            <P className=" text-[#27272a]/80 md:text-lg text-left">
+            हमारी सेवाओं में आपके गर्भावस्था और मातृत्व से जुड़े हर पहलू का ध्यान रखा जाता है। हम आपकी आवश्यकताओं और चिंताओं को समझते हुए आपको सबसे बेहतर देखभाल प्रदान करते हैं।
             </P>
           </Motion>{" "}
           <Motion
@@ -133,37 +141,37 @@ const EInvestBusiness = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 place-items-start ">
               <div className="flex flex-col items-start justify-start">
                 <H2 className="text-base md:text-lg lg:text-xl border-none font-semibold mb-4">
-                  How we help your business
+                हम कैसे आपकी मदद करते हैं
                 </H2>
                 <div className="flex flex-col justify-start items-start space-y-2">
                   <div className="flex items-center space-x-2">
                     <IoIosCheckmarkCircleOutline className="text-[#918ad8] text-2xl" />
                     <P className="text-gray-500 tracking-wide leading-6">
-                      Stage-focused investing
+                    गर्भावस्था की देखभाल
                     </P>
                   </div>
                   <div className="flex items-center space-x-2">
                     <IoIosCheckmarkCircleOutline className="text-[#918ad8] text-2xl" />
                     <P className="text-gray-500 tracking-wide leading-6">
-                      Sector specialization
+                    स्वास्थ्य और पोषण
                     </P>
                   </div>
                   <div className="flex items-center space-x-2">
                     <IoIosCheckmarkCircleOutline className="text-[#918ad8] text-2xl" />
                     <P className="text-gray-500 tracking-wide leading-6">
-                      Active involvement
+                    भावनात्मक समर्थन
                     </P>
                   </div>
                   <div className="flex items-center space-x-2">
                     <IoIosCheckmarkCircleOutline className="text-[#918ad8] text-2xl" />
                     <P className="text-gray-500 tracking-wide leading-6">
-                      Portfolio diversification
+                    सामुदायिक सहभागिता
                     </P>
                   </div>
                   <div className="flex items-center space-x-2">
                     <IoIosCheckmarkCircleOutline className="text-[#918ad8] text-2xl" />
                     <P className="text-gray-500 tracking-wide leading-6">
-                      Achieving a return
+                    श्रेष्ठ संतति का निर्माण
                     </P>
                   </div>
                 </div>
@@ -174,7 +182,7 @@ const EInvestBusiness = () => {
               >
                 <div className="w-52 h-52 flex items-center justify-end mx-auto  rounded-3xl overflow-clip  z-30">
                   <img
-                    src="https://images.unsplash.com/photo-1509114397022-ed747cca3f65?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    src="https://cdn.dribbble.com/users/3072447/screenshots/10297742/aromatherapy-pregnancy.gif"
                     alt="buildind plan image"
                     width={100}
                     className="w-full h-full object-cover z-30"
@@ -183,19 +191,7 @@ const EInvestBusiness = () => {
               </Motion>
             </div>
           </Motion>{" "}
-          <div className="flex flex-row items-center justify-start gap-0 w-full mt-4">
-            <Motion direction="left">
-              <Button
-                variant={"outline"}
-                href="/get-started"
-                className={
-                  "  transition-all backdrop-blur-xl bg-zinc-800 border-[1px] border-zinc-300/25 rounded-xl    px-8 py-4 flex text-wrap font-semibold text-lg text-zinc-300"
-                }
-              >
-                Read More
-              </Button>
-            </Motion>
-          </div>
+         
         </div>
       </div>
     </MaxWidthWrapper>

@@ -9,6 +9,10 @@ import garbhavideo from '../assets/garbha-video.mp4';
 import EUI from '../extraComponent/EUI';
 import EJim from '../extraComponent/EJim';
 import EInvestBusiness from '../extraComponent/EInvestBusiness';
+import { FaHandsHoldingChild } from "react-icons/fa6";
+import pm1 from "../assets/pm1.jpg";
+import pm2 from "../assets/pm2.jpg";
+import pm3 from "../assets/pm3.jpg";
 
 
 import {ref,uploadBytes,getStorage ,getDownloadURL,deleteObject} from "firebase/storage";
@@ -26,6 +30,8 @@ import {
 	IoLogoLinkedin,
 	IoPlayOutline,
 } from 'react-icons/io5';
+import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa";
+
 import { PiBowlFood, PiHandHeartFill } from 'react-icons/pi';
 import { MdOutlineSupportAgent } from "react-icons/md";
 
@@ -44,6 +50,8 @@ import {
 	CarouselNext,
 	CarouselPrevious,
 } from '../components/ui/carousel';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
 import TeamCard from '../components/TeamCard';
 import EventCard from '../components/EventCard';
 import aboutimg from '../assets/aboutimgfinal.png';
@@ -166,46 +174,92 @@ const Home = () => {
 		  }
 	  },[])
 
+	  const CustomNextArrow = (props) => {
+		const { className, style, onClick } = props;
+		return (
+		  <div
+			className={`${className} custom-arrow custom-next-arrow bg-gray-500 hover:bg-blue-700 text-white rounded-full`}
+			style={{ ...style }}
+			onClick={onClick}
+		  />
+		);
+	  };
+	  
+	  const CustomPrevArrow = (props) => {
+		const { className, style, onClick } = props;
+		return (
+		  <div
+			className={`${className} custom-arrow custom-prev-arrow bg-gray-500 hover:bg-blue-700 text-white rounded-full`}
+			style={{ ...style }}
+			onClick={onClick}
+		  />
+		);
+	  };
+	  
+	  
+
 	  const settings = {
 		dots: true,
 		infinite: true,
-		speed: 500,
-		slidesToShow: 4,
+		speed: 1000,
+		slidesToShow: 3,
 		slidesToScroll: 1,
+		autoplay: true,
+		autoplaySpeed: 3000,
+		centerMode: true,
+		centerPadding: "0px",
+		arrows: true,
+		nextArrow: <CustomNextArrow />,
+		prevArrow: <CustomPrevArrow />,
 		responsive: [
 		  {
-			breakpoint: 1024,
+			breakpoint: 1024, // lg
 			settings: {
-			  slidesToShow: 4,
+			  slidesToShow: 3,
 			  slidesToScroll: 1,
 			  infinite: true,
 			  dots: true
 			}
 		  },
 		  {
-			breakpoint: 768,
+			breakpoint: 768, // md
 			settings: {
 			  slidesToShow: 2,
-			  slidesToScroll: 1
+			  slidesToScroll: 1,
+			  infinite: true,
+			  dots: true
 			}
 		  },
 		  {
-			breakpoint: 480,
+			breakpoint: 480, // sm
 			settings: {
 			  slidesToShow: 1,
-			  slidesToScroll: 1
+			  slidesToScroll: 1,
+			  arrows: true
 			}
 		  }
 		]
 	  };
 	
+	
 	  const images = [
-		"image1.jpg",
-		"image2.jpg",
-		"image3.jpg",
-		"image4.jpg",
-		"image5.jpg",
-		"image6.jpg"
+		{ src: pm1, alt: "Team 3",links: {
+			instagram: "https://instagram.com",
+			facebook: "https://facebook.com",
+			linkedin: "https://linkedin.com"
+		  } },
+		
+		
+		{ src: pm2, alt: "Triathlete" , links: {
+			instagram: "https://instagram.com",
+			facebook: "https://facebook.com",
+			linkedin: "https://linkedin.com"
+		  }},
+		{ src: pm3, alt: "Triathlete",links: {
+			instagram: "https://instagram.com",
+			facebook: "https://facebook.com",
+			linkedin: "https://linkedin.com"
+		  } }
 	  ];
 	
 	return (
@@ -364,10 +418,10 @@ const Home = () => {
 						icon={
 							<ImWoman
 								size={44}
-								color={'#fbd066'}
+								color={'#FFDA44'}
 							/>
 						}
-						color={'#fef3d7'}
+						color={'#fdfdfd'}
 					/>
 					<Card
 						title={'आहार विशेषज्ञ'}
@@ -378,7 +432,7 @@ const Home = () => {
 								color={'#009F6B'}
 							/>
 						}
-						color={'#D0F0C0'}
+						color={'#fdfdfd'}
 					/>
 					<Card
 						title={'मनोविज्ञानी'}
@@ -389,7 +443,7 @@ const Home = () => {
 								color={'#478ef9'}
 							/>
 						}
-						color={'#e0ecfe'}
+						color={'#fdfdfd'}
 					/>
 					
 					<Card
@@ -402,8 +456,21 @@ const Home = () => {
 								className='p-1'
 							/>
 						}
-						color={'#fee0ea'}
+						color={'#fdfdfd'}
 					/>
+					<Card
+						title={'गर्भ संस्कार'}
+						
+						icon={
+							<FaHandsHoldingChild
+
+								size={44}
+								color={'#ff8000'}
+								className='p-1'
+							/>
+						}
+						color={'#fdfdfd'}
+					/> 	
 				</div>
 			</div>
 
@@ -434,7 +501,7 @@ const Home = () => {
         </h1>
       </main>
 				</div>
-				<div className="w-full flex items-center justify-center">
+				{/* <div className="w-full flex items-center justify-center">
 					<Carousel
 						orientation="horizontal"
 						opts={{
@@ -483,9 +550,33 @@ const Home = () => {
 						<CarouselNext className="mr-10 sm:mr-12 md:-mr-[3rem] md:right-16	 md:-bottom-[2rem]" />
 					</Carousel>
 				</div>
-				
-			</div>
-		</div>
+				 */}
+
+
+<div className="flex justify-center items-center">
+      <div className="w-full max-w-7xl">
+        <Slider {...settings}>
+          {images.map((image, index) => (
+            <div key={index} className="w-80 h-80 flex flex-col justify-center items-center border gap-x-4 p-6 rounded-xl">
+              <img src={image.src} alt={image.alt} className="w-full rounded-xl h-72 object-cover" />
+              <div className="flex gap-4 mt-4">
+                <a href={image.links.instagram} target="_blank" rel="noopener noreferrer">
+                  <FaInstagram className="text-2xl text-yellow-500 hover:text-blue-700" />
+                </a>
+                <a href={image.links.facebook} target="_blank" rel="noopener noreferrer">
+                  <FaFacebook className="text-2xl text-yellow-500 hover:text-blue-700" />
+                </a>
+                <a href={image.links.linkedin} target="_blank" rel="noopener noreferrer">
+                  <FaLinkedin className="text-2xl text-yellow-500	 hover:text-blue-700" />
+                </a>
+              </div>
+            </div>
+          ))}
+        </Slider>
+      </div>
+    </div>
+	</div>
+	</div>
 		<Footer/>
 		<ToastContainer/>
 		</>
