@@ -62,7 +62,7 @@ Video
           </span>
         </h1>
       </main>
-    <div class="flex items-center w-full justify-center pb-20 pt-10 sm:pt-4">
+  
     {(loading)?(<>
     <div className="flex flex-col gap-10"> 
 <div className=" flex flex-wrap mt-10 justify-evenly ">
@@ -129,6 +129,7 @@ Video
 </div>
 </div> 
       </>):(<>
+        <div class="flex items-center w-full justify-center pb-20 pt-10 sm:pt-4">
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
        {videoData.map((info)=>{
         if(!info.Vid) return null;
@@ -161,12 +162,12 @@ Video
             </div>
         </div>
         )
-       })}
+      })}
    
 
     </div>
+      </div>
     </>)}
-</div>
     <Footer></Footer>
     </>
   )
