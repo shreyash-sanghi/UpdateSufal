@@ -1,66 +1,61 @@
-import {React,useEffect,useState} from "react";
+import { React, useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import team1 from "../assets/team1.png";
-import {ref,uploadBytes,getStorage ,getDownloadURL,deleteObject} from "firebase/storage";
-
+import { ref, getStorage, getDownloadURL } from "firebase/storage";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
+
 const OurTeam = () => {
-const navigate = useNavigate();
-  const [ini_team,final_team] = useState([{
-    tid:"",
-    ProfilImage:"",
-    Name:"",
-    Position:"",
-    InataId:"",
-    FBId:"",
-    About:" "
-   }])
-   const [loading,setLoading] = useState(true);
+  const navigate = useNavigate();
+  const [ini_team, final_team] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-   const getTeamData  = async()=>{
-    try{
-         const response = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/get_team_data`);
-       const result  = response.data.result;
+  const getTeamData = async () => {
+    try {
+      const response = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/get_team_data`);
+      const result = response.data.result;
 
-       result.map((info)=>{
-       const storage = getStorage();
-       const imgref = ref(storage,`files/${info.ProfilImage}`);
-       getDownloadURL(imgref).then(async(url) => {
-      final_team((team_data)=>[
-      ...team_data,{	
-        tid:info._id,
-        ProfilImage:url,
-        Name:info.Name,
-        Position:info.Position,
-        InataId:info.InataId,
-        FBId:info.FBId,
-        About:info.About,
-      }
-      ])
-       })
-    })
-setLoading(false)
-    }catch(error){
-      setLoading(false)
-      toast(error);
-     
+      // Fetch image URLs and sort the data by Sequence
+      const sortedTeamData = await Promise.all(result.map(async (info) => {
+        const storage = getStorage();
+        const imgref = ref(storage, `files/${info.ProfilImage}`);
+        const url = await getDownloadURL(imgref);
+        return {
+          tid: info._id,
+          ProfilImage: url,
+          Name: info.Name,
+          Position: info.Position,
+          InataId: info.InataId,
+          FBId: info.FBId,
+          Sequence: info.Sequence,
+          About: info.About,
+        };
+      }));
+
+      // Sort the team data by Sequence
+      sortedTeamData.sort((a, b) => a.Sequence - b.Sequence);
+
+      // Update the state with the sorted data
+      final_team(sortedTeamData);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      toast(error.message);
     }
-    }
-   useEffect(()=>{
+  };
+
+  useEffect(() => {
     getTeamData();
-     },[])
+  }, []);
+
   return (
     <>
-      <Header></Header>
-
+      <Header />
       <main className="flex lg:py-10 flex-1 w-full flex-col items-center justify-center text-center md:text-start px-4 sm:mt-0 pt-16 ">
         <h1 className="mx-auto max-w-4xl font-display text-5xl font-bold tracking-normal sm:text-5xl">
-       
-हमारे 
+          हमारे 
           <span className="relative whitespace-nowrap text-pink-700">
             <svg
               aria-hidden="true"
@@ -75,97 +70,74 @@ setLoading(false)
         </h1>
       </main>
 
-
-      {(loading)?(<>
-<div className="flex flex-col gap-10 w-[80%] justify-center mx-auto">
-  
-<div role="status" class="space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center">
-    <div class="flex items-center justify-center w-full h-48 bg-gray-300 rounded sm:w-96 dark:bg-gray-700">
-        <svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-            <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z"/>
-        </svg>
-    </div>
-    <div class="w-full">
-        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[480px] mb-2.5"></div>
-        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[440px] mb-2.5"></div>
-        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[460px] mb-2.5"></div>
-        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
-    </div>
-    <span class="sr-only">Loading...</span>
-</div>
-<div role="status" class="space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center">
-    <div class="flex items-center justify-center w-full h-48 bg-gray-300 rounded sm:w-96 dark:bg-gray-700">
-        <svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-            <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z"/>
-        </svg>
-    </div>
-    <div class="w-full">
-        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[480px] mb-2.5"></div>
-        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[440px] mb-2.5"></div>
-        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[460px] mb-2.5"></div>
-        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
-    </div>
-    <span class="sr-only">Loading...</span>
-</div>
-
-
-</div>
-</>):(<>
-      <div className="p-6 lg:px-24  dark:text-gray-100">
-        {ini_team.map((info)=>{
-          if(!info.tid) return null;
-          return(
-            <div className="flex flex-col pt-8 space-y-4 md:space-y-0 md:space-x-6 md:flex-row">
-            <img
-              src={info.ProfilImage}
-              alt=""
-              className="self-center flex-shrink-0 size-32 lg:size-48 border rounded-xl md:justify-self-start dark:bg-gray-500 dark:border-gray-700"
-            />
-            <div className="flex flex-col">
-              <h4 className=" text-lg lg:text-xl font-semibold text-center md:text-left">
-                {info.Name}
-              </h4>
-              <h4 className="text-lg text-gray-600 mb-2  font-semibold text-center md:text-left">
-                {info.Position}
-              </h4>
-  
-              <p className="dark:text-gray-400 text-sm line-clamp-6 lg:line-clamp-5">
-                <span className="font-bold">About :</span> {info.About}
-              </p>
-              <div className="flex justify-start pt-2 space-x-4 align-center">
-                {(info.Name === "Dr. Priya Bhave Chittawar")?(<>
-                  <button
-                onClick={()=>navigate(`/dr-priya-bhave-chittawar`)}
-                  rel="noopener noreferrer"
-                  className="py-1 rounded-md bg-pink-600 text-white px-6 text-xs hover:dark:text-violet-400"
-                >
-                  Read ...
-                </button>
-                </>):(<>
-                <button
-                onClick={()=>navigate(`/team_readMore/${info.tid}`)}
-                  rel="noopener noreferrer"
-                  className="py-1 rounded-md bg-pink-600 text-white px-6 text-xs hover:dark:text-violet-400"
-                >
-                  Read ...
-                </button>
-                </>)}
-              </div>
+      {loading ? (
+        <div className="flex flex-col gap-10 w-[80%] justify-center mx-auto">
+          <div role="status" className="space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center">
+            <div className="flex items-center justify-center w-full h-48 bg-gray-300 rounded sm:w-96 dark:bg-gray-700">
+              <svg className="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z"/>
+              </svg>
             </div>
+            <div className="w-full">
+              <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
+              <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[480px] mb-2.5"></div>
+              <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+              <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[440px] mb-2.5"></div>
+              <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[460px] mb-2.5"></div>
+              <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
+            </div>
+            <span className="sr-only">Loading...</span>
           </div>
-          )
-        })}
-    
-        
-      </div>
-      </>)}
+        </div>
+      ) : (
+        <div className="p-6 lg:px-24 dark:text-gray-100">
+          {ini_team.map((info) => {
+            if (!info.tid) return null;
+            return (
+              <div key={info.tid} className="flex flex-col pt-8 space-y-4 md:space-y-0 md:space-x-6 md:flex-row">
+                <img
+                  src={info.ProfilImage}
+                  alt=""
+                  className="self-center flex-shrink-0 size-32 lg:size-48 border rounded-xl md:justify-self-start dark:bg-gray-500 dark:border-gray-700"
+                />
+                <div className="flex flex-col">
+                  <h4 className="text-lg lg:text-xl font-semibold text-center md:text-left">
+                    {info.Name}
+                  </h4>
+                  <h4 className="text-lg text-gray-600 mb-2 font-semibold text-center md:text-left">
+                    {info.Position}
+                  </h4>
+                  <p className="dark:text-gray-400 text-sm line-clamp-6 lg:line-clamp-5">
+                    <span className="font-bold">About :</span> {info.About}
+                  </p>
+                  <div className="flex justify-start pt-2 space-x-4 align-center">
+                    {info.Name === "Dr. Priya Bhave Chittawar" ? (
+                      <button
+                        onClick={() => navigate(`/dr-priya-bhave-chittawar`)}
+                        rel="noopener noreferrer"
+                        className="py-1 rounded-md bg-pink-600 text-white px-6 text-xs hover:dark:text-violet-400"
+                      >
+                        Read ...
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => navigate(`/team_readMore/${info.tid}`)}
+                        rel="noopener noreferrer"
+                        className="py-1 rounded-md bg-pink-600 text-white px-6 text-xs hover:dark:text-violet-400"
+                      >
+                        Read ...
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
       <div className="h-20"></div>
-      <Footer></Footer>
-      <ToastContainer/>
+      <Footer />
+      <ToastContainer />
     </>
   );
 };
