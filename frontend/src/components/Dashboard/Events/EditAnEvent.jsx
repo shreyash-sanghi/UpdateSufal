@@ -112,7 +112,7 @@ const EditAnEvent = () => {
             // const image = `${initialAddEventfile.name + v4()}`;
             // const imgref = ref(storage, `files/${image}`);
 
-            const response = await axios.post(`http://localhost:7000/updateAnEvent/${id}`
+            const response = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/updateAnEvent/${id}`
                 , { ChiefGuest: inputFields, EventName, Discreption, Place, Time, Organization, Duration, Fee  })
             // try {
             //     uploadBytes(imgref, initialAddEventfile)
@@ -172,7 +172,7 @@ const EditAnEvent = () => {
       };
     const getdata = async () => {
         try {
-            const response = await axios.get(`http://localhost:7000/getEventData/${id}`)
+            const response = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/getEventData/${id}`)
             const result = response.data.result;
             const formattedDate = parseDate(result.EDate);
             finalAddEvent({
