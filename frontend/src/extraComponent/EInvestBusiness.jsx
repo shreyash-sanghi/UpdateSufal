@@ -20,7 +20,7 @@ const EInvestBusiness = () => {
   return (
     <MaxWidthWrapper className="py-10 px-0 overflow-auto">
       <div className="grid grid-cols-1 gap-x-8 gap-y-8 lg:grid-cols-2">
-        <div className="grid grid-cols-2 grid-rows-2 gap-6 p-5 overflow-hidden">
+        <div className="md:grid hidden grid-cols-2 grid-rows-2 gap-6 p-5 overflow-hidden">
           <Motion
             direction="left"
             className="z-50 bg-zinc-50 border-[1px] border-zinc-400/20 rounded-3xl max-w-96 shadow-xl"
