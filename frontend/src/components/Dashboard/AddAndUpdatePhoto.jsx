@@ -191,11 +191,16 @@
                 const response = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/delete_my_photo`,{
                  resultArray:finalResult
                 })
-                const storage = getStorage();
-                const desertRef = ref(storage,`files/${photo.ImageId}`);
-                await deleteObject(desertRef)
-                alert("Success...")
-                 getMyPhotos();
+                try {
+                  const storage = getStorage();
+                  const desertRef = ref(storage,`files/${photo.ImageId}`);
+                  await deleteObject(desertRef)
+                  alert("Success...")
+                   getMyPhotos();
+                } catch (error) {
+                  toast("They have some error...")
+                }
+               
               }
     
              } catch (error) {

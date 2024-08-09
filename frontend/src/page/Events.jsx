@@ -17,7 +17,6 @@ const Events = () => {
   const [api, setApi] = useState();
   const navigate = useNavigate();
   const [CountCurrentEvent,SetCountCurrentEvent] = useState(0);
-  const [loading,setLoading] = useState(true);
   const [initial, final] = useState([{
     eid: "",
     EventName: "",
@@ -34,6 +33,7 @@ const Events = () => {
     Organization: "",
     Title: "",
   }])
+  const [loading,setLoading] = useState(true);
   const monthToNumber = (month) => {
     const monthDict = {
       "January": 1, "February": 2, "March": 3, "April": 4, "May": 5, "June": 6,
@@ -59,8 +59,15 @@ const Events = () => {
     }
     return false;
   }
+  const parseDateString = (dateString) => {
+    const [day, month, year] = dateString.split('/');
+    const months = ["January", "February", "March", "April", "May",
+      "June", "July", "August", "September", "October", "November", "December"];
+    const monthIndex = months.indexOf(month);
+    return new Date(year, monthIndex, day);
+  };
+  
   const getdata = async () => {
-
     let todaydate = new Date();
     const months = ["January", "February", "March", "April", "May",
       "June", "July", "August", "September", "October", "November", "December"];
@@ -71,97 +78,81 @@ const Events = () => {
       curdate = `0${curdate}`;
     }
     todaydate = `${curdate}/${month}/${curyear}`;
+    
     try {
       const data = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/get_current_event_data`);
       const result = data.data.result;
-      result.map(async (info) => {
+      
+      // Convert event dates to Date objects and sort
+      result.sort((a, b) => {
+        const dateA = parseDateString(a.EDate);
+        const dateB = parseDateString(b.EDate);
+        return dateA - dateB; // Ascending order
+      });
   
+      result.map(async (info) => {
         let EventDate = info.EDate;
         const isDate1AfterDate = compareDates(todaydate, EventDate);
-		const storage = getStorage();
-        const imgref = ref(storage,`files/${info.EventBanner}`);
-        getDownloadURL(imgref).then(async(url) => {
-        if (isDate1AfterDate && info.PastConform == false) {
-          
-        //   await axios.post(`https://sufalbackend-shreyash-sanghis-projects.vercel.app/send_to_past_event/${info._id}`);
-          await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/send_to_past_event/${info._id}`);
-          final((about) => [
-            ...about, {
-              eid: info._id,
-              EventName: info.EventName,
-              Place: info.Place,
-              Time: info.Time,
-              EDate: info.EDate,
-              EventBanner: url,
-              PastConform: true,
-              CurrentConform: false,
-              Discreption: info.Discreption,
-              image_key: info.public_id,
-              Duration: info.Duration,
-              Fee: info.Fee,
-              Organization: info.Organization,
-              Title: info.Title,
+        const storage = getStorage();
+        const imgref = ref(storage, `files/${info.EventBanner}`);
+        
+        getDownloadURL(imgref).then(async (url) => {
+          if (isDate1AfterDate && info.PastConform == false) {
+            await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/send_to_past_event/${info._id}`);
+            final((about) => [
+              ...about, {
+                eid: info._id,
+                EventName: info.EventName,
+                Place: info.Place,
+                Time: info.Time,
+                EDate: info.EDate,
+                EventBanner: url,
+                PastConform: true,
+                CurrentConform: false,
+                Discreption: info.Discreption,
+                image_key: info.public_id,
+                Duration: info.Duration,
+                Fee: info.Fee,
+                Organization: info.Organization,
+                Title: info.Title,
+              }
+            ]);
+          } else {
+            if (info.CurrentConform) {
+              SetCountCurrentEvent = CountCurrentEvent + 1;
             }
-          ])
-        } else {
-          if(info.CurrentConform){
-            SetCountCurrentEvent = CountCurrentEvent +1;
+            final((about) => [
+              ...about, {
+                eid: info._id,
+                EventName: info.EventName,
+                Place: info.Place,
+                Time: info.Time,
+                EDate: info.EDate,
+                EventBanner: url,
+                PastConform: info.PastConform,
+                CurrentConform: info.CurrentConform,
+                Discreption: info.Discreption,
+                image_key: info.public_id,
+                Duration: info.Duration,
+                Fee: info.Fee,
+                Organization: info.Organization,
+                Title: info.Title,
+              }
+            ]);
           }
-          final((about) => [
-            ...about, {
-              eid: info._id,
-              EventName: info.EventName,
-              Place: info.Place,
-              Time: info.Time,
-              EDate: info.EDate,
-              EventBanner: url,
-              PastConform: info.PastConform,
-              CurrentConform: info.CurrentConform,
-              Discreption: info.Discreption,
-              image_key: info.public_id,
-			  Duration: info.Duration,
-              Fee: info.Fee,
-              Organization: info.Organization,
-              Title: info.Title,
-            }
-          ])
-        }
-      })
-	})
- setLoading(false)
+        });
+      });
+  
+      setLoading(false);
     } catch (error) {
-         setLoading(false)
+      setLoading(false);
       alert(error);
     }
-  }
-  // const getdata = (async()=>{
-  //   try {
-  //     const result = await axios.get("https://backendsufal-shreyash-sanghis-projects.vercel.app/get_past_event_data");
-  //     const response = result.data.result;
-  //     response.map((info)=>{
-  //       const storage = getStorage();
-  //       const imgref = ref(storage,`files/${info.EventBanner}`);
-  //       getDownloadURL(imgref).then(async(url) => {
-  //       final((data)=>[
-  //        ...data,{
-  //         eid: info._id,
-  //         EventName: info.EventName,
-  //         Place: info.Place,
-  //         Time: info.Time,
-  //         EDate: info.EDate,
-  //         EventBanner:url,
-  //         Discreption: info.Discreption,
-  //        }
-  //       ])
-  //     })
-  //   })
-  //   } catch (error) {
-  //     alert(error);
-  //   }
-  // })
-  useEffect(()=>{
-   getdata();
-  },[])
+  };
+  
+  useEffect(() => {
+    getdata();
+  }, []);
   return (
     <>
     <Header></Header>
@@ -232,8 +223,8 @@ const Events = () => {
 </p>
     </div>
     <div class="flex flex-wrap -m-4">
-      
-    {(loading)?(<>
+
+      {(loading)?(<>
       <div className='flex justify-between gap-20 mx-auto   items-center '>
         
 <div role="status" class="max-w-sm flex-col hidden sm:flex  p-4 border border-gray-400 rounded shadow animate-pulse md:p-6 dark:border-gray-700">
@@ -359,8 +350,6 @@ const Events = () => {
       })}
       
       </>)}
-      
-      
       
       
     </div>
