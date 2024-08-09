@@ -8,6 +8,7 @@ import { FcCloseUpMode } from 'react-icons/fc';
 import { IoClose } from 'react-icons/io5';
 import { BiChevronRight } from 'react-icons/bi';
 import logo from './../assets/logo.png';
+import logo3 from './../assets/logo4.png';
 
 const Header = () => {
 	const pathname = useLocation();
@@ -97,13 +98,14 @@ const Header = () => {
 								</Link>
 							))}
 						</div>
-						<Button
+						{/* <Button
 							message="Login"
 							className="px-6 py-1.5 rounded-2xl bg-[#24856b] "
 							href={'/auth'}
-						/>
+						/> */}
+						
 					</div>
-
+					<Link to="dr-priya-bhave-chittawar"><img className='w-36 hidden md:block h-8 sm:w-28 sm:h-10 sm:mt-2' src={logo3} alt="" /></Link>
 					<div className="flex	 lg:hidden items-center justify-center gap-12">
 						<span onClick={handleMenu}>
 							<CgMenuGridO size={32} />
@@ -128,7 +130,7 @@ const Header = () => {
 											<span
 												className={`font-semibold text-[${colorTheme.green}]`}
 											>
-												Pregnancy Support
+												Garbhavastha Support Group
 											</span>
 										</span>
 									</Link>
