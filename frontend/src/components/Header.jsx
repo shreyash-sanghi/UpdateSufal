@@ -98,7 +98,7 @@ const Header = () => {
 							))}
 						</div>
 						<Button
-							message="Sign Up"
+							message="Login"
 							className="px-6 py-1.5 rounded-2xl bg-[#24856b] "
 							href={'/auth'}
 						/>

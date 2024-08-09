@@ -202,8 +202,8 @@ const PriyaMam = () => {
                 </div>
                 <p className="leading-relaxed text-sm mb-4">
                   {isReadMore
-                    ? "Dr. Priya Bhave Chittawar stands as an illustrious beacon of hope, a revered fertility specialist, and a trailblazing gynaecological endoscopic surgeon at the esteemed Bansal Hospital in the heart of Bhopal. With unparalleled expertise and unwavering dedication, she orchestrates miracles, ushering in new beginnings and fulfilling dreams."
-                    : "Dr. Priya Bhave Chittawar stands as an illustrious beacon of hope, a revered fertility specialist, and a trailblazing gynaecological endoscopic surgeon at the esteemed Bansal Hospital in the heart of Bhopal. With unparalleled expertise and unwavering dedication, she orchestrates miracles, ushering in new beginnings and fulfilling dreams."}
+                    ? "Leader in Reproductive Medicine & Surgery | 10x Gold Medalist & President of India Awardee | TEDx Speaker | Ironman Tri-Athlete | YouTuber | Obstetrics | Gynecology | Reproductive Endocrinology | Fertility | Researcher | Dr. Priya Bhave Chittawar stands as an illustrious beacon of hope, a revered fertility specialist, and a trailblazing gynaecological endoscopic surgeon at the esteemed Bansal Hospital in the heart of Bhopal. With unparalleled expertise and unwavering dedication, she orchestrates miracles, ushering in new beginnings and fulfilling dreams."
+                    : "Leader in Reproductive Medicine & Surgery | 10x Gold Medalist & President of India Awardee | TEDx Speaker | Ironman Tri-Athlete | YouTuber | Obstetrics | Gynecology | Reproductive Endocrinology | Fertility | Researcher"}
                 </p>
                 <button
                   onClick={toggleReadMore}
@@ -235,7 +235,7 @@ const PriyaMam = () => {
         <div className="w-full flex items-center justify-center gap-5 px-3 pb-5">
           <main className="flex py-6  md:pt-6   flex-1 w-full flex-col items-center justify-center text-center md:text-start px-4 sm:mt-0 mt-0">
             <h1 className="mx-auto max-w-4xl font-display mt-14 text-4xl font-bold tracking-normal sm:text-5xl">
-              Our <br className="md:hidden" />
+              <br className="md:hidden" />
               <span className="relative whitespace-nowrap text-pink-700">
                 <svg
                   aria-hidden="true"

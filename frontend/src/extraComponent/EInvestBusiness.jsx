@@ -25,7 +25,7 @@ const EInvestBusiness = () => {
             direction="left"
             className="z-50 bg-zinc-50 border-[1px] border-zinc-400/20 rounded-3xl max-w-96 shadow-xl"
           >
-            <div className="flex flex-col items-start justify-start px-6 py-6">
+            <div className="flex flex-col items-start justify-start px-4 sm:px-6 py-6">
               <span className="p-2 rounded-xl bg-orange-300 mb-2">
                 <Link to="video-gallery">
                 <RxVideo
@@ -47,7 +47,7 @@ const EInvestBusiness = () => {
             direction="left"
             className="z-50 bg-zinc-50/35 border-[1px] border-zinc-400/20 rounded-3xl max-w-96 shadow-xl    "
           >
-            <div className="flex flex-col items-start justify-start px-6 py-6">
+            <div className="flex flex-col items-start justify-start px-4 sm:px-6 py-6">
               <span className="p-2 rounded-xl bg-pink-300 mb-2">
                 <Link to="/photo-gallery">
                 <IoMdPhotos
@@ -70,7 +70,7 @@ const EInvestBusiness = () => {
             direction="left"
             className="z-50 bg-zinc-50/35 border-[1px] border-zinc-400/20 rounded-3xl max-w-96 shadow-xl "
           >
-            <div className="flex flex-col items-start justify-start px-6 py-6">
+            <div className="flex flex-col items-start justify-start px-4 sm:px-6 py-6">
               <span className="p-2 rounded-xl bg-[#908dde] mb-2">
                <Link to=
                "/events"> 
@@ -96,7 +96,7 @@ size={12}
             direction="left"
             className="z-50 bg-zinc-50 border-[1px] border-zinc-400/20 rounded-3xl max-w-96 shadow-xl"
           >
-            <div className="flex flex-col items-start justify-start px-6 py-6">
+            <div className="flex flex-col items-start justify-start px-4 sm:px-6 py-6">
               <span className="p-2 rounded-xl bg-[#65cdaa] mb-2">
                 <Link to="our-team">
                 <GrUserExpert

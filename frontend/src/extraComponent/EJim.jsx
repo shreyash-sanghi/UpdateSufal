@@ -10,17 +10,7 @@ import priyamam2 from "../assets/priyamam2.png";
 const EJim = () => {
   return (
     <main className="relative overflow-auto">
-      <div className="sm:absolute hidden sm:flex sm:top-1/2 sm:left-28 lg:top-1/2 lg:left-40  sm:transform sm:-translate-y-1/2  sm:grid sm:grid-rows-3 gap-1 items-center justify-start mt-5 px-3">
-        <span className="p-2 rounded-full">
-          <a href=""><IoLogoCodepen className="text-pink-600 size-8 " /></a>
-        </span>
-        <span className="p-2 rounded-full">
-          <a href=""><IoLogoLinkedin className="text-pink-600 size-8" /></a>
-        </span>
-        <span className="p-2 rounded-full ">
-          <a href=""><IoLogoWhatsapp className="text-pink-600 size-8 " /></a>
-        </span>
-      </div>
+      
 
       <MaxWidthWrapper className="relative px-4 md:px-6 text-center  py-4 ">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 place-items-center lg:px-28">

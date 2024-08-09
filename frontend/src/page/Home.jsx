@@ -43,17 +43,9 @@ import PatientDonationCard from '../components/PatientDonationCard';
 import Card from '../components/ProgramCard';
 import NewsCard from '../components/NewsCard';
 import randomDate from '../lib/getRandomDate';
-import {
-	Carousel,
-	CarouselContent,
-	CarouselItem,
-	CarouselNext,
-	CarouselPrevious,
-} from '../components/ui/carousel';
+
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
-import TeamCard from '../components/TeamCard';
-import EventCard from '../components/EventCard';
 import aboutimg from '../assets/aboutimgfinal.png';
 import { ImWoman } from "react-icons/im";
 
@@ -235,7 +227,8 @@ const Home = () => {
 			settings: {
 			  slidesToShow: 1,
 			  slidesToScroll: 1,
-			  arrows: true
+			  arrows: true,
+			  dots: false
 			}
 		  }
 		]
@@ -503,56 +496,7 @@ const Home = () => {
         </h1>
       </main>
 				</div>
-				{/* <div className="w-full flex items-center justify-center">
-					<Carousel
-						orientation="horizontal"
-						opts={{
-							align: 'start',
-							loop: true,
-						}}
-					>
-						<CarouselContent className=" w-[23rem] md:w-[35rem] lg:[90%]	 ml-1 md:ml-0 py-5">
-							{ini_team.map((info)=>{
-								if(!info.tid) return null;
-								const instaid = info.InataId;
-								const facebookid = info.FBId;
-								return(
-									<>
-										<CarouselItem className="px-5 basic-0 md:w-1/3 sm:w-1/2 w-full lg:w-1/4 py-2  md:basis-1/2 lg:basis-[30%]">
-								<TeamCard
-									teamMemberName={info.Name}
-									profession={info.Position}
-									profileImage={info.ProfilImage}
-									socialLinks={[
-										{
-											name: 'Linkedin',
-											href: '#',
-											icon: <IoLogoLinkedin size={24} />,
-										},
-										{
-											name: 'Instagram',
-											href: {instaid},
-											icon: <IoLogoInstagram size={24} />,
-										},
-										{
-											name: 'Facebook',
-											href: {facebookid},
-											icon: <BsFacebook size={24} />,
-										},
-									]}
-								/>
-							</CarouselItem>
-									</>
-								)
-							})}
-							
-							
-						</CarouselContent>
-						<CarouselPrevious className="ml-[3.2rem] sm:ml-12 md:ml-[4rem]		 	md:-bottom-[2rem]" />
-						<CarouselNext className="mr-10 sm:mr-12 md:-mr-[3rem] md:right-16	 md:-bottom-[2rem]" />
-					</Carousel>
-				</div>
-				 */}
+			
 
 
 <div className="flex justify-center items-center">
