@@ -12,6 +12,7 @@ import pm1 from "../assets/pm1.jpg";
 import pm2 from "../assets/pm2.jpg";
 import pm3 from "../assets/pm3.jpg";
 import "slick-carousel/slick/slick-theme.css";
+import mam from "../assets/mam2.png";
 
 
 const PriyaMam = () => {
@@ -202,8 +203,8 @@ const PriyaMam = () => {
                 </div>
                 <p className="leading-relaxed text-sm mb-4">
                   {isReadMore
-                    ? "Dr. Priya Bhave Chittawar stands as an illustrious beacon of hope, a revered fertility specialist, and a trailblazing gynaecological endoscopic surgeon at the esteemed Bansal Hospital in the heart of Bhopal. With unparalleled expertise and unwavering dedication, she orchestrates miracles, ushering in new beginnings and fulfilling dreams."
-                    : "Dr. Priya Bhave Chittawar stands as an illustrious beacon of hope, a revered fertility specialist, and a trailblazing gynaecological endoscopic surgeon at the esteemed Bansal Hospital in the heart of Bhopal. With unparalleled expertise and unwavering dedication, she orchestrates miracles, ushering in new beginnings and fulfilling dreams."}
+                    ? "Leader in Reproductive Medicine & Surgery | 10x Gold Medalist & President of India Awardee | TEDx Speaker | Ironman Tri-Athlete | YouTuber | Obstetrics | Gynecology | Reproductive Endocrinology | Fertility | Researcher | Dr. Priya Bhave Chittawar stands as an illustrious beacon of hope, a revered fertility specialist, and a trailblazing gynaecological endoscopic surgeon at the esteemed Bansal Hospital in the heart of Bhopal. With unparalleled expertise and unwavering dedication, she orchestrates miracles, ushering in new beginnings and fulfilling dreams."
+                    : "Leader in Reproductive Medicine & Surgery | 10x Gold Medalist & President of India Awardee | TEDx Speaker | Ironman Tri-Athlete | YouTuber | Obstetrics | Gynecology | Reproductive Endocrinology | Fertility | Researcher"}
                 </p>
                 <button
                   onClick={toggleReadMore}
@@ -228,6 +229,83 @@ const PriyaMam = () => {
         </div>
       </section>
 
+      <section className="dark:bg-gray-800 my-10  dark:text-gray-100">
+	<div className="container flex flex-col-reverse md:px-10 mx-auto px-0 lg:flex-row">
+		<div className="flex flex-col px-10 py-8 bg-yellow-100 bg-opacity-70 space-y-6 rounded-sm sm:p-8 lg:p-12 lg:w-1/2 xl:w-2/5 dark:bg-violet-400 dark:text-gray-900">
+			<div className="flex space-x-2 sm:space-x-4">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="flex-shrink-0 w-6 h-6">
+					<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+				</svg>
+				<div className="space-y-1">
+					<p className="sm:text-lg text-base font-medium leadi">𝗙𝗶𝗿𝘀𝘁 𝗗𝗼𝗰𝘁𝗼𝗿 𝘄𝗶𝘁𝗵 𝗮 𝗦𝘂𝗽𝗲𝗿𝘀𝗽𝗲𝗰𝗶𝗮𝗹𝗶𝘁𝘆 𝗶𝗻 𝗥𝗲𝗽𝗿𝗼𝗱𝘂𝗰𝘁𝗶𝘃𝗲 𝗠𝗲𝗱𝗶𝗰𝗶𝗻𝗲 </p>
+				</div>
+			</div>
+			<div className="flex space-x-2 sm:space-x-4">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="flex-shrink-0 w-6 h-6 text-green-700">
+					<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+				</svg>
+				<div className="space-y-1">
+					<p className="sm:text-lg text-base font-medium leadi"> 𝗥𝗲𝗰𝗶𝗽𝗶𝗲𝗻𝘁 𝗼𝗳 𝗧𝗲𝗻 𝗚𝗼𝗹𝗱 𝗠𝗲𝗱𝗮𝗹𝘀 𝗮𝗻𝗱 𝘁𝗵𝗲 𝗣𝗿𝗲𝘀𝗶𝗱𝗲𝗻𝘁 𝗼𝗳 𝗜𝗻𝗱𝗶𝗮 𝗠𝗲𝗱𝗮𝗹</p>
+				</div>
+			</div>
+			<div className="flex space-x-2 sm:space-x-4">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="flex-shrink-0 w-6 h-6">
+					<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+				</svg>
+				<div className="space-y-1">
+					<p className="sm:text-lg text-base font-medium leadi">𝗟𝗲𝗱 𝘁𝗵𝗲 𝗘𝘀𝘁𝗮𝗯𝗹𝗶𝘀𝗵𝗺𝗲𝗻𝘁 𝗼𝗳 𝗜𝗻𝗱𝗶𝗮'𝘀 𝗙𝗶𝗿𝘀𝘁 𝗗𝗠 𝗖𝗼𝘂𝗿𝘀𝗲</p>
+				</div>
+			</div>
+      <div className="flex space-x-2 sm:space-x-4">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="flex-shrink-0 w-6 h-6">
+					<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+				</svg>
+				<div className="space-y-1">
+					<p className="sm:text-lg text-base font-medium leadi">𝗢𝘃𝗲𝗿 𝟱𝟬𝟬𝟬 𝗦𝘂𝗰𝗰𝗲𝘀𝘀𝗳𝘂𝗹 𝗜𝗩𝗙 𝗖𝗮𝘀𝗲 </p>
+				</div>
+			</div>
+			<div className="flex space-x-2 sm:space-x-4">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="flex-shrink-0 w-6 h-6 text-green-700">
+					<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+				</svg>
+				<div className="space-y-1">
+					<p className="sm:text-lg text-base font-medium leadi">  𝗔𝘄𝗮𝗿𝗱-𝗪𝗶𝗻𝗻𝗶𝗻𝗴 𝗪𝗼𝗿𝗸 𝗶𝗻 𝗢𝗯𝘀𝘁𝗲𝘁𝗿𝗶𝗰𝘀</p>
+				</div>
+			</div>
+			<div className="flex space-x-2 sm:space-x-4">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="flex-shrink-0 w-6 h-6">
+					<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+				</svg>
+				<div className="space-y-1">
+					<p className="sm:text-lg text-base font-medium leadi">𝗔𝗰𝗰𝗼𝗺𝗽𝗹𝗶𝘀𝗵𝗲𝗱 𝗜𝗿𝗼𝗻𝗺𝗮𝗻 𝗔𝘁𝗵𝗹𝗲𝘁𝗲</p>
+				</div>
+			</div>
+      <div className="flex space-x-2 sm:space-x-4">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="flex-shrink-0 w-6 h-6">
+					<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+				</svg>
+				<div className="space-y-1">
+					<p className="sm:text-lg text-base font-medium leadi">𝗔𝗰𝘁𝗶𝘃𝗲 𝗬𝗼𝘂𝗧𝘂𝗯𝗲𝗿 𝗮𝗻𝗱 𝗧𝗘𝗗𝘅 𝗦𝗽𝗲𝗮𝗸𝗲𝗿 </p>
+				</div>
+			</div>
+			<div className="flex space-x-2 sm:space-x-4">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="flex-shrink-0 w-6 h-6 text-green-700">
+					<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+				</svg>
+				<div className="space-y-1">
+					<p className="sm:text-lg text-base font-medium leadi">  𝗘𝘅𝘁𝗲𝗻𝘀𝗶𝘃𝗲 𝗥𝗲𝘀𝗲𝗮𝗿𝗰𝗵 𝗖𝗼𝗻𝘁𝗿𝗶𝗯𝘂𝘁𝗶𝗼𝗻𝘀</p>
+				</div>
+			</div>
+		
+		</div>
+		<div className="lg:w-1/2 xl:w-3/5 bg-none">
+			<div className="flex items-center justify-center p-4 md:p-8 lg:p-12">
+    <img src={mam} alt="" className="rounded-lg shadow-lg sm:min-h-96" />
+			</div>
+		</div>
+	</div>
+</section>
+
       <div
         id="team"
         className="w-full max-w-7xl mx-auto px-3 pb-16 selection:bg-[#0a755862]"
@@ -235,16 +313,9 @@ const PriyaMam = () => {
         <div className="w-full flex items-center justify-center gap-5 px-3 pb-5">
           <main className="flex py-6  md:pt-6   flex-1 w-full flex-col items-center justify-center text-center md:text-start px-4 sm:mt-0 mt-0">
             <h1 className="mx-auto max-w-4xl font-display mt-14 text-4xl font-bold tracking-normal sm:text-5xl">
-              Our <br className="md:hidden" />
+              <br className="md:hidden" />
               <span className="relative whitespace-nowrap text-pink-700">
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 418 42"
-                  className="absolute top-2/3 left-0 h-[0.58em] w-full fill-yellow-300/90"
-                  preserveAspectRatio="none"
-                >
-                  <path d="M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.78 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.54-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.81 23.239-7.825 27.934-10.149 28.304-14.005.417-4.348-3.529-6-16.878-7.066Z"></path>
-                </svg>
+                
                 <span className="relative ml-4">Highlights</span>
               </span>
             </h1>
@@ -281,14 +352,7 @@ const PriyaMam = () => {
               <h1 className="mx-auto max-w-4xl font-display mt-14 text-4xl font-bold tracking-normal sm:text-5xl">
                 Important <br className="md:hidden" />
                 <span className="relative whitespace-nowrap text-pink-700">
-                  <svg
-                    aria-hidden="true"
-                    viewBox="0 0 418 42"
-                    className="absolute top-2/3 left-0 h-[0.58em] w-full fill-yellow-300/90"
-                    preserveAspectRatio="none"
-                  >
-                    <path d="M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.78 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.54-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.81 23.239-7.825 27.934-10.149 28.304-14.005.417-4.348-3.529-6-16.878-7.066Z"></path>
-                  </svg>
+                  
                   <span className="relative ml-4">Positions</span>
                 </span>
               </h1>
@@ -402,13 +466,15 @@ const PriyaMam = () => {
 
       
 
+      
+
       <div class="container mx-auto">
         <div class="container text-4xl px-5 md:text-start text-center font-semibold   pt-14 pb-8 mx-auto">
           <h1 className="font-semibold text-center">
             <span className="text-pink-700 font-semibold">Proud</span> Awards
           </h1>
         </div>
-        <div class="grid grid-cols-2 pb-10 justify-center text-center place-content-center items-center sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
+        <div class="grid grid-cols-2 pb-10 justify-center text-center place-content-center items-center sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
           <div class="border border-gray-400 w-full h-36 border-opacity-50 rounded-lg flex flex-col justify-center p-4">
             <img
               src="https://www.pngall.com/wp-content/uploads/5/Star-Award-PNG-Image.png"
@@ -419,6 +485,17 @@ const PriyaMam = () => {
               Dr. Pankaj Tawar Gold Medal at IFS 2022
             </h2>
           </div>
+          <div class="border border-gray-400 w-full h-36 border-opacity-50 rounded-lg flex flex-col justify-center p-4">
+            <img
+              src="https://static.vecteezy.com/system/resources/previews/007/476/518/non_2x/golden-award-sport-medal-for-winners-with-green-ribbon-vector.jpg"
+              className="size-14 self-center"
+            />
+
+            <h2 class="text-xs text-gray-700 font-medium title-font lg:mt-4 mt-3 ">
+              President of India - Gold Medal
+            </h2>
+          </div>
+
 
           <div class="border border-gray-400 w-full h-36 border-opacity-50 rounded-lg flex flex-col justify-center p-4">
             <img

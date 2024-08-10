@@ -52,7 +52,7 @@ setLoading(false)
   return (
     <>
     <Header></Header>
-    <main className="flex lg:py-10 flex-1 w-full flex-col items-center justify-center text-center md:text-start px-4 sm:mt-0 pt-16 ">
+    <main className="flex lg:py-10 flex-1 w-full flex-col items-center justify-center text-center md:text-start px-4 mb-20 sm:mb-0 sm:mt-0 pt-16 ">
         <h1 className="mx-auto max-w-4xl font-display text-5xl font-bold tracking-normal sm:text-5xl">
        
 Video
