@@ -12,65 +12,136 @@ import { useNavigate, useParams } from "react-router-dom";
 const UplodePhotoWithDate  = ()=>{
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-   const [images, setImages] = useState();
+   const [images, setImages] = useState([]);
    const [ImageDate, setImageDate] = useState("");
+
    const [videoData,setVideoData] = useState([{
     Vid:"",
-    Videoimage:"",
+    Videoimage:[],
     ImageDate:"",
-    VideoImageName:"",
    }])
+
    const savevideo = async()=>{
     try {
-        const storage = getStorage();
-          const image = `${images.name + v4()}`;
-          const imgref = ref(storage,`files/${image}`);
-          try {
-            uploadBytes(imgref,images)
-        } catch (error) {
-            alert("Profile have been not Uplode...")
-            return;
+        setLoading(true)
+        if(ImageDate === undefined ){
+            alert("Please Enter Year...")
         }
-          await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/set_image_with_date`,{
-              ImageDate,
-              Image:image,})
-            setImages();
-            setImageDate("")
-        alert("Success..")
-    } catch (error) {
-        alert(error);
+        else if(images.length <1){
+            alert("Please Uploade atlest one Image...")
+        }else{
+            let arr = [];
+            console.log(images)
+            images.map(async(info)=>{
+                try{
+                  for(let i=0;i<info.length;i++){
+                    const storage = getStorage();
+                    const image = `${info[i].name + v4()}`;
+                    const imgref = ref(storage,`files/${image}`);
+                    uploadBytes(imgref,info[i])
+                    arr.push(image);
+                  }
+                }catch(error){
+                    toast(error)
+                }
+            })
+            await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/set_image_with_date`,{
+                ImageDate,
+                Images:arr,})
+                setTimeout(()=>{
+                    setImages([]);
+                    setImageDate()
+                    toast("Success..");
+                    setVideoData(
+                        [{
+                            Vid:"",
+                            Videoimage:[],
+                            ImageDate:"",
+                            VideoImageName:[],
+                           }]
+                    )
+                    getImagewithDate();
+                    setLoading(false);
+                },2000)
+            }
+        } catch (error) {
+        setLoading(false);
+        toast(error);
     }
    }
     
-   const getImagewithDate = async()=>{
+   const getImagewithDate = async () => {
     try {
-        const response = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/get_image_with_date`)
-        if(response.data.result.length >0 ){
+        const response = await axios.get('https://backendsufal-shreyash-sanghis-projects.vercel.app/get_image_with_date');
+        if (response.data.result.length > 0) {
             const res = response.data.result;
-            res.map((info)=>{
-                const storage = getStorage();
-          const imgref = ref(storage,`files/${info.Image}`);
-          getDownloadURL(imgref).then((url) => { 
-            setVideoData((about)=>[
-                ...about,{
-                    Vid:info._id,
-                    ImageDate:info.ImageDate,
-                    VideoImageName:info.Image,
-                    Videoimage:url
-                    }
-                ])
-            })
-            })
+
+            for (const info of res) {
+                const ImageArr = [];
+                const ImageNameArr = [];
+
+                if (info.Images.length >= 1) {
+                    // Collect all promises for image URLs
+                    const imagePromises = info.Images.map(async (myImage) => {
+                        const storage = getStorage();
+                        const imgref = ref(storage, `files/${myImage}`);
+                        const url = await getDownloadURL(imgref);
+                        let result = {url,myImage}
+                        ImageArr.push(result);
+                    });
+
+                    // Wait for all image URL promises to resolve
+                    await Promise.all(imagePromises);
+
+                    // Update state after all images are processed
+                    setVideoData((about) => [
+                        ...about,
+                        {
+                            Vid: info._id,
+                            ImageDate: info.ImageDate,
+                            VideoImageName: ImageNameArr,
+                            Videoimage: ImageArr,
+                        },
+                    ]);
+                }
+            }
         }
     } catch (error) {
-        alert("Can not fatch Video...")
+        alert("Cannot fetch Video...");
     }
-   }
+};
+
+   const handleDelete = (index) => {
+    const updatedImages = [...images];
+    updatedImages.splice(index, 1);
+    setImages(updatedImages);
+  };
+
+  function arrayToFileList(array) {
+    const dataTransfer = new DataTransfer();
+    array.forEach(file => {
+      dataTransfer.items.add(file);
+    });
+    return dataTransfer.files;
+  }
+
+const handleDelete2 = (objectIndex, fileIndex) => {
+    const updatedFilesArray = [...images];
+    let updatedObject =  updatedFilesArray[objectIndex]
+    const filesArray = Array.from(updatedObject);
+    filesArray.splice(fileIndex, 1);
+     // Convert the array back to a FileList
+     const fileList = arrayToFileList(filesArray);
+updatedFilesArray.splice(objectIndex, 1);
+updatedFilesArray.push(fileList)
+setImages(updatedFilesArray)
+  };
 
    useEffect(()=>{
      getImagewithDate();
    },[])
-   console.log(videoData)
+
+
     return(
         <div>
         <div className="flex md:flex-row flex-col bg-gray-800">
@@ -80,7 +151,7 @@ const UplodePhotoWithDate  = ()=>{
   <h1 className="text-white font-bold sm:text-xl text-lg lg:text-3xl underline my-10 flex justify-center">Uplode Image with Date </h1>
 <div className="flex sm:flex-row flex-col items-center gap-10">
 <div>
-    {(images===undefined)?(<>
+    {/* {(images===undefined)?(<> */}
     <div className="items-center flex flex-col mt-10">
         <label className="text-white text-lg">Uplode image</label>
         <div class="extraOutline p-4 w-max bg-whtie m-auto rounded-lg">
@@ -88,7 +159,9 @@ const UplodePhotoWithDate  = ()=>{
             <svg class="text-indigo-500 w-24 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
             <div class="input_field flex flex-col w-max mx-auto text-center">
                 <label>
-                    <input class="text-sm cursor-pointer w-36 hidden" onChange={(e) => setImages(e.target.files[0])} type="file"  />
+                    <input class="text-sm cursor-pointer w-36 hidden" onChange={(e) => setImages((info)=>[
+            ...info,e.target.files
+        ])} type="file" multiple />
                     <div class="text bg-indigo-600 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-indigo-500">Select</div>
                 </label>
 
@@ -97,7 +170,7 @@ const UplodePhotoWithDate  = ()=>{
         </div>
     </div>
     </div>
-    </>):(<>
+    {/* </>):(<>
     <div className="w-[90vw] sm:w-[50vw] lg:w-[25vw] flex-col flex items-center justify-center mx-auto mt-10">
         <img className="w-full" src={URL.createObjectURL(images)} ></img>
         <label className="text-white border-2  mt-5 w-full items-center justify-center font-bold cursor-pointer flex py-1">
@@ -105,81 +178,101 @@ const UplodePhotoWithDate  = ()=>{
             Change Thumbnail
             </label>
         </div>
-    </>)}
+    </>)} */}
 </div>
 <div>
-<div className="flex mt-10 flex-col items-center justify-center mx-auto w-full sm:w-[30vw]">
+<div className="flex mt-10 flex-col items-center justify-center mx-auto w-[80vw] sm:w-[30vw]">
    
-    <div className=" w-full justify-center mx-auto items-center" >
-        <label className="text-white text-lg  my-2">Date</label>
-        <input className="flex h-10 pl-1 w-full " placeholder="" type="date" onChange={(e)=>{setImageDate(e.target.value)}}></input>
+    <div className=" w-full justify-center mx-auto items-
+    center" >
+        <label className="text-white text-lg  my-2">Year</label>
+        <input className="flex h-10 pl-1 w-full " placeholder="Enter Year" type="number" min="1900"
+        max="2100" onChange={(e)=>{setImageDate(e.target.value)}}></input>
     </div>
 
    
 </div>
-<button onClick={savevideo} className="border-2 w-full px-5 my-10 rounded-lg bg-green-600 font-bold text-white  py-1">Save</button>
+<button onClick={savevideo} className="border-2 w-full px-5 my-10 rounded-lg bg-green-600 font-bold text-white  py-1">Save </button>
 </div>   
 </div>  
 </div> 
-  
+<div className="flex flex-wrap ">
+        {images.map((image, index) => (
+          <div className="flex-wrap mt-10  object-cover  flex justify-evenly  " key={index}>
+            {(images[index].length >1)?(<>
+            <div className="flex flex-wrap">
+            {Object.values(images[index]).map((info,fileIndex)=>{
+                return(
+                    <div className="flex sm:w-[40vw] md:w-[30vw] xl:w-[20vw]    m-2 flex-col">
+                    <img className="w-full" src={URL.createObjectURL(info)} alt={`Image ${index}`}     />
+                <button className="font-semibold text-red-500" onClick={() => handleDelete2(index,fileIndex)}>Delete</button>    
+                    </div>
+                )
+
+            })}
+            </div>
+            </>):(<>
+            <div className="flex sm:w-[40vw] md:w-[30vw] xl:w-[20vw] m-2 flex-col">
+            <img src={URL.createObjectURL(image[0])} alt={`Image ${index}`}  />
+            <button className="font-semibold text-red-500" onClick={() => handleDelete(index)}>Delete</button>
+            </div>
+            </>)}
+          </div>
+        ))}
+      </div>
       <div className="w-full h-1 my-10 bg-white"></div>
  <div>
  <h1 className="text-white font-bold sm:text-xl text-lg lg:text-3xl underline my-10 flex justify-center">Image's</h1>
   <div className="flex flex-wrap  gap-5 justify-center">
-    {/* {videoData.map((info)=>{
-     if(!info.Vid) return null;
-     return(
-        <>
-            <div class="relative bg-white py-6 px-6 rounded-3xl w-80 border border-gray-100 my-4 shadow-xl">
-            <div class=" text-white flex items-center absolute rounded-full py-4 px-4 shadow-xl bg-pink-500 left-4 -top-6">
-                
-            <img className='size-8' src={info.Videoimage}  alt="" />
-            </div>
-            <div class="mt-8">
-            
-                
-                <div class="flex space-x-2 text-gray-400 text-sm my-3">
-                 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                     <p>{info.ImageDate}</p> 
-                </div>
-                <div class="border-t-2"></div>
-            </div>
-        </div>
-        </>
-     )
-
-    })} */}
          {videoData.map((photo) => {
             if(!photo.Vid) return null;
-            console.log(photo)
          return(
-            <div className="w-1/4 p-2">
-              <img src={photo.Videoimage}  className="w-full" />
-            <div className="flex items-center ">
+            <div className="flex flex-col-reverse items-center">
+                <div className="flex justify-center gap-5 flex-wrap">
+                {photo.Videoimage.map((imgUrl)=>{
+                    return(
+                        <div className="flex sm:w-1/4 justify-center  flex-col items-center">
+                        <img src={imgUrl.url} className="p-2 "  />
+                        <button className="text-red-600  align-middle flex justify-center items-center mx-auto mt-2" onClick={async()=>{
+                            try {
+                             const con = confirm("You have Confirm to delete...");
+                             if(con){
+
+                               const response = await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/delete_photo_with_date/${photo.Vid}`,{
+                                ImgName:imgUrl.myImage
+                               })
+                              if(response.request.status === 202){
+                             const storage = getStorage();
+                               const desertRef = ref(storage,`files/${imgUrl.myImage}`);
+                               await deleteObject(desertRef)
+                               alert("Success...")
+                              }
+  
+                               setVideoData([
+                                {
+                                    Vid:"",
+                                    Videoimage:[],
+                                    ImageDate:"",
+                                   }
+                               ])
+                               setTimeout(()=>{
+                                   getImagewithDate();
+                               },1000)
+                            //    setVideoData(()=>
+                            //     videoData.filter((data)=>data.Vid != photo.Vid )
+                            //  )
+                             }
+                   
+                            } catch (error) {
+                             alert("They have some error due to which Photo have been not delete...")
+                            }
+                            }}>Delete</button>
+                            </div>
+                    )
+                })}
+                
+                </div> 
                 <p className="text-white mt-2">{photo.ImageDate}</p>
-             <button className="text-red-600  align-middle flex justify-center items-center mx-auto mt-2" onClick={async()=>{
-             try {
-              const con = confirm("You have Confirm to delete...");
-              if(con){
-                const response = await axios.delete(`https://backendsufal-shreyash-sanghis-projects.vercel.app/delete_photo_with_date/${photo.Vid}`)
-                setVideoData(()=>
-                   videoData.filter((data)=>data.Vid != photo.Vid )
-                )
-                const storage = getStorage();
-               console.log(photo.VideoImageName)
-                const desertRef = ref(storage,`files/${photo.VideoImageName}`);
-                await deleteObject(desertRef)
-                alert("Success...")
-              }
-    
-             } catch (error) {
-              alert("They have some error due to which Photo have been not delete...")
-             }
-             }}>Delete</button>
-             </div>
             </div>
           )})}
   </div>

@@ -10,14 +10,19 @@ const PhotoGalleryWithDate = () => {
 
   const getMyPhotos = async () => {
     try {
-      const result = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/get_image_with_date`);
+      const result = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/get_image_with_date_frontend`);
       if (result.data.result != null) {
         const photoData = await Promise.all(
           result.data.result.map(async (photoId) => {
-            const storage = getStorage();
-            const imgref = ref(storage, `files/${photoId.Image}`);
-            const url = await getDownloadURL(imgref);
-            return { ImageUrl: url, ImageDate: photoId.ImageDate };
+            const resArr = await Promise.all(
+              photoId.Images.map(async (result_data) => {
+                const storage = getStorage();
+                const imgref = ref(storage, `files/${result_data}`);
+                const url = await getDownloadURL(imgref);
+                return url;
+              })
+            );
+            return { ImageUrl: resArr, ImageDate: photoId.ImageDate };
           })
         );
         setMyPhotos(photoData);
@@ -53,15 +58,17 @@ const PhotoGalleryWithDate = () => {
         </h1>
       </main>
       <div className="gallery py-10 sm:py-6 md:py-2 px-10 sm:px-16">
-        {Object.keys(photosByYear).map((year) => (
+        {Object.keys(photosByYear).sort().map((year) => (
           <div className="flex flex-col" key={year}>
             <h2 className="text-2xl font-bold mb-4">{year}</h2>
             <div className="year-gallery grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              {photosByYear[year].map((image, index) => (
-                <div key={index}>
-                  <img src={image.ImageUrl} className="rounded-xl" alt={`Image taken in ${year}`} />
-                </div>
-              ))}
+              {photosByYear[year].flatMap((image, index) =>
+                image.ImageUrl.map((getimage, imageIndex) => (
+                  <div key={`${index}-${imageIndex}`}>
+                    <img src={getimage} className="rounded-xl" alt={`Image taken in ${year}`} />
+                  </div>
+                ))
+              )}
             </div>
           </div>
         ))}

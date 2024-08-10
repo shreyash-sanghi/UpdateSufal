@@ -63,7 +63,16 @@ router.get("/get_my_photo", async (req, res) => {
       res.status(404).json({ error });
    }
 })
-router.get("/get_image_with_date", async (req, res) => {
+router.get("/get_image_with_date_frontend", async (req, res) => {
+   try {
+      const result = await ImageWithDate.find();
+      res.status(202).json({result});
+   } catch (error) {
+      console.log(error);
+      res.status(404).json({ error });
+   }
+})
+router.get("/get_image_with_date",verify, async (req, res) => {
    try {
       const result = await ImageWithDate.find();
       res.status(202).json({result});
@@ -74,18 +83,27 @@ router.get("/get_image_with_date", async (req, res) => {
 })
 router.post("/set_image_with_date", verify, async (req, res) => {
    try {
-      const { ImageDate,Image} = req.body;
-      await ImageWithDate.create({ImageDate,Image});
+      const { ImageDate,Images} = req.body;
+      await ImageWithDate.create({ImageDate,Images});
         res.sendStatus(202);
    } catch (error) {
       console.log(error);
       res.status(404).json({ error });
    }
 })
-router.delete("/delete_photo_with_date/:id", verify, async (req, res) => {
+router.post("/delete_photo_with_date/:id", verify, async (req, res) => {
    try {
       const id = req.params.id;
-        const result =  await ImageWithDate.findByIdAndDelete(id);
+      const ImgName = req.body.ImgName;
+        const result =  await ImageWithDate.findById(id);
+        if(result.Images.length <=1){
+            await ImageWithDate.findByIdAndDelete(id)
+        }
+        else{
+      const response =   result.Images.filter((info)=>info != ImgName);
+        await ImageWithDate.updateOne({_id:id},{Images:response})
+        }
+
            res.sendStatus(202);
    } catch (error) {
       console.log(error);
