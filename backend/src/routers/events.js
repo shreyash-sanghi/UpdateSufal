@@ -11,12 +11,33 @@ const verify = require("../midelware/userauth")
 router.get("/get_current_event_data", async (req, res) => {
    try {
       const result = await Current.find();
-      res.status(202).json({ result });
+      
+      // Sorting the result by EDate (Day/Month/Year)
+      const sortedResult = result.sort((a, b) => {
+         const dateA = parseDateString(a.EDate);
+         const dateB = parseDateString(b.EDate);
+         return dateA - dateB; // Sort in ascending order (earliest to latest)
+      });
+      res.status(202).json({ result: sortedResult });
    } catch (error) {
       console.log(error);
       res.status(404).json({ error });
    }
 })
+// Helper function to parse the 'DD/MMM/YYYY' format to a Date object
+function parseDateString(dateString) {
+   const [day, month, year] = dateString.split('/');
+   
+   // Months array to map month names to numbers (e.g., 'May' -> 4 for Date object)
+   const months = {
+      'January': 0, 'February': 1, 'March': 2, 'April': 3, 
+      'May': 4, 'June': 5, 'July': 6, 'August': 7, 
+      'September': 8, 'October': 9, 'November': 10, 'December': 11
+   };
+   
+   // Return a Date object
+   return new Date(year, months[month], day);
+}
 
 router.get("/get_past_event_data", async (req, res) => {
    try {
