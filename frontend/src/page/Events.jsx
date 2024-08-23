@@ -18,14 +18,24 @@ const Events = () => {
   const navigate = useNavigate();
   const [CountCurrentEvent,SetCountCurrentEvent] = useState(0);
   const [initial, final] = useState([])
+  const [years, setYears] = useState([]);
+const [selectedYear, setSelectedYear] = useState('');
+const [selectedMonth, setSelectedMonth] = useState('');
   const [loading,setLoading] = useState(true);
+
+  
   const monthToNumber = (month) => {
     const monthDict = {
       "January": 1, "February": 2, "March": 3, "April": 4, "May": 5, "June": 6,
       "July": 7, "August": 8, "September": 9, "October": 10, "November": 11, "December": 12
     };
+    
     return monthDict[month];
   }
+  const months = {
+    "January": 1, "February": 2, "March": 3, "April": 4, "May": 5, "June": 6,
+    "July": 7, "August": 8, "September": 9, "October": 10, "November": 11, "December": 12
+  };
   const compareDates = (date1, date2) => {
     const [day1, month1, year1] = date1.split('/');
     const [day2, month2, year2] = date2.split('/');
@@ -110,6 +120,11 @@ const Events = () => {
         const dateB = parseDateString(b.EDate);
         return dateA - dateB; // Ascending order
       });
+
+          // Extract unique years
+    const uniqueYears = [...new Set(events.map(event => new Date(parseDateString(event.EDate)).getFullYear()))];
+    setYears(uniqueYears);
+
   final(events)
       // // Update state with sorted events
       // setInitial(events);
@@ -122,6 +137,19 @@ const Events = () => {
     }
   };
   
+  const handleYearChange = (year) => {
+    setSelectedYear(year);
+  };
+  
+  const filteredEvents = initial.filter(event => {
+    const eventYear = new Date(parseDateString(event.EDate)).getFullYear();
+    const eventMonth = new Date(parseDateString(event.EDate)).getMonth() + 1; // Months are 0-indexed
+    const selectedMonthNumber = monthToNumber(selectedMonth);
+
+    return (selectedYear === '' || eventYear === parseInt(selectedYear)) &&
+           (selectedMonth === '' || eventMonth === selectedMonthNumber);
+  });
+
   useEffect(() => {
     getdata();
   }, []);
@@ -199,8 +227,41 @@ const Events = () => {
 
 </p>
     </div>
-    <div class="flex flex-wrap -m-4">
-
+    <div class="flex flex-col flex-wrap -m-4">
+      <div className='flex flex-col sm:flex-row mb-5  w-full items-center gap-10'>
+    <section className="year-selector   w-full sm:w-1/2 md:w-[30%]  ">
+      <div className="container  mx-auto">
+        <label htmlFor="year-select" className="text-lg font-medium ml-3">Filter Event By Year</label>
+        <select
+          id="year-select"
+          value={selectedYear}
+          onChange={(e) => handleYearChange(e.target.value)}
+          className="ml-2 w-full p-2 border rounded"
+        >
+          <option value="">All Years</option>
+          {years.map(year => (
+            <option key={year} value={year}>{year}</option>
+          ))}
+        </select>
+      </div>
+    </section>
+    <section className="month-selector w-full sm:w-1/2 md:w-[30%]">
+              <div className="container mx-auto mt-4">
+                <label htmlFor="month-select" className="text-lg font-medium ml-3">Filter Event By Month</label>
+                <select
+                  id="month-select"
+                  value={selectedMonth}
+                  onChange={(e) =>setSelectedMonth(e.target.value)}
+                  className="ml-2 w-full p-2 border rounded"
+                >
+                  <option value="">All Months</option>
+                  {Object.keys(months).map(month => (
+                    <option key={month} value={month}>{month}</option>
+                  ))}
+                </select>
+              </div>
+            </section>
+            </div>
       {(loading)?(<>
       <div className='flex justify-between gap-20 mx-auto   items-center '>
         
@@ -294,8 +355,10 @@ const Events = () => {
 </div>
 
       </div>
-      </>):(<>
-      {initial.map((info)=>{
+      </>):(<div className='flex justify-center'>
+
+      
+      {filteredEvents.map((info)=>{
         if(!info._id) return null;
         if(!info.PastConform) return null;
         return(
@@ -326,7 +389,7 @@ const Events = () => {
         )
       })}
       
-      </>)}
+      </div>)}
       
       
     </div>
