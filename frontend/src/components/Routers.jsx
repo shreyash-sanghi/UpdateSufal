@@ -1,15 +1,6 @@
 import React,{lazy,Suspense} from "react";
 import { Routes,Route } from "react-router-dom";
 import Home from "./Home";
-// import SignIn from "./SignIn";
-// import SignUp from "./SignUp";
-// import Dashboard from "./Dashboard/Dashboard";
-// import AddEvent from "./Dashboard/Events/AddEvents";
-// import Event from "./Dashboard/Events/Event";
-// import CreateRegisterForm from "./CreateRegisterForm";
-// import VideoGallery from "../page/VideoGallery";
-// import PhotoGallery from "../page/PhotoGallery";
-// import AddAndUpdatePhoto from "./Dashboard/AddAndUpdatePhoto";
 
 const AddAndUpdatePhoto = lazy(()=>import("./Dashboard/AddAndUpdatePhoto"));
 const CreateRegisterForm = lazy(()=>import("./CreateRegisterForm"));

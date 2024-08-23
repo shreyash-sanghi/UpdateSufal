@@ -1,18 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, lazy, Suspense } from 'react';
 import herogif from '../assets/herogiffinal.mp4';
-import Button from '../components/Button';
+// import Button from '../components/Button';
 import { GrUserExpert } from "react-icons/gr";
-import Footer from '../components/Footer';
+// import Footer from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
-import Carousel2 from '../components/Carousel2';
+// import Carousel2 from '../components/Carousel2';
 import garbhavideo from '../assets/garbha-video.mp4';
-import EUI from '../extraComponent/EUI';
-import EJim from '../extraComponent/EJim';
-import EInvestBusiness from '../extraComponent/EInvestBusiness';
+// import EUI from '../extraComponent/EUI';
+// import EJim from '../extraComponent/EJim';
+// import EInvestBusiness from '../extraComponent/EInvestBusiness';
 import { FaHandsHoldingChild } from "react-icons/fa6";
 import pm1 from "../assets/pm1.jpg";
 import pm2 from "../assets/pm2.jpg";
 import pm3 from "../assets/pm3.jpg";
+
+const Button = lazy(() => import('../components/Button'));
+const Footer = lazy(() => import('../components/Footer'));
+const Carousel2 = lazy(() => import('../components/Carousel2'));
+const EUI = lazy(() => import('../extraComponent/EUI'));
+const EJim = lazy(() => import('../extraComponent/EJim'));
+const EInvestBusiness = lazy(() => import('../extraComponent/EInvestBusiness'));
+const Glimpses = lazy(() => import('../components/Glimpses'));
+const PatientDonationCard = lazy(() => import('../components/PatientDonationCard'));
+const Card = lazy(() => import('../components/ProgramCard'));
+const NewsCard = lazy(() => import('../components/NewsCard'));
+const Header = lazy(() => import('../components/Header'));
+
 
 
 import {ref,uploadBytes,getStorage ,getDownloadURL,deleteObject} from "firebase/storage";
@@ -21,7 +34,7 @@ import { Link } from 'react-router-dom';
 
 // <<<<<<< HEAD
 // =======
-import Glimpses from '../components/Glimpses';
+// import Glimpses from '../components/Glimpses';
 import mothers from '../assets/mothersday rander2.mp4';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -39,9 +52,9 @@ import { LuHeartHandshake } from 'react-icons/lu';
 import { GiMedicines } from 'react-icons/gi';
 import { BsFacebook, BsPeopleFill } from 'react-icons/bs';
 import { FaBookOpenReader } from 'react-icons/fa6';
-import PatientDonationCard from '../components/PatientDonationCard';
-import Card from '../components/ProgramCard';
-import NewsCard from '../components/NewsCard';
+// import PatientDonationCard from '../components/PatientDonationCard';
+// import Card from '../components/ProgramCard';
+// import NewsCard from '../components/NewsCard';
 import randomDate from '../lib/getRandomDate';
 
 import Slider from "react-slick";
@@ -49,7 +62,7 @@ import "slick-carousel/slick/slick.css";
 import aboutimg from '../assets/aboutimgfinal.png';
 import { ImWoman } from "react-icons/im";
 
-import Header from '../components/Header';
+// import Header from '../components/Header';
 import axios from 'axios';
 
 const Info = ({ title, description }) => {
@@ -257,7 +270,9 @@ const Home = () => {
 	
 	return (
 	       <>
-		   <Header/>
+		   <Suspense fallback={<div>Loading</div>}>
+            <Header />
+        </Suspense>
 		   
 		<div className="w-full px-1 md:px-0 bg-[#fefaf6] ">
 			<div
@@ -386,8 +401,10 @@ const Home = () => {
 				</div>
 			</div>
 
+			<Suspense fallback={<div>Loading</div>}>
+            <EUI></EUI>
+        </Suspense>
 			
-			<EUI></EUI>
 			
 
 		
@@ -468,12 +485,19 @@ const Home = () => {
 					/> 	
 				</div>
 			</div>
-
+			<Suspense fallback={<div>Loading</div>}>
 			<EJim></EJim>
+        </Suspense>
 			
-<Carousel2></Carousel2>
-			<EInvestBusiness></EInvestBusiness>
+			<Suspense fallback={<div>Loading</div>}>
+			<Carousel2></Carousel2>
+        </Suspense>
 
+<Suspense fallback={<div>Loading</div>}>
+<EInvestBusiness></EInvestBusiness>
+
+        </Suspense>
+			
 			<div
 				id="team"
 				className="w-full max-w-7xl mx-auto px-3 pb-16 selection:bg-[#0a755862]"
@@ -527,7 +551,11 @@ const Home = () => {
     </div>
 	</div>
 	</div>
+		
+		<Suspense fallback={<div>Loading</div>}>
 		<Footer/>
+
+        </Suspense>
 		<ToastContainer/>
 		</>
 	);
