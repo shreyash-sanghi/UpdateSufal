@@ -355,7 +355,7 @@ const [selectedMonth, setSelectedMonth] = useState('');
 </div>
 
       </div>
-      </>):(<div className='flex justify-center'>
+      </>):(<div className='flex flex-wrap justify-center'>
 
       
       {filteredEvents.map((info)=>{
