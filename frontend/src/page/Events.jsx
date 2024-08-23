@@ -202,7 +202,7 @@ const [selectedMonth, setSelectedMonth] = useState('');
 								eventTime={info.Time}
 								eventPrice={info.Fee}
 								eventOrganizer={info.Organization}
-								eventPurchaseLink={`/book/register_booking/${info.eid}`}
+								eventPurchaseLink={`/book/register_booking/${info._id}`}
 								registrationAndrsvp = "Register Now!"
 								isLiked={true}
 							/>
@@ -374,7 +374,7 @@ const [selectedMonth, setSelectedMonth] = useState('');
           <button 
   onClick={() => {
     window.scrollTo(0, 0);
-    navigate(`/past_event/${info.eid}`);
+    navigate(`/past_event/${info._id}`);
   }} 
   className='bg-pink-500 text-sm px-2 py-1 rounded-lg text-white'
 >
