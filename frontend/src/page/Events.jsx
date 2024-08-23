@@ -17,22 +17,7 @@ const Events = () => {
   const [api, setApi] = useState();
   const navigate = useNavigate();
   const [CountCurrentEvent,SetCountCurrentEvent] = useState(0);
-  const [initial, final] = useState([{
-    eid: "",
-    EventName: "",
-    Place: "",
-    Time: "",
-    EDate: "",
-    EventBanner: "",
-    PastConform: "",
-    CurrentConform: "",
-    Discreption: "",
-    image_key: "",
-    Duration: "",
-    Fee: "",
-    Organization: "",
-    Title: "",
-  }])
+  const [initial, final] = useState([])
   const [loading,setLoading] = useState(true);
   const monthToNumber = (month) => {
     const monthDict = {
@@ -79,76 +64,68 @@ const Events = () => {
     }
     todaydate = `${curdate}/${month}/${curyear}`;
     
-    try {
-      const data = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/get_current_event_data`);
-      const result = data.data.result;
-      
-      // Convert event dates to Date objects and sort
-      result.sort((a, b) => {
-        const dateA = parseDateString(a.EDate);
-        const dateB = parseDateString(b.EDate);
-        return dateA - dateB; // Ascending order
-      });
+    // Helper function to parse date string
+    const parseDateString = (dateString) => {
+      const [day, month, year] = dateString.split('/');
+      const months = ["January", "February", "March", "April", "May",
+        "June", "July", "August", "September", "October", "November", "December"];
+      const monthIndex = months.indexOf(month);
+      return new Date(year, monthIndex, day);
+    };
   
-      result.map(async (info) => {
+    try {
+      const { data } = await axios.get(`https://backendsufal-shreyash-sanghis-projects.vercel.app/get_current_event_data`);
+      const result = data.result;
+  
+      // Fetch image URLs and process events
+      const events = await Promise.all(result.map(async (info) => {
         let EventDate = info.EDate;
         const isDate1AfterDate = compareDates(todaydate, EventDate);
         const storage = getStorage();
         const imgref = ref(storage, `files/${info.EventBanner}`);
-        
-        getDownloadURL(imgref).then(async (url) => {
-          if (isDate1AfterDate && info.PastConform == false) {
-            await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/send_to_past_event/${info._id}`);
-            final((about) => [
-              ...about, {
-                eid: info._id,
-                EventName: info.EventName,
-                Place: info.Place,
-                Time: info.Time,
-                EDate: info.EDate,
-                EventBanner: url,
-                PastConform: true,
-                CurrentConform: false,
-                Discreption: info.Discreption,
-                image_key: info.public_id,
-                Duration: info.Duration,
-                Fee: info.Fee,
-                Organization: info.Organization,
-                Title: info.Title,
-              }
-            ]);
-          } else {
-            if (info.CurrentConform) {
-              SetCountCurrentEvent = CountCurrentEvent + 1;
-            }
-            final((about) => [
-              ...about, {
-                eid: info._id,
-                EventName: info.EventName,
-                Place: info.Place,
-                Time: info.Time,
-                EDate: info.EDate,
-                EventBanner: url,
-                PastConform: info.PastConform,
-                CurrentConform: info.CurrentConform,
-                Discreption: info.Discreption,
-                image_key: info.public_id,
-                Duration: info.Duration,
-                Fee: info.Fee,
-                Organization: info.Organization,
-                Title: info.Title,
-              }
-            ]);
+        const url = await getDownloadURL(imgref);
+  
+        if (isDate1AfterDate && info.PastConform === false) {
+          await axios.post(`https://backendsufal-shreyash-sanghis-projects.vercel.app/send_to_past_event/${info._id}`);
+          return {
+            ...info,
+            EventBanner: url,
+            PastConform: true,
+            CurrentConform: false,
+          };
+        } else {
+          if (info.CurrentConform) {
+            SetCountCurrentEvent(prevCount => prevCount + 1);
           }
-        });
+          return {
+            ...info,
+            EventBanner: url,
+          };
+        }
+      }));
+  
+      // Sort events based on EDate
+      events.sort((a, b) => {
+        const dateA = parseDateString(a.EDate);
+        const dateB = parseDateString(b.EDate);
+        return dateA - dateB; // Ascending order
       });
+  final(events)
+      // // Update state with sorted events
+      // setInitial(events);
+      // setFinal(events);
   
       setLoading(false);
     } catch (error) {
       setLoading(false);
-      alert(error);
+      alert(error.message || "An error occurred while fetching data.");
     }
   };
+  
+  useEffect(() => {
+    getdata();
+  }, []);
+  
   
   useEffect(() => {
     getdata();
@@ -180,7 +157,7 @@ const Events = () => {
 					<CarouselContent className="w-full  mx-auto py-5">
 				
 						{initial.map((info)=>{
-							if(!info.eid) return null;
+							if(!info._id) return null;
 							if(!info.CurrentConform) return null
 							return(<>
 						<CarouselItem className="px-5 basic-0 mx-auto  md:basis-1/2 lg:basis-1/3">
@@ -319,7 +296,7 @@ const Events = () => {
       </div>
       </>):(<>
       {initial.map((info)=>{
-        if(!info.eid) return null;
+        if(!info._id) return null;
         if(!info.PastConform) return null;
         return(
           <>
