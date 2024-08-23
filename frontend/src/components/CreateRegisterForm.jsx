@@ -1,9 +1,9 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, lazy, Suspense  } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import "./CreateRegisterForm.css"
-import Header from '../components/Header';
+const Header = lazy(()=>import("./Header")); 
 const Form = ()=>{
   const navigate = useNavigate();
   const {rid}  = useParams();
@@ -131,7 +131,11 @@ useEffect(()=>{
 */}
 
 <section className=" min-h-screen">
+
+ <Suspense fallback={<div>Loading...</div>}>
+					 
  <Header/>
+					</Suspense>
   <div className="mx-auto max-w-screen-xl px-4 py-10 sm:px-6 lg:px-8">
     <div className="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
       <div className="lg:col-span-2  ">

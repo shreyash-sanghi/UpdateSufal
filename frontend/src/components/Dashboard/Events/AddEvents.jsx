@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef,lazy,Suspense } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import DashboardNav from "../DashboardNav";
@@ -7,16 +7,11 @@ import { ref, uploadBytes ,getStorage} from "firebase/storage";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { DotSpinner } from '@uiball/loaders';
-import EventCard from '../../EventCard';
-import {
-	Carousel,
-	CarouselContent,
-	CarouselItem,
-	CarouselNext,
-	CarouselPrevious,
-} from '../../ui/carousel';
+// import EventCard from '../../EventCard';
+
 
 import {v4} from 'uuid';
+const EventCard = lazy(()=> import("../../EventCard"));
 const AddEvent = () => {
   const navigate = useNavigate();
   const form = useRef();
@@ -474,6 +469,8 @@ const AddEvent = () => {
 
 <div className="px-5 mt-5 basic-0 mx-auto lg:mt-24 md:basis-1/2 lg:basis-1/3">
 {(initialAddEventfile === undefined) ? (<>
+  <Suspense fallback={<div>Loading...</div>}>
+					 
   <EventCard
   eventTitle={initialAddEvent.EventName}
   eventDescription={initialAddEvent.Discreption}
@@ -490,7 +487,11 @@ const AddEvent = () => {
   registrationAndrsvp = "Register Now!"
   isLiked={true}
 />
+                  </Suspense>
+  
   </>) : (<>
+    <Suspense fallback={<div>Loading...</div>}>
+					 
     <EventCard
   eventTitle={initialAddEvent.EventName}
   eventDescription={initialAddEvent.Discreption}
@@ -507,6 +508,8 @@ const AddEvent = () => {
   registrationAndrsvp = "Register Now!"
   isLiked={true}
 />
+                           </Suspense>
+    
   </>)}
 </div>
           </div>

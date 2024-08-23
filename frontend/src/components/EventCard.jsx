@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import Button from './Button';
+import React, { useState,lazy, Suspense } from 'react';
 import { CiCalendarDate, CiLocationOn } from 'react-icons/ci';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 import { HiOutlineCalendarDays } from 'react-icons/hi2';
@@ -10,6 +9,7 @@ import { BsStars } from 'react-icons/bs';
 import { FaRegHeart } from 'react-icons/fa';
 import { RiHeartFill, RiHeartLine } from 'react-icons/ri';
 import { MdMoreTime } from "react-icons/md";
+const Button = lazy(()=>import("./Button"));
 
 
 const EventCard = ({
@@ -168,17 +168,25 @@ const EventCard = ({
 						to={eventPurchaseLink}
 						className="w-full"
 					>
+						<Suspense fallback={<div>Loading...</div>}>
+					 
 						<button className="w-full px-4 sm:px-5 md:px-6 py-2 mt-2 rounded-md text-white bg-[#0a7558] hover:bg-[#1f6351]">
 							{registrationAndrsvp}
 						</button>
+										</Suspense>
+						
 					</Link>
 					<Link
 						to={eventLink}
 						className="w-full"
 					>
+						<Suspense fallback={<div>Loading...</div>}>
+					 
 						<button className="w-full px-4 sm:px-5 md:px-6 py-2 mt-2 rounded-md bg-[#dbdada] hover:bg-[#acacac] text-[#16191E]">
 							View Details
 						</button>
+									 </Suspense>
+						
 					</Link>
 				</div>
 			</div>
