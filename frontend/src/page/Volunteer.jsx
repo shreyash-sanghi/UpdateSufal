@@ -8,7 +8,6 @@ import { HiOutlineLocationMarker } from 'react-icons/hi';
 import { IoCall, IoMail } from 'react-icons/io5';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import contactimg from '../assets/contact-img3.png';
 import volunteerimg from '../assets/Volunteer-img2.png';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
