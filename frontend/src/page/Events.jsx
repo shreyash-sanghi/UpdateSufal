@@ -118,7 +118,7 @@ const [selectedMonth, setSelectedMonth] = useState('');
       events.sort((a, b) => {
         const dateA = parseDateString(a.EDate);
         const dateB = parseDateString(b.EDate);
-        return dateA - dateB; // Ascending order
+        return -(dateA - dateB); // Ascending order
       });
 
           // Extract unique years
