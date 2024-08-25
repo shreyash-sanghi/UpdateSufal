@@ -1,4 +1,5 @@
-import React, { useState,lazy, Suspense } from 'react';
+import React, { useState } from 'react';
+import Button from './Button';
 import { CiCalendarDate, CiLocationOn } from 'react-icons/ci';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 import { HiOutlineCalendarDays } from 'react-icons/hi2';
@@ -9,7 +10,6 @@ import { BsStars } from 'react-icons/bs';
 import { FaRegHeart } from 'react-icons/fa';
 import { RiHeartFill, RiHeartLine } from 'react-icons/ri';
 import { MdMoreTime } from "react-icons/md";
-const Button = lazy(()=>import("./Button"));
 
 
 const EventCard = ({
@@ -39,9 +39,9 @@ const EventCard = ({
 
 	return (
 		<div className="w-full rounded-md flex-1 border border-[#16191e30]   bg-[#fbfcfc] shadow-md selection:bg-[#0a755862] selection:text-[#16191E] transition-all">
-			<div className="relative w-full flex items-center justify-center p-3">
+			<div className=" md:relative w-full flex items-center justify-center p-3">
 				<div className="w-fit h-fit p-4  absolute top-2 left-1 flex flex-col -space-y-1 text-[#fbfcfc]">
-					<span className="bg-[#fbfcfc] text-[#16191E] px-2 text-2xl font-bold rounded-t-md">
+					<span className="bg-[#fbfcfc] hidden md:block text-[#16191E] px-2 text-2xl font-bold rounded-t-md">
 						{dateTag.day}
 					</span>
 					<span className="bg-[#fbfcfc] px-2 text-base text-[#0a7558] font-semibold rounded-b-md">
@@ -49,7 +49,7 @@ const EventCard = ({
 					</span>
 				</div>
 				<div
-					className="w-fit h-fit p-4  absolute top-2 right-1 flex flex-col -space-y-1 text-[#fbfcfc]"
+					className="w-fit h-fit p-4 md:flex hidden absolute top-2 right-1  flex-col -space-y-1 text-[#fbfcfc]"
 					onClick={handleLike}
 				>
 					<span className="bg-[#fbfcfc] rounded-full p-1.5 flex items-center justify-center text-2xl font-bold cursor-pointer transition-colors">
@@ -168,25 +168,17 @@ const EventCard = ({
 						to={eventPurchaseLink}
 						className="w-full"
 					>
-						<Suspense fallback={<div>Loading...</div>}>
-					 
 						<button className="w-full px-4 sm:px-5 md:px-6 py-2 mt-2 rounded-md text-white bg-[#0a7558] hover:bg-[#1f6351]">
 							{registrationAndrsvp}
 						</button>
-										</Suspense>
-						
 					</Link>
 					<Link
 						to={eventLink}
 						className="w-full"
 					>
-						<Suspense fallback={<div>Loading...</div>}>
-					 
 						<button className="w-full px-4 sm:px-5 md:px-6 py-2 mt-2 rounded-md bg-[#dbdada] hover:bg-[#acacac] text-[#16191E]">
 							View Details
 						</button>
-									 </Suspense>
-						
 					</Link>
 				</div>
 			</div>
