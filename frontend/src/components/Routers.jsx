@@ -1,20 +1,23 @@
-import React from "react";
+import React,{lazy,Suspense} from "react";
 import { Routes,Route } from "react-router-dom";
 import Home from "./Home";
-import SignIn from "./SignIn";
-import SignUp from "./SignUp";
-import Dashboard from "./Dashboard/Dashboard";
-import AddEvent from "./Dashboard/Events/AddEvents";
-import Event from "./Dashboard/Events/Event";
-import CreateRegisterForm from "./CreateRegisterForm";
-import VideoGallery from "../page/VideoGallery";
-import PhotoGallery from "../page/PhotoGallery";
-import AddAndUpdatePhoto from "./Dashboard/AddAndUpdatePhoto";
+
+const AddAndUpdatePhoto = lazy(()=>import("./Dashboard/AddAndUpdatePhoto"));
+const CreateRegisterForm = lazy(()=>import("./CreateRegisterForm"));
+const Event = lazy(()=>import("./Dashboard/Events/Event"));
+const AddEvent = lazy(()=>import("./Dashboard/Events/AddEvents"));
+const Dashboard = lazy(()=>import("./Dashboard/Dashboard"));
+const SignUp = lazy(()=>import("./SignUp"));
+const SignIn = lazy(()=>import("./SignIn"));
+const VideoGallery = lazy(()=>import("../page/VideoGallery"));
+const PhotoGallery = lazy(()=>import("../page/PhotoGallery"));
+
 const Routers = ()=>{
     return(
         <>
       <Routes>
       <Route exact path="/" Component={Home}></Route>
+      <Suspense fallback={<div>loading</div>}>
       <Route exact path="/photo-gallery" Component={PhotoGallery}></Route>
       <Route exact path="/video-gallery" Component={VideoGallery}></Route>
         <Route exact path="/signin" Component={SignIn}></Route>
@@ -25,6 +28,8 @@ const Routers = ()=>{
         <Route exact path="/event/:kind_of_event/:rid" Component={Event}></Route>
         <Route exact path="/create_form" Component={CreateRegisterForm}></Route>
         <Route exact path="/add_photo" Component={AddAndUpdatePhoto}></Route>
+      </Suspense>
+      
         
         
      </Routes>  

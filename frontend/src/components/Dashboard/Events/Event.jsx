@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import DashboardNav from "../DashboardNav";
+import React, { useState, useEffect,lazy,Suspense } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import {ref,uploadBytes,getStorage ,getDownloadURL,deleteObject} from "firebase/storage";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+const DashboardNav = lazy(()=>import("../DashboardNav"));
 const CurrentEvent = () => {
   const { kind_of_event, rid } = useParams();
   const navigate = useNavigate();
@@ -125,7 +125,10 @@ const CurrentEvent = () => {
   return (
     <>
       <div className="flex md:flex-row flex-col min-h-screen bg-gray-800">
+        <Suspense fallback={<div>Laoding...</div>}>
         <DashboardNav />
+        </Suspense>
+       
         <div class="font-sans bg-grey-lighter flex flex-col w-full">
           <div class=" dark:text-white text-gray-600  flex overflow-hidden text-sm">
             <div class="flex-grow overflow-hidden  flex flex-col">

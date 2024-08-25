@@ -8,7 +8,7 @@ import { HiOutlineLocationMarker } from 'react-icons/hi';
 import { IoCall, IoMail } from 'react-icons/io5';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import contactimg from '../assets/contact-img3.png';
+import contactimg from '../assets/contact-img4.png';
 
 
 const ContactUs = () => {

@@ -1,5 +1,5 @@
-import React from 'react';
-import Button from './Button';
+import React, { lazy, Suspense } from 'react';
+const Button = lazy(() => import('./Button'));
 import { FiArrowRight } from 'react-icons/fi';
 
 const ContactUsCard = ({ title, description, icon, href }) => {
@@ -24,6 +24,8 @@ const ContactUsCard = ({ title, description, icon, href }) => {
 			</div>
 			{href && (
 				<div className="w-full flex items-center justify-center px-6 py-2">
+					 <Suspense fallback={<div>Loading...</div>}>
+					 
 					<Button
 						message="Address"
 						icon={
@@ -35,6 +37,7 @@ const ContactUsCard = ({ title, description, icon, href }) => {
 						className="px-6 py-2 rounded-lg text-[#0a7558]"
 						href={href}
 					/>
+					</Suspense>
 				</div>
 			)}
 		</div>

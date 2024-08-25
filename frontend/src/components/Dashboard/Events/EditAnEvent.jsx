@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect,lazy, Suspense  } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import DashboardNav from "../DashboardNav";
@@ -7,14 +7,9 @@ import { ref, uploadBytes, getStorage } from "firebase/storage";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { DotSpinner } from '@uiball/loaders';
-import EventCard from '../../EventCard';
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
-} from '../../ui/carousel';
+
+const EventCard = lazy(()=> import("../../EventCard"));
+
 
 import { v4 } from 'uuid';
 const EditAnEvent = () => {
