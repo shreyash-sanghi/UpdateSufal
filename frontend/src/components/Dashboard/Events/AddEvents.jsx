@@ -60,12 +60,12 @@ const AddEvent = () => {
     })
 
     // Count words in description
-    const wordCount = value.trim().split(/\s+/).length;
-    if (value.length > 500) {
-      setlimitError("Description should be within 500 characters.");
-    } else {
-      setlimitError("");
-    }
+    // const wordCount = value.trim().split(/\s+/).length;
+    // if (value.length > 500) {
+    //   setlimitError("Description should be within 500 characters.");
+    // } else {
+    //   setlimitError("");
+    // }
   }
   const EventSave = async (event) => {
     event.preventDefault();
