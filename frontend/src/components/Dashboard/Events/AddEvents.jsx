@@ -393,7 +393,6 @@ const AddEvent = () => {
                     onChange={EventData}
                     autoComplete="off"
                     id="floating_password"
-                    maxLength={201}
                     className=" event-input block min-h-24  py-1.5 px-0 w-full   bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" "
                   />
